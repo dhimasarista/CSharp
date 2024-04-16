@@ -2,6 +2,17 @@
 
 ****C#** (dibaca:  ***see sharp*** ) adalah sebuah [bahasa pemrograman](https://id.wikipedia.org/wiki/Bahasa_pemrograman "Bahasa pemrograman") [berorientasi objek ( *object-oriented language* )](https://id.wikipedia.org/wiki/Pemrograman_Berorientasi_Objek "Pemrograman Berorientasi Objek") yang dikembangkan oleh [Microsoft](https://id.wikipedia.org/wiki/Microsoft "Microsoft") sebagai bagian dari inisiatif kerangka [.NET Framework](https://id.wikipedia.org/wiki/Microsoft_.NET "Microsoft .NET"). Bahasa pemrograman ini dibuat berbasiskan bahasa [C++](https://id.wikipedia.org/wiki/C%2B%2B "C++") yang telah dipengaruhi oleh aspek-aspek ataupun fitur bahasa yang terdapat pada bahasa-bahasa pemrograman lainnya seperti [Java](https://id.wikipedia.org/wiki/Java "Java"), [Delphi](https://id.wikipedia.org/wiki/Delphi "Delphi"), [Visual Basic](https://id.wikipedia.org/wiki/Visual_Basic "Visual Basic"), dan lain-lain dengan beber** **apa penyederhanaan. Menurut standar** *[ECMA-334 C# Language Specification](http://www.ecma-international.org/publications/standards/Ecma-334.htm)* **, nama C# terdiri atas sebuah huruf Latin [C](https://id.wikipedia.org/wiki/C "C") **(**[U+0043](https://id.wikipedia.org/wiki/Unicode "Unicode")**) yang diikuti oleh tanda pagar yang menandakan angka # **(**[U+0023](https://id.wikipedia.org/wiki/Unicode "Unicode")**). Tanda pagar # yang digunakan memang bukan tanda kres dalam seni musik (U+266F), dan tanda pagar # (U+0023) tersebut digunakan karena karakter kres dalam seni musik tidak terdapat di dalam** [papan tombol](https://id.wikipedia.org/wiki/Papan_tombol "Papan tombol") **standar.**
 
+##### Platform Target
+
+| Platform               | Tools                           |
+| ---------------------- | ------------------------------- |
+| Dekstop                | WPF, Winforms, .NET MAUI        |
+| Web                    | ASP.NET                         |
+| Mobile                 | .NET MAUI                       |
+| Gaming                 | Unity                           |
+| Internet of Things     | .NET IoT, Meadow, NanoFramework |
+| Artificial Inteligence | ML.NET                          |
+
 > Sumber: Wikipedia
 
 **Karakteristik C# :**
