@@ -1,3 +1,5 @@
+# ension
+
 # C# Programming Language
 
 ![1713255318223](image/README/1713255318223.png)
@@ -1812,6 +1814,44 @@ enum Level {
 ## 10. Extensions Method
 
 ***Extension Method** adalah cara menambahkan method terhadap Class yang sudah ada, tanpa harus mengubah Class tersebut*. Ketika Anda menggunakan library, baik itu library bawaan C# atau pun library milik orang lain, ada kemungkinan library tersebut kurang lengkap sehingga kita perlu menambahkan beberapa fungsionalitas. Namun akan jadi PR kita untuk mengubah library yang sudah ada. Dengan extension method, kita dapat membuat fungsi atau method tambahan lalu menggunakannya sesuai dengan kebutuhan aplikasi kita.
+
+```csharp
+using System;
+
+// Kelas pertama
+public class MyClass
+{
+    public int Number { get; set; }
+
+    public MyClass(int number)
+    {
+        Number = number;
+    }
+}
+
+// Kelas kedua dengan metode ekstensi
+public static class MyClassExtensions
+{
+    // Metode ekstensi untuk menambahkan metode ke MyClass
+    public static void DisplayNumber(this MyClass myClass)
+    {
+        Console.WriteLine($"Number: {myClass.Number}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Membuat objek dari MyClass
+        MyClass myObject = new MyClass(10);
+
+        // Memanggil metode ekstensi dari MyClass
+        myObject.DisplayNumber();
+    }
+}
+
+```
 
 ## 11. Base Keyword
 
