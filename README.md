@@ -4,17 +4,6 @@
 
 ****C#** (dibaca:  ***see sharp*** ) adalah sebuah [bahasa pemrograman](https://id.wikipedia.org/wiki/Bahasa_pemrograman "Bahasa pemrograman") [berorientasi objek ( *object-oriented language* )](https://id.wikipedia.org/wiki/Pemrograman_Berorientasi_Objek "Pemrograman Berorientasi Objek") yang dikembangkan oleh [Microsoft](https://id.wikipedia.org/wiki/Microsoft "Microsoft") sebagai bagian dari inisiatif kerangka [.NET Framework](https://id.wikipedia.org/wiki/Microsoft_.NET "Microsoft .NET"). Bahasa pemrograman ini dibuat berbasiskan bahasa [C++](https://id.wikipedia.org/wiki/C%2B%2B "C++") yang telah dipengaruhi oleh aspek-aspek ataupun fitur bahasa yang terdapat pada bahasa-bahasa pemrograman lainnya seperti [Java](https://id.wikipedia.org/wiki/Java "Java"), [Delphi](https://id.wikipedia.org/wiki/Delphi "Delphi"), [Visual Basic](https://id.wikipedia.org/wiki/Visual_Basic "Visual Basic"), dan lain-lain dengan beberapa penyederhanaan. Menurut standar***[ECMA-334 C# Language Specification](http://www.ecma-international.org/publications/standards/Ecma-334.htm)***, nama C# terdiri atas sebuah huruf Latin [C](https://id.wikipedia.org/wiki/C "C") **(**[U+0043](https://id.wikipedia.org/wiki/Unicode "Unicode")**) yang diikuti oleh tanda pagar yang menandakan angka # **(**[U+0023](https://id.wikipedia.org/wiki/Unicode "Unicode")). Tanda pagar # yang digunakan memang bukan tanda kres dalam seni musik (U+266F), dan tanda pagar # (U+0023) tersebut digunakan karena karakter kres dalam seni musik tidak terdapat di dalam**[papan tombol](https://id.wikipedia.org/wiki/Papan_tombol "Papan tombol")**standar.**
 
-##### Platform Target
-
-| Platform               | Tools                           |
-| ---------------------- | ------------------------------- |
-| Dekstop                | WPF, Winforms, .NET MAUI        |
-| Web                    | ASP.NET                         |
-| Mobile                 | .NET MAUI                       |
-| Gaming                 | Unity                           |
-| Internet of Things     | .NET IoT, Meadow, NanoFramework |
-| Artificial Inteligence | ML.NET                          |
-
 > Sumber: Wikipedia
 
 **Karakteristik C# :**
@@ -125,6 +114,40 @@ public int Add(int a, int b)
 | System.Text        | Berisi kelas-kelas untuk manipulasi teks dan format string.                  |
 | System.Security    | Berisi kelas-kelas untuk keamanan, enkripsi, dan hashing.                    |
 | System.Diagnostics | Berisi kelas-kelas untuk mengelola proses dan layanan di sistem.             |
+
+* [ ] Libraries & Frameworks
+
+| Kategori                          | Library/Framework                     | Deskripsi                                                                                         |
+| --------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Framework .NET                    | .NET Core / .NET 5+                   | Framework serbaguna untuk pengembangan aplikasi desktop, web, dan cloud.                          |
+|                                   | .NET Framework                        | Framework klasik untuk pengembangan aplikasi Windows.                                             |
+| Web App                           | ASP.NET Core                          | Framework untuk pengembangan aplikasi web lintas platform.                                        |
+|                                   | Blazor                                | Framework untuk membangun aplikasi web interaktif menggunakan C#.                                 |
+|                                   | SignalR                               | Library untuk membangun aplikasi web real-time menggunakan WebSockets.                            |
+| Mobile App                        | Xamarin                               | Framework untuk membangun aplikasi mobile lintas platform menggunakan C# dan .NET.                |
+|                                   | MAUI (Multi-platform App UI)          | Framework untuk pembuatan aplikasi mobile lintas platform dengan UI yang berbeda, menggunakan C#. |
+| Database                          | Entity Framework Core                 | ORM untuk akses data relasional.                                                                  |
+|                                   | Dapper                                | Micro ORM yang ringan dan cepat untuk akses data dengan SQL langsung.                             |
+|                                   | ADO.NET                               | API dasar untuk akses data relasional di lingkungan .NET.                                         |
+| Dekstop App                       | Windows Forms                         | Framework untuk pembuatan aplikasi desktop Windows.                                               |
+|                                   | WPF (Windows Presentation Foundation) | Framework untuk pembuatan aplikasi desktop Windows dengan antarmuka pengguna modern.              |
+|                                   | Avalonia                              | Framework untuk pembuatan aplikasi desktop lintas platform menggunakan XAML dan .NET.             |
+| Game                              | Unity                                 | Mesin permainan untuk pembuatan permainan 2D dan 3D, dengan dukungan scripting menggunakan C#.    |
+|                                   | MonoGame                              | Framework open-source untuk pembuatan permainan lintas platform menggunakan C#.                   |
+| Internet of Things                | .NET IoT                              |                                                                                                   |
+|                                   | Meadow                                |                                                                                                   |
+|                                   | NanoFramework                         |                                                                                                   |
+| Artificial inteligence            | ML.NET                                |                                                                                                   |
+| HTTP & Web API                    | ASP.NET Web API                       | Framework untuk pembuatan layanan web RESTful menggunakan .NET.                                   |
+|                                   | RestSharp                             | Library HTTP untuk klien RESTful yang dapat digunakan dalam aplikasi .NET.                        |
+| Testing dan Mocking               | NUnit, xUnit.net, MSTest              | Framework pengujian unit untuk pengujian otomatis dalam lingkungan .NET.                          |
+|                                   | Moq, NSubstitute                      | Library untuk mocking objek dan membuat pengganti (stub) dalam pengujian unit.                    |
+| Serialization dan Deserialization | Newtonsoft.Json (Json.NET)            | Library yang populer untuk serialization dan deserialization data JSON.                           |
+|                                   | System.Text.Json                      | Library bawaan .NET untuk serialization dan deserialization data JSON.                            |
+| Logging dan Monitoring            | Serilog, NLog, log4net                | Library logging yang populer untuk pencatatan kejadian dan pemantauan aplikasi.                   |
+|                                   | Application Insights, Sentry          | Layanan pihak ketiga untuk pemantauan dan pelacakan kesalahan dalam aplikasi.                     |
+
+Tabel di atas menyajikan beberapa library dan framework populer dalam ekosistem C# berdasarkan kategori fungsionalnya. Semua entri dalam tabel ini adalah pilihan umum, dan masih banyak pilihan lain yang tersedia sesuai kebutuhan dan preferensi pengembangan Anda.
 
 # 1. Basic
 
@@ -2092,18 +2115,17 @@ public class Program {
 **Parallelism** : Parallelism, di sisi lain, mengacu pada eksekusi tugas-tugas secara benar-benar bersamaan pada multiple core CPU atau multiple prosesor. Ini memungkinkan tugas-tugas untuk berjalan secara simultan, yang dapat menghasilkan peningkatan kinerja dan efisiensi. Dalam C#, Anda dapat mencapai parallelism menggunakan konstruksi seperti Parallel.For, Parallel.ForEach, dan PLINQ (Parallel Language-Integrated Query).
 
 ```csharp
-public class Program {
-    public static void Main(string[] args) {
-        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        long total = 0;
+// Tentukan jumlah iterasi
+int iterations = 10;
 
-        Parallel.For(0, numbers.Length, i => {
-            total += numbers[i] * numbers[i];
-        });
+// Gunakan Parallel.For untuk melakukan looping secara paralel
+Parallel.For(0, iterations, i =>
+{
+    Console.WriteLine($"Task {Task.CurrentId} is processing iteration {i}");
+    // Tambahan logika bisnis di sini
+});
 
-        Console.WriteLine($"Jumlah kuadrat dari semua bilangan adalah: {total}");
-    }
-}
+Console.WriteLine("Looping selesai.");
 ```
 
 # 8. Generic
@@ -2178,7 +2200,51 @@ public static void ReverseArray<T>(T[] array){}
 
 Covariant artinya kita bisa melakukan subtitusi subtype (child) dengan supertype (parent), namun hati-hati ketika melakukan covariant, karena jika sampai salah mengubah datanya, maka akan terjadi error pada saat runtime, tidak akan terdeteksi ketika proses compile.
 
-# 9. Package Manager
+# 9. Language Integrated Query (LINQ)
+
+LINQ adalah singkatan dari Language Integrated Query, yang merupakan fitur kunci dalam bahasa pemrograman C# (dan juga dalam Visual Basic .NET) yang memungkinkan Anda menulis kueri terhadap berbagai jenis sumber data langsung di dalam kode Anda. Dengan LINQ, Anda dapat melakukan operasi query terhadap berbagai jenis data, seperti array, koleksi objek, XML, dan database relasional, menggunakan sintaks yang mirip dengan SQL (Structured Query Language).
+
+LINQ memungkinkan Anda untuk menulis kueri terstruktur dalam bahasa C# itu sendiri, daripada harus menggunakan bahasa terpisah atau API untuk melakukan query terhadap data. Ini membuat kode Anda lebih bersih, ekspresif, dan mudah dipahami.
+
+Berikut adalah beberapa fitur utama dari LINQ:
+
+1. **Kueri Terintegrasi**: Anda dapat menulis kueri langsung dalam kode C# Anda, yang terintegrasi secara langsung dengan sintaks bahasa.
+2. **Tipe yang Aman**: LINQ adalah tipe yang aman, yang berarti Anda mendapatkan manfaat dari pemeriksaan tipe kompilasi.
+3. **IntelliSense**: Anda mendapatkan dukungan IntelliSense lengkap saat menulis kueri LINQ di dalam lingkungan pengembangan (IDE) Anda.
+4. **Kinerja yang Tinggi**: LINQ dikompilasi menjadi ekspresi lambda, yang dieksekusi secara langsung pada runtime. Ini berarti kueri LINQ memiliki kinerja yang sangat baik.
+
+Contoh penggunaan LINQ termasuk:
+
+- **Pengolahan koleksi data**: Misalnya, menyaring, mengurutkan, atau mengelompokkan data dalam sebuah List atau array.
+- **Query XML**: Menjalankan kueri terhadap data XML menggunakan LINQ to XML.
+- **Query database**: Melakukan query terhadap database menggunakan LINQ to SQL atau Entity Framework.
+
+Berikut adalah contoh sederhana penggunaan LINQ untuk menyaring data dalam sebuah array:
+
+```csharp
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+        // Menyaring bilangan genap
+        var evenNumbers = from num in numbers
+                          where num % 2 == 0
+                          select num;
+
+        foreach (var num in evenNumbers)
+        {
+            Console.WriteLine(num); // Output: 2, 4, 6, 8, 10
+        }
+    }
+}
+```
+
+# 10. Package Manager
 
 Package manager adalah sebuah alat bantu yang digunakan untuk mengelola instalasi, pembaruan, penghapusan, dan manajemen dependensi dari perangkat lunak dalam sebuah proyek perangkat lunak. Dalam konteks bahasa pemrograman, package manager bertanggung jawab untuk mengelola paket-paket perangkat lunak yang digunakan oleh pengembang untuk membangun aplikasi.
 
@@ -2192,3 +2258,30 @@ Fungsi utama dari package manager adalah:
 Contoh package manager yang populer termasuk npm (Node.js), pip (Python), Composer (PHP), Maven (Java), dan banyak lagi. Setiap bahasa pemrograman umumnya memiliki package manager yang dikhususkan untuk ekosistemnya sendiri.
 
 Untuk bahasa pemrograman C#, package manager yang paling umum digunakan adalah NuGet. NuGet adalah package manager untuk platform pengembangan .NET yang digunakan untuk mengelola paket-paket perangkat lunak dalam proyek C# dan .NET. NuGet memungkinkan pengguna untuk mencari, menginstal, dan mengelola dependensi perangkat lunak yang diperlukan dalam proyek C#.
+
+# 11. Testing & Debugging
+
+### 1. Unit Testing dalam C#:
+
+#### Pengenalan tentang Pengujian Unit:
+
+Pengujian unit adalah proses pengujian perangkat lunak di mana unit-unit individu dari sebuah program diuji secara terisolasi untuk memastikan bahwa masing-masing unit berfungsi sebagaimana mestinya. Dalam konteks C#, unit-unit ini biasanya merupakan metode atau fungsi individual.
+
+#### Penggunaan Alat Pengujian Unit dalam C#:
+
+Dalam lingkungan pengembangan C#, ada beberapa alat yang sering digunakan untuk melakukan pengujian unit, termasuk:
+
+- **NUnit**: Ini adalah kerangka kerja pengujian unit yang populer dan kuat untuk C#.
+- **MSTest**: Kerangka kerja pengujian bawaan dari Microsoft yang sering digunakan dalam proyek-proyek C#.
+- **xUnit.net**: Alternatif lain yang cukup populer untuk pengujian unit dalam C#.
+
+### 2. Debugging dalam C#:
+
+#### Teknik Debugging:
+
+Debugging adalah proses mengidentifikasi, memahami, dan memperbaiki kesalahan dalam kode program. Dalam C#, Anda dapat menggunakan beberapa teknik debugging, termasuk:
+
+- **Breakpoints**: Anda dapat menempatkan titik henti (breakpoints) di dalam kode Anda untuk memberhentikan eksekusi dan memeriksa nilai variabel pada titik tertentu dalam eksekusi program.
+- **Watch Windows**: Anda dapat memantau nilai variabel dan ekspresi selama proses debug menggunakan jendela "Watch" di Visual Studio.
+- **Step Into, Step Over, dan Step Out**: Anda dapat menavigasi melalui kode baris demi baris dengan opsi "Step Into" (masuk ke dalam fungsi), "Step Over" (melompati fungsi), dan "Step Out" (keluar dari fungsi saat Anda berada di dalamnya).
+- **Exception Handling**: Memahami bagaimana menangani pengecualian (exceptions) dan menggunakan fitur-fitur seperti "try-catch" untuk menangkap dan memperlakukan pengecualian yang terjadi.
