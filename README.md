@@ -66,42 +66,6 @@ public int Add(int a, int b)
 - **Avoid**:
   - file_name.cs
 
-## Keyword
-
-| Key      | Penggunaan                                                                                                                            |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| abstract | Digunakan untuk mendefinisikan kelas abstrak, yang tidak dapat diinstansiasi.                                                         |
-| as       | Digunakan untuk melakukan casting tipe data secara eksplisit.                                                                         |
-| base     | Digunakan untuk merujuk ke kelas induk dalam hierarki warisan.                                                                        |
-| break    | Digunakan untuk menghentikan eksekusi loop atau switch statement.                                                                     |
-| case     | Digunakan dalam switch statement untuk mengevaluasi kasus yang sesuai.                                                                |
-| catch    | Digunakan dalam penanganan eksepsi (exception handling) untuk menangkap eksepsi yang dilempar.                                        |
-| checked  | Digunakan untuk mengaktifkan pemeriksaan batas saat melakukan operasi aritmatika.                                                     |
-| class    | Digunakan untuk mendefinisikan sebuah kelas dalam C#.                                                                                 |
-| const    | Digunakan untuk mendeklarasikan konstanta.                                                                                            |
-| continue | Digunakan untuk melanjutkan iterasi di dalam loop.                                                                                    |
-| decimal  | Digunakan untuk mendeklarasikan tipe data bilangan desimal yang memiliki presisi tinggi.                                              |
-| default  | Digunakan dalam switch statement untuk menentukan blok kode yang akan dieksekusi jika tidak ada kasus yang cocok.                     |
-| delegate | Digunakan untuk mendefinisikan sebuah tipe delegasi, yang merupakan referensi ke sebuah metode.                                       |
-| do       | Digunakan untuk membuat loop do-while yang mengulangi blok kode hingga kondisi yang diberikan tidak terpenuhi.                        |
-| double   | Digunakan untuk mendeklarasikan tipe data bilangan pecahan ganda (double-precision floating point).                                   |
-| else     | Digunakan dalam struktur kondisional untuk menentukan cabang eksekusi jika kondisi yang diberikan tidak terpenuhi.                    |
-| enum     | Digunakan untuk mendefinisikan sebuah tipe data yang terdiri dari serangkaian nilai konstan yang dapat diidentifikasi oleh nama unik. |
-| event    | Digunakan dalam C# untuk mendefinisikan dan menangani kejadian yang terjadi pada objek.                                               |
-| explicit | Digunakan dalam C# untuk mendefinisikan operator konversi eksplisit.                                                                  |
-| extern   | Digunakan dalam C# untuk memberi tahu kompiler bahwa metode atau properti didefinisikan di luar kode saat ini.                        |
-| false    | Mewakili nilai boolean false.                                                                                                         |
-| finally  | Digunakan dalam penanganan eksepsi untuk menentukan blok kode yang akan dieksekusi baik terjadi eksepsi maupun tidak.                 |
-| fixed    | Digunakan dalam C# untuk mengalokasikan memori secara eksplisit untuk array yang terletak di luar heap.                               |
-| float    | Digunakan untuk mendeklarasikan tipe data bilangan pecahan tunggal (single-precision floating point).                                 |
-| for      | Digunakan untuk membuat loop yang mengulangi blok kode hingga kondisi yang diberikan tidak terpenuhi.                                 |
-| foreach  | Digunakan dalam C# untuk melakukan iterasi melalui elemen-elemen sebuah koleksi.                                                      |
-| goto     | Digunakan untuk mengalihkan alur eksekusi ke label tertentu di dalam kode.                                                            |
-| if       | Digunakan dalam struktur kondisional untuk menentukan cabang eksekusi berdasarkan suatu                                               |
-| *        | Dereferensi                                                                                                                           |
-| &value   | Address-of Operator. Digunakan untuk mengambil alamat memori dari sebuah variabel.                                                   |
-| ref      | Reference Parameter. Digunakan untuk meneruskan referensi variabel sebagai parameter ke dalam sebuah metode atau fungsi.             |
-
 ## **Standard Library**
 
 | Standard Library   | Deskripsi                                                                    |
