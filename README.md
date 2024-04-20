@@ -117,7 +117,7 @@ public int Add(int a, int b)
 | System.Security    | Berisi kelas-kelas untuk keamanan, enkripsi, dan hashing.                    |
 | System.Diagnostics | Berisi kelas-kelas untuk mengelola proses dan layanan di sistem.             |
 
-* [ ] Libraries & Frameworks
+## Libraries & Frameworks
 
 | Kategori                          | Library/Framework                     | Deskripsi                                                                                         |
 | --------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -149,7 +149,84 @@ public int Add(int a, int b)
 | Logging dan Monitoring            | Serilog, NLog, log4net                | Library logging yang populer untuk pencatatan kejadian dan pemantauan aplikasi.                   |
 |                                   | Application Insights, Sentry          | Layanan pihak ketiga untuk pemantauan dan pelacakan kesalahan dalam aplikasi.                     |
 
-Tabel di atas menyajikan beberapa library dan framework populer dalam ekosistem C# berdasarkan kategori fungsionalnya. Semua entri dalam tabel ini adalah pilihan umum, dan masih banyak pilihan lain yang tersedia sesuai kebutuhan dan preferensi pengembangan Anda.
+# 0. Menjalankan Program C#
+
+### Menjalankan Kode C# dengan `dotnet run`:
+
+1. Buka terminal atau command prompt.
+2. Navigasikan ke direktori proyek C#.
+3. Jalankan perintah `dotnet run` untuk menjalankan proyek. Ini akan mengkompilasi dan menjalankan proyek secara bersamaan, dimana kode `Program.cs` yang akan dieksekusi.
+
+### Mempublikasikan Kode C# dengan JIT Compilation:
+
+1. Pastikan Anda memiliki `.NET Core SDK` terinstal.
+2. Buka terminal atau command prompt.
+3. Navigasikan ke direktori proyek C# Anda.
+4. Jalankan perintah `dotnet publish -c Release -r <target-runtime>` untuk mempublikasikan proyek Anda dengan kompilasi JIT. Ganti `<target-runtime>` dengan runtime yang sesuai, seperti `linux-x64`, `win-x64`, atau lainnya.
+5. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`.
+
+### Mempublikasikan Kode C# dengan AOT Compilation:
+
+1. Pastikan Anda memiliki `.NET Core SDK` dan `dotnet-runtime` terbaru yang mendukung AOT compilation.
+2. Buka file `.csproj` proyek Anda.
+3. Tambahkan elemen `<PublishAot>true</PublishAot>` di dalam tag `<PropertyGroup>`.
+4. Simpan perubahan dan tutup file `.csproj`.
+5. Buka terminal atau command prompt.
+6. Navigasikan ke direktori proyek C# Anda.
+7. Jalankan perintah `dotnet publish -c Release -r <target-runtime>` untuk mempublikasikan proyek Anda dengan kompilasi AOT. Ganti `<target-runtime>` dengan runtime yang sesuai, seperti `linux-x64`, `win-x64`, atau lainnya.
+8. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`.
+9. Untuk file native atau self-contained ada di direktori `/native`
+
+### Contoh
+
+```bash
+dotnet publish --self-contained true --runtime linux-x64 --configuration Release --framework net8.0 --output /path/to/aot-publish
+```
+
+### Opsi kompilasi .NET Core (dotnet) yang umum digunakan adalah:
+
+1. **Debug**: Opsi ini menghasilkan output yang tidak dioptimalkan dan menyertakan informasi debug lengkap untuk memudahkan debugging. Ini biasanya digunakan selama pengembangan dan pengujian.
+
+   ```bash
+   dotnet build --configuration Debug
+   ```
+2. **Release**: Opsi ini menghasilkan output yang dioptimalkan untuk kinerja dan tidak menyertakan informasi debug tambahan. Ini digunakan untuk aplikasi yang siap untuk di-deploy ke lingkungan produksi.
+
+   ```bash
+   dotnet build --configuration Release
+   ```
+3. **Target Framework**: Opsi ini digunakan untuk menentukan versi kerangka kerja .NET yang akan digunakan untuk kompilasi.
+
+   ```bash
+   dotnet build --framework <framework>
+   ```
+4. **Runtime Identifier (RID)**: Opsi ini digunakan untuk menentukan runtime spesifik yang akan ditargetkan oleh aplikasi yang dikompilasi atau memungkinkan Anda untuk menargetkan platform yang berbeda dari yang saat ini digunakan untuk pengembangan.
+
+   ```bash
+   dotnet build --runtime <runtime>
+   ```
+5. **Publish**: Opsi ini digunakan untuk mempublikasikan aplikasi untuk didistribusikan. Ini mencakup proses kompilasi dan pengepakan aplikasi bersama dengan dependensinya.
+
+   ```bash
+   dotnet publish
+   ```
+6. **Ahead-of-Time (AOT) Compilation**: Opsi ini digunakan untuk mengaktifkan kompilasi AOT, yang menghasilkan kode mesin sebelum runtime, untuk meningkatkan kinerja aplikasi. Dengan menggunakan cara ini, kita tidak perlu menambahkan `<PublishAot>true</PublishAot>` di file .csproj
+
+   ```bash
+   dotnet publish -c Release /p:PublishAot=true
+   ```
+7. **Self-contained Deployment (SCD)**: Opsi ini menghasilkan distribusi yang independen dari lingkungan, yang mencakup .NET Core runtime dan dependensinya. Ini memungkinkan aplikasi dijalankan tanpa menginstal .NET Core runtime secara terpisah. 
+
+   ```bash
+   dotnet publish -c Release -r <runtime> --self-contained true
+   ```
+8. **Cross-Platform Compilation**: Opsi ini memungkinkan Anda untuk menargetkan platform yang berbeda dari yang saat ini digunakan untuk pengembangan.
+
+   ```bash
+   dotnet build -r <runtime>
+   ```
+
+Dengan berbagai opsi kompilasi ini, Anda dapat menyesuaikan proses kompilasi .NET Core sesuai kebutuhan aplikasi kita.
 
 # 1. Basic
 
