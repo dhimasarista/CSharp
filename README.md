@@ -157,31 +157,39 @@ public int Add(int a, int b)
 2. Navigasikan ke direktori proyek C#.
 3. Jalankan perintah `dotnet run` untuk menjalankan proyek. Ini akan mengkompilasi dan menjalankan proyek secara bersamaan, dimana kode `Program.cs` yang akan dieksekusi.
 
-### Mempublikasikan Kode C# dengan JIT Compilation:
+### Menjalankan otomatis saat kode berubah:
+
+1. Buka terminal atau command prompt.
+2. Navigasikan ke direktori proyek C#.
+3. Jalankan perintah `dotnet watch run`  atau `dotnet watch` saja untuk menjalankan proyek. Ini akan mengkompilasi dan menjalankan proyek secara bersamaan, dimana kode `Program.cs` yang akan dieksekusi.
+
+### Mengompilasi Kode C# dengan JIT Compilation:
 
 1. Pastikan Anda memiliki `.NET Core SDK` terinstal.
 2. Buka terminal atau command prompt.
 3. Navigasikan ke direktori proyek C# Anda.
-4. Jalankan perintah `dotnet publish -c Release -r <target-runtime>` untuk mempublikasikan proyek Anda dengan kompilasi JIT. Ganti `<target-runtime>` dengan runtime yang sesuai, seperti `linux-x64`, `win-x64`, atau lainnya.
+4. Jalankan perintah `dotnet build -c Release ` untuk mengompilasi proyek Anda dengan kompilasi JIT.
 5. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`.
+6. compiler akan menghasilkan file `NamaProgram.dll` atau jika diwindows menghasilkan bersamaan `NamaProgram.exe` dan dilinux sebaliknya.
 
-### Mempublikasikan Kode C# dengan AOT Compilation:
+### Mengompilasi Kode C# dengan AOT Compilation:
 
-1. Pastikan Anda memiliki `.NET Core SDK` dan `dotnet-runtime` terbaru yang mendukung AOT compilation.
-2. Buka file `.csproj` proyek Anda.
-3. Tambahkan elemen `<PublishAot>true</PublishAot>` di dalam tag `<PropertyGroup>`.
-4. Simpan perubahan dan tutup file `.csproj`.
-5. Buka terminal atau command prompt.
-6. Navigasikan ke direktori proyek C# Anda.
-7. Jalankan perintah `dotnet publish -c Release -r <target-runtime>` untuk mempublikasikan proyek Anda dengan kompilasi AOT. Ganti `<target-runtime>` dengan runtime yang sesuai, seperti `linux-x64`, `win-x64`, atau lainnya.
-8. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`.
-9. Untuk file native atau self-contained ada di direktori `/native`
+> Pastikan Anda memiliki `.NET Core SDK` dan `dotnet-runtime` terbaru yang mendukung AOT compilation.
 
-### Contoh
+##### Cara pertama:
 
-```bash
-dotnet publish --self-contained true --runtime linux-x64 --configuration Release --framework net8.0 --output /path/to/aot-publish
-```
+1. Buka file `.csproj` proyek Anda.
+2. Tambahkan elemen `<PublishAot>true</PublishAot>` di dalam tag `<PropertyGroup>`.
+3. Simpan perubahan dan tutup file `.csproj`.
+4. Buka terminal atau command prompt.
+5. Dan jalankan perintah `dotnet publish` .
+
+##### Cara Kedua:
+
+1. Menambahkan `/p:PublishAot=true` saat melakukan kompilasi.
+2. `dotnet publish /p:PublishAot=true`
+
+Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`/native.
 
 ### Opsi kompilasi .NET Core (dotnet) yang umum digunakan adalah:
 
@@ -199,34 +207,28 @@ dotnet publish --self-contained true --runtime linux-x64 --configuration Release
 
    ```bash
    dotnet build --framework <framework>
+
+   contoh:
+   dotnet build --framework net8.0
    ```
-4. **Runtime Identifier (RID)**: Opsi ini digunakan untuk menentukan runtime spesifik yang akan ditargetkan oleh aplikasi yang dikompilasi atau memungkinkan Anda untuk menargetkan platform yang berbeda dari yang saat ini digunakan untuk pengembangan.
+4. **Runtime Identifier (RID)**: Opsi ini digunakan untuk menentukan runtime spesifik yang akan ditargetkan oleh aplikasi yang dikompilasi atau memungkinkan Anda untuk menargetkan platform yang berbeda dari yang saat ini digunakan untuk pengembangan. Seperti win-x64, linux-x64 atau osx-x64.
 
    ```bash
    dotnet build --runtime <runtime>
+
+   contoh:
+   dotnet build --runtime win-x64
    ```
-5. **Publish**: Opsi ini digunakan untuk mempublikasikan aplikasi untuk didistribusikan. Ini mencakup proses kompilasi dan pengepakan aplikasi bersama dengan dependensinya.
+5. **Self-contained Deployment (SCD)**: Opsi ini menghasilkan distribusi yang independen dari lingkungan, yang mencakup .NET Core runtime dan dependensinya. Ini memungkinkan aplikasi dijalankan tanpa menginstal .NET Core runtime secara terpisah.
 
    ```bash
-   dotnet publish
-   ```
-6. **Ahead-of-Time (AOT) Compilation**: Opsi ini digunakan untuk mengaktifkan kompilasi AOT, yang menghasilkan kode mesin sebelum runtime, untuk meningkatkan kinerja aplikasi. Dengan menggunakan cara ini, kita tidak perlu menambahkan `<PublishAot>true</PublishAot>` di file .csproj
-
-   ```bash
-   dotnet publish -c Release /p:PublishAot=true
-   ```
-7. **Self-contained Deployment (SCD)**: Opsi ini menghasilkan distribusi yang independen dari lingkungan, yang mencakup .NET Core runtime dan dependensinya. Ini memungkinkan aplikasi dijalankan tanpa menginstal .NET Core runtime secara terpisah. 
-
-   ```bash
-   dotnet publish -c Release -r <runtime> --self-contained true
-   ```
-8. **Cross-Platform Compilation**: Opsi ini memungkinkan Anda untuk menargetkan platform yang berbeda dari yang saat ini digunakan untuk pengembangan.
-
-   ```bash
-   dotnet build -r <runtime>
+   dotnet publish --self-contained true
    ```
 
-Dengan berbagai opsi kompilasi ini, Anda dapat menyesuaikan proses kompilasi .NET Core sesuai kebutuhan aplikasi kita.
+#### Perbedan Build dan Publish:
+
+1. **Build** : Tahap build melibatkan kompilasi kode sumber Anda ke dalam format yang dapat dieksekusi oleh mesin. Saat Anda melakukan build proyek C#, compiler akan mengonversi kode C# Anda ke dalam bahasa mesin atau format intermediate seperti IL (Intermediate Language). Hasil dari tahap build ini adalah file-file seperti DLL atau EXE, yang dapat dijalankan oleh mesin CLR (Common Language Runtime).
+2. **Publish** : Tahap publish lebih lanjut dari tahap build. Ketika Anda melakukan publish proyek C#, Anda tidak hanya menghasilkan file-file yang diperlukan untuk eksekusi, tetapi juga menyiapkan proyek untuk dideploy atau didistribusikan. Ini termasuk mengemas semua file yang diperlukan (termasuk dependensi) ke dalam paket atau folder yang siap untuk dipindahkan atau diinstal di lingkungan produksi. Hasil dari tahap publish adalah distribusi siap pakai dari proyek Anda, yang dapat diterapkan ke server atau diinstal di mesin pengguna akhir.
 
 # 1. Basic
 
