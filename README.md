@@ -342,13 +342,12 @@ int[] arr2 = arr1; // Hanya alamat memori dari arr1 yang disalin ke arr2
 
 Penting untuk dipahami bahwa perbedaan ini memiliki implikasi pada cara data digunakan dan dimanipulasi dalam program. Mengetahui perbedaan antara tipe nilai dan tipe referensi dapat membantu dalam pemrograman yang efisien dan menghindari kesalahan yang umum terkait dengan manajemen memori.
 
-#### **Perbedaan antara `ref` dan `&` dalam C#:**
+#### **Perbedaan antara `ref`, `&`, dan `out` dalam C#:**
 
 - **Operator `&` (Address-of Operator):**
 
   - Digunakan untuk mengambil alamat memori dari sebuah variabel.
   - Operator ini biasanya digunakan untuk mendapatkan alamat memori sebuah variabel dan menyimpannya dalam pointer.
-  - Operator `&` tidak mengharuskan parameter untuk dideklarasikan dengan kata kunci `ref`.
   - Contoh penggunaan operator `&`:
     ```csharp
     int number = 10;
@@ -369,8 +368,24 @@ Penting untuk dipahami bahwa perbedaan ini memiliki implikasi pada cara data dig
     int number = 10;
     AddOne(ref number); // Memanggil metode dengan meneruskan referensi variabel menggunakan kata kunci 'ref'
     ```
+- **Kata kunci `out` (Out Parameter):**
 
-Dengan demikian, perbedaan utama antara operator `&` dan kata kunci `ref` adalah bahwa operator `&` digunakan untuk mengambil alamat memori sebuah variabel dan menyimpannya dalam pointer, sedangkan kata kunci `ref` digunakan untuk meneruskan referensi variabel sebagai parameter ke dalam sebuah metode atau fungsi.
+  - Digunakan untuk meneruskan parameter sebagai keluaran dari sebuah metode atau fungsi.
+  - Parameter dengan kata kunci `out` tidak perlu diinisialisasi sebelum melewatinya ke metode.
+  - Metode yang menerima parameter `out` biasanya akan mengisi nilai parameter tersebut di dalam metode itu sendiri.
+  - Contoh penggunaan kata kunci `out`:
+    ```csharp
+    void Multiply(int a, int b, out int result)
+    {
+        result = a * b;
+    }
+
+    int result;
+    Multiply(10, 20, out result);
+    Console.WriteLine("Hasil perkalian: " + result); // Output: 200
+    ```
+
+Jadi, perbedaan utama antara `out` dan `ref` adalah bahwa `out` digunakan untuk mengembalikan beberapa nilai dari sebuah metode, sementara `ref` digunakan untuk mengakses dan memodifikasi nilai variabel yang dilewatkan ke sebuah metode. Selain itu, parameter dengan kata kunci `ref` harus diinisialisasi sebelum melewatinya ke metode, sedangkan parameter dengan kata kunci `out` tidak perlu diinisialisasi.
 
 #### **Contoh Penggunaan Pointer & Reference:**
 
@@ -1597,6 +1612,21 @@ class Program
 ```
 
 Dalam kode di atas, kita mencoba mengakses properti `language`, `objectOriented`, dan `born` dari luar namespace `MyNamespace`, yang menyebabkan kesalahan karena properti-properti tersebut adalah `private` dan hanya dapat diakses di dalam namespace yang sama.
+
+### Keyword lain untuk property & method:
+
+1. **`protected internal`**: Kombinasi dari `protected` dan `internal`, memungkinkan akses dari kelas turunan dan dari assembly yang sama.
+2. **`static`**: Menandakan bahwa method atau property adalah milik kelas, bukan dari instance objek.
+3. **`virtual`**: Memberikan kemampuan untuk overriding pada method oleh kelas turunannya.
+4. **`override`**: Menggantikan implementasi dari method virtual yang dideklarasikan dalam kelas dasar.
+5. **`abstract`**: Menandakan bahwa method tidak memiliki implementasi dan harus diimplementasikan oleh kelas turunannya.
+6. **`async`**: Menandakan bahwa method adalah asynchronous dan dapat menggunakan kata kunci `await`.
+7. **`sealed`**: Mencegah kelas dari diturunkan dan method dari di-override.
+8. **`readonly`**: Menandakan bahwa nilai property hanya dapat diatur sekali, biasanya selama inisialisasi.
+9. **`const`**: Menandakan bahwa nilai properti atau field adalah konstanta yang tetap nilainya selama waktu kompilasi.
+10. **`params`**: Memungkinkan method menerima jumlah argumen variabel sebagai array.
+11. **`out`**: Menandakan bahwa parameter adalah parameter keluaran, yang dapat mengembalikan lebih dari satu nilai dari sebuah metode.
+12. **`ref`**: Menandakan bahwa parameter meneruskan referensi variabel ke metode atau fungsi dan memungkinkan pengubahan nilai variabel tersebut.
 
 ### Namespace
 
