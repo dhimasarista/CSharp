@@ -16,7 +16,7 @@
 - **Type inference**: C# mendukung type inference, memungkinkan tipe data secara otomatis terdeteksi saat variabel diinisialisasi.
 - **String Interpolation**: C# mendukung string interpolation langsung ke dalam string tanpa menggunakan concatenation.
 - **Paradigma**: C# mendukung paradigma pemrograman berorientasi objek (OOP) dan fungsional dalam beberapa cara.
-- **Opsi Kompilasi**: C# dikompilasi ke dalam intermediate language (IL) yang kemudian diterjemahkan menjadi kode mesin oleh Common Language Runtime (CLR).
+- **Opsi Kompilasi**: C# dikompilasi ke dalam intermediate language (IL) yang kemudian diterjemahkan menjadi kode mesin oleh Common Language Runtime (CLR) dan dapat di kompilasi ke native AOT.
 - **SDK**: C# memiliki SDK yang menyediakan alat untuk mengembangkan, menguji, dan membangun aplikasi dalam bahasa tersebut.
 
 **Komentar**:
@@ -1571,7 +1571,13 @@ Dalam C#, biasanya kita menggunakan modifier aksesibilitas seperti `private` ata
 > Beberapa access modifier di C#:
 
 - **public**: Member yang diberi access modifier public dapat diakses dari mana saja, baik dari dalam class itu sendiri maupun dari luar class.
-- **private**: Member yang diberi access modifier private hanya dapat diakses dari dalam class itu sendiri. Member private tidak dapat diakses dari luar class, termasuk turunan (subclass).
+- **private**: Member yang diberi access modifier private hanya dapat diakses dari dalam class itu sendiri. Member private tidak dapat diakses dari luar class, termasuk turunan (subclass). Tetapi kebanyakan programmer C# menggunakan underscore untuk membuat property private seperti ini:
+
+  ```csharp
+  private string _name = "dhimasarista";
+  ```
+
+  Hal ini hanya untuk membedakan saja antara public dan privateagar leih mudah dibaca.
 - **protected**: Member yang diberi access modifier protected dapat diakses dari dalam class itu sendiri dan juga dari turunan (subclass). Namun, member protected tidak dapat diakses dari luar class jika tidak melalui turunan (subclass).
 - **internal**: Member yang diberi access modifier protected dapat diakses dari dalam class itu sendiri dan juga dari turunan (subclass). Namun, member protected tidak dapat diakses dari luar class jika tidak melalui turunan (subclass).
 
@@ -1623,10 +1629,7 @@ Dalam kode di atas, kita mencoba mengakses properti `language`, `objectOriented`
 6. **`async`**: Menandakan bahwa method adalah asynchronous dan dapat menggunakan kata kunci `await`.
 7. **`sealed`**: Mencegah kelas dari diturunkan dan method dari di-override.
 8. **`readonly`**: Menandakan bahwa nilai property hanya dapat diatur sekali, biasanya selama inisialisasi.
-9. **`const`**: Menandakan bahwa nilai properti atau field adalah konstanta yang tetap nilainya selama waktu kompilasi.
-10. **`params`**: Memungkinkan method menerima jumlah argumen variabel sebagai array.
-11. **`out`**: Menandakan bahwa parameter adalah parameter keluaran, yang dapat mengembalikan lebih dari satu nilai dari sebuah metode.
-12. **`ref`**: Menandakan bahwa parameter meneruskan referensi variabel ke metode atau fungsi dan memungkinkan pengubahan nilai variabel tersebut.
+9. **`params`**: Memungkinkan method menerima jumlah argumen variabel sebagai array.
 
 ### Namespace
 
