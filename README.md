@@ -1,5 +1,3 @@
-# ension
-
 # C# Programming Language
 
 ![1713255318223](image/README/1713255318223.png)
