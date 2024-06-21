@@ -1073,6 +1073,12 @@ var guestName = guest ?? "Guest";
 2. **File I/O**: adalah sebuah operasi membaca dan menulis file.
 3. **Network I/O**:  Adalah sebuah operasi I/O berbasis jaringan, seperti mengirim permintaan HTTP atau membuat koneksi socket.
 
+## **Using Keyword**
+kata kunci using di C# memiliki banyak kegunaan, diantaranya:
+1. Using Directive, dimana untuk mengimpor namespace tanpa perlu memanggil nama namespacenya secara redundan.
+2. Using Statement, yang dimana berperan sebagai statement untuk memastikan objek mengimplementasikan ```IDisposable``` dibersihkan secara otomatis setelah digunakan. Berguna untuk mengelola resource seperti file, koneksi database atau soket jaringan. Biasanya digunaakan untuk mengimplementasikan IDisposable tadi seperti Filestream, StreamReader, SQLConnection dll.
+3. Using Declaration,yang memungkinkan penggunaan yang lebih ringkas dari using statement. Perbedaannya terletak pada objek yang di-init dan dibersihkan saat itu juga bukan setelah block using berakhir. Digunakan juga ketika objek IDisposable dibersihkan pada akhir scope saat ini tanpa menggunakan block using yang terpisah.
+
 ---
 
 # 2. Programming Paradigms
