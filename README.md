@@ -1074,9 +1074,11 @@ var guestName = guest ?? "Guest";
 3. **Network I/O**:  Adalah sebuah operasi I/O berbasis jaringan, seperti mengirim permintaan HTTP atau membuat koneksi socket.
 
 ## **Using Keyword**
+
 kata kunci using di C# memiliki banyak kegunaan, diantaranya:
+
 1. Using Directive, dimana untuk mengimpor namespace tanpa perlu memanggil nama namespacenya secara redundan.
-2. Using Statement, yang dimana berperan sebagai statement untuk memastikan objek mengimplementasikan ```IDisposable``` dibersihkan secara otomatis setelah digunakan. Berguna untuk mengelola resource seperti file, koneksi database atau soket jaringan. Biasanya digunaakan untuk mengimplementasikan IDisposable tadi seperti Filestream, StreamReader, SQLConnection dll.
+2. Using Statement, yang dimana berperan sebagai statement untuk memastikan objek mengimplementasikan ``IDisposable`` dibersihkan secara otomatis setelah digunakan. Berguna untuk mengelola resource seperti file, koneksi database atau soket jaringan. Biasanya digunaakan untuk mengimplementasikan IDisposable tadi seperti Filestream, StreamReader, SQLConnection dll.
 3. Using Declaration,yang memungkinkan penggunaan yang lebih ringkas dari using statement. Perbedaannya terletak pada objek yang di-init dan dibersihkan saat itu juga bukan setelah block using berakhir. Digunakan juga ketika objek IDisposable dibersihkan pada akhir scope saat ini tanpa menggunakan block using yang terpisah.
 
 ---
@@ -2284,7 +2286,7 @@ class Pair<T> {
 **Multiple Parameter Type**
 Parameter type di Generic class boleh lebih dari satu. Namun harus menggunakan nama type berbeda. Ini sangat berguna ketika kita ingin membuat generic parameter type yang banyak
 
-```cs
+```csharp
 class Pair<K, V> {
     K first;
     V second;
@@ -2306,7 +2308,7 @@ class Program {
 
 Generic parameter type tidak hanya bisa digunakan pada class. Kita juga bisa menggunakan generic parameter type di function. Generic parameter type yang kita deklarasikan di function, hanya bisa diakses di function tersebut, tidak bisa digunakan di luar function. Ini cocok jika kita ingin membuat generic function, tanpa harus mengubah deklarasi class.
 
-```cs
+```csharp
 public static void ReverseArray<T>(T[] array){}
 ```
 
@@ -2385,9 +2387,9 @@ Pengujian unit adalah proses pengujian perangkat lunak di mana unit-unit individ
 
 Dalam lingkungan pengembangan C#, ada beberapa alat yang sering digunakan untuk melakukan pengujian unit, termasuk:
 
-- **NUnit**: Ini adalah kerangka kerja pengujian unit yang populer dan kuat untuk C#.
-- **MSTest**: Kerangka kerja pengujian bawaan dari Microsoft yang sering digunakan dalam proyek-proyek C#.
-- **xUnit.net**: Alternatif lain yang cukup populer untuk pengujian unit dalam C#.
+- [ ] **NUnit**: Ini adalah kerangka kerja pengujian unit yang populer dan kuat untuk C#.
+- [ ] **MSTest**: Kerangka kerja pengujian bawaan dari Microsoft yang sering digunakan dalam proyek-proyek C#.
+- [ ] **xUnit.net**: Alternatif lain yang cukup populer untuk pengujian unit dalam C#.
 
 ### 2. Debugging dalam C#:
 
@@ -2399,3 +2401,39 @@ Debugging adalah proses mengidentifikasi, memahami, dan memperbaiki kesalahan da
 - **Watch Windows**: Anda dapat memantau nilai variabel dan ekspresi selama proses debug menggunakan jendela "Watch" di Visual Studio.
 - **Step Into, Step Over, dan Step Out**: Anda dapat menavigasi melalui kode baris demi baris dengan opsi "Step Into" (masuk ke dalam fungsi), "Step Over" (melompati fungsi), dan "Step Out" (keluar dari fungsi saat Anda berada di dalamnya).
 - **Exception Handling**: Memahami bagaimana menangani pengecualian (exceptions) dan menggunakan fitur-fitur seperti "try-catch" untuk menangkap dan memperlakukan pengecualian yang terjadi.
+
+# **12. Using Keyword**
+
+kata kunci using di C# memiliki banyak kegunaan, diantaranya:
+
+1. Using Directive, dimana untuk mengimpor namespace tanpa perlu memanggil nama namespacenya secara redundan seperti yang sudah dijelaskan di pembahasan sebelumnya.
+2. Using Statement, yang dimana berperan sebagai statement untuk memastikan objek mengimplementasikan ``IDisposable`` dibersihkan secara otomatis setelah digunakan. Berguna untuk mengelola resource seperti file, koneksi database atau soket jaringan. Biasanya digunaakan untuk mengimplementasikan IDisposable tadi seperti Filestream, StreamReader, SQLConnection dll.
+   ```csharp
+   using System.IO;
+
+   class ContohUsingStatement {
+     static void Main(string[] args) {
+       // Membuka file teks dengan menggunakan Using Statement
+       using (StreamReader reader = new StreamReader("contoh.txt")) {
+         string line;
+         while ((line = reader.ReadLine()) != null) {
+           Console.WriteLine(line);
+         }
+       }
+     }
+   ```
+3. Using Declaration,yang memungkinkan penggunaan yang lebih ringkas dari using statement. Perbedaannya terletak pada objek yang di-init dan dibersihkan saat itu juga bukan setelah block using berakhir. Digunakan juga ketika objek IDisposable dibersihkan pada akhir scope saat ini tanpa menggunakan block using yang terpisah.
+   ```csharp
+   using System.IO;
+
+   class ContohUsingDeclaration {
+     static void Main(string[] args) {
+       // Deklarasi dan inisialisasi objek IDisposable dalam Using Declaration
+       using var stream = new FileStream("contoh.txt", FileMode.OpenOrCreate);
+       using var writer = new StreamWriter(stream);
+
+       // Menulis teks ke file
+       writer.WriteLine("Hello World!");
+     }
+   }
+   ```
