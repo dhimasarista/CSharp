@@ -2437,3 +2437,55 @@ kata kunci using di C# memiliki banyak kegunaan, diantaranya:
      }
    }
    ```
+
+# 13. Regular-Expression
+
+#### Apa itu Regex?
+
+Regex (Regular Expressions) adalah sebuah bahasa formal untuk mencocokkan dan memanipulasi pola teks. Dalam konteks C#, Anda dapat menggunakan regex untuk mencari, mencocokkan, dan memanipulasi teks sesuai dengan pola yang Anda tentukan.
+
+#### Cara Membuat Regex dalam C#
+
+Untuk membuat regex dalam C#, Anda menggunakan kelas `Regex` yang terdapat dalam namespace `System.Text.RegularExpressions`. Regex dapat dibuat dengan menggunakan string literal atau objek `Regex`.
+
+#### Keyword dan Fungsi Regex dalam C#
+
+1. **Keyword Utama:**
+   * `Regex`: Kelas utama untuk membuat dan menggunakan ekspresi reguler.
+   * Metakarakter: Misalnya, `.` (cocok dengan karakter apa pun kecuali newline), `\d` (cocok dengan digit), `\w` (cocok dengan karakter alfanumerik), dll.
+2. **Fungsi Penting:**
+   * `Regex.Match`: Mencari kecocokan pertama dalam sebuah string.
+   * `Regex.Matches`: Mencari semua kecocokan dalam sebuah string.
+   * `Regex.Replace`: Mengganti semua kecocokan dengan teks pengganti.
+   * `Regex.Split`: Memisahkan string berdasarkan pola regex.
+
+```csharp
+using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static void Main()
+    {
+        string input = "Hello, 123 world!";
+        string pattern = @"\d+"; // Mencocokkan satu atau lebih digit
+
+        // Membuat objek Regex
+        Regex regex = new Regex(pattern);
+
+        // Mencocokkan semua kecocokan dalam string
+        MatchCollection matches = regex.Matches(input);
+
+        // Menampilkan hasil kecocokan
+        foreach (Match match in matches)
+        {
+            Console.WriteLine("Found '{0}' at index {1}", match.Value, match.Index);
+        }
+
+        // Contoh penggunaan Regex.Replace
+        string replaced = regex.Replace(input, "number");
+        Console.WriteLine("After replacement: " + replaced);
+    }
+}
+
+```
