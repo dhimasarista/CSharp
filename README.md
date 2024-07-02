@@ -2450,10 +2450,46 @@ Untuk membuat regex dalam C#, Anda menggunakan kelas `Regex` yang terdapat dalam
 
 #### Keyword dan Fungsi Regex dalam C#
 
-1. **Keyword Utama:**
-   * `Regex`: Kelas utama untuk membuat dan menggunakan ekspresi reguler.
-   * Metakarakter: Misalnya, `.` (cocok dengan karakter apa pun kecuali newline), `\d` (cocok dengan digit), `\w` (cocok dengan karakter alfanumerik), dll.
-2. **Fungsi Penting:**
+Berikut adalah beberapa contoh keyword (metakarakter dan penanda) yang umum digunakan dalam ekspresi reguler (regex):
+
+1. **Metakarakter Umum:**
+
+   - `.` : Cocok dengan karakter apa pun kecuali newline.
+   - `\d` : Cocok dengan digit (0-9).
+   - `\w` : Cocok dengan karakter alfanumerik (a-z, A-Z, 0-9, dan _).
+   - `\s` : Cocok dengan whitespace (spasi, tab, newline, dll).
+   - `\b` : Cocok dengan boundary word (batas kata).
+   - `^` : Cocok di awal string.
+   - `$` : Cocok di akhir string.
+2. **Kuantifier:**
+
+   - `*` : Cocok dengan 0 atau lebih dari elemen sebelumnya.
+   - `+` : Cocok dengan 1 atau lebih dari elemen sebelumnya.
+   - `?` : Cocok dengan 0 atau 1 dari elemen sebelumnya.
+   - `{n}` : Cocok dengan tepat n kali dari elemen sebelumnya.
+   - `{n,}` : Cocok dengan setidaknya n kali dari elemen sebelumnya.
+   - `{n,m}` : Cocok dengan setidaknya n kali, tapi tidak lebih dari m kali dari elemen sebelumnya.
+3. **Karakter Kelas:**
+
+   - `[abc]` : Cocok dengan salah satu dari karakter a, b, atau c.
+   - `[^abc]` : Cocok dengan karakter apa pun kecuali a, b, atau c.
+   - `[a-z]` : Cocok dengan karakter alfabet dari a sampai z.
+   - `[0-9]` : Cocok dengan digit dari 0 sampai 9.
+4. **Grup dan Capturing:**
+
+   - `(pattern)` : Grup sub-pola yang bisa di-capture.
+   - `(?:pattern)` : Grup sub-pola non-capturing.
+   - `(?<name>pattern)` : Named group, yang bisa di-referensi kembali.
+   - `(?=pattern)` : Positive lookahead assertion.
+   - `(?!pattern)` : Negative lookahead assertion.
+   - `(?<=pattern)` : Positive lookbehind assertion.
+   - `(?<!pattern)` : Negative lookbehind assertion.
+5. **Miscellaneous:**
+
+   - `|` : Alternatif, cocok dengan salah satu dari dua pola yang dipisahkan.
+   - `\` : Escape karakter untuk membuat karakter khusus menjadi literal (misalnya, `\.` untuk mencocokkan titik).
+6. **Fungsi Penting:**
+
    * `Regex.Match`: Mencari kecocokan pertama dalam sebuah string.
    * `Regex.Matches`: Mencari semua kecocokan dalam sebuah string.
    * `Regex.Replace`: Mengganti semua kecocokan dengan teks pengganti.
