@@ -2216,7 +2216,9 @@ Menggunakan `throw` memberikan fleksibilitas dalam menangani kesalahan di C# dan
 
 # 7. Concurrency & Parallel Programming
 
-**Concurrency** : Concurrency mengacu pada kemampuan sistem untuk menangani beberapa tugas secara bersamaan. Ini tidak berarti bahwa tugas-tugas tersebut benar-benar berjalan secara bersamaan pada saat yang sama, tetapi sistem dapat beralih antara tugas-tugas tersebut dengan cepat sehingga penggunaannya terasa serentak. Dalam C#, Anda dapat mencapai concurrency menggunakan teknik seperti multithreading, async/await, dan task parallel library (TPL).
+### 1. Concurrency
+
+Concurrency mengacu pada kemampuan sistem untuk menangani beberapa tugas secara bersamaan. Ini tidak berarti bahwa tugas-tugas tersebut benar-benar berjalan secara bersamaan pada saat yang sama, tetapi sistem dapat beralih antara tugas-tugas tersebut dengan cepat sehingga penggunaannya terasa serentak. Dalam C#, Anda dapat mencapai concurrency menggunakan teknik seperti multithreading, async/await, dan task parallel library (TPL).
 
 ```csharp
 public class Program {
@@ -2228,7 +2230,9 @@ public class Program {
 }
 ```
 
-**Parallelism** : Parallelism, di sisi lain, mengacu pada eksekusi tugas-tugas secara benar-benar bersamaan pada multiple core CPU atau multiple prosesor. Ini memungkinkan tugas-tugas untuk berjalan secara simultan, yang dapat menghasilkan peningkatan kinerja dan efisiensi. Dalam C#, Anda dapat mencapai parallelism menggunakan konstruksi seperti Parallel.For, Parallel.ForEach, dan PLINQ (Parallel Language-Integrated Query).
+### 2. Parallelism
+
+Parallelism, di sisi lain, mengacu pada eksekusi tugas-tugas secara benar-benar bersamaan pada multiple core CPU atau multiple prosesor. Ini memungkinkan tugas-tugas untuk berjalan secara simultan, yang dapat menghasilkan peningkatan kinerja dan efisiensi. Dalam C#, Anda dapat mencapai parallelism menggunakan konstruksi seperti Parallel.For, Parallel.ForEach, dan PLINQ (Parallel Language-Integrated Query).
 
 ```csharp
 // Tentukan jumlah iterasi
@@ -2242,6 +2246,75 @@ Parallel.For(0, iterations, i =>
 });
 
 Console.WriteLine("Looping selesai.");
+```
+
+### 3. Race Condition
+
+**Race condition** adalah situasi yang dapat terjadi dalam program concurrent atau parallel ketika hasil eksekusi program bergantung pada urutan waktu di mana instruksi dijalankan. Hal ini dapat menyebabkan perilaku program yang tidak terduga dan bahkan berbahaya.
+
+Race condition biasanya terjadi ketika beberapa thread atau proses mengakses dan memodifikasi data yang sama secara bersamaan. Tanpa mekanisme sinkronisasi yang tepat, thread atau proses yang berbeda dapat saling menginterupsi dan menghasilkan data yang tidak konsisten.
+
+```csharp
+public class RaceConditionDemo
+{
+    public static int count = 0;
+
+    public static void Increment()
+    {
+        count++; // This is not atomic operation, race condition can occur
+    }
+
+    public static void Main(string[] args)
+    {
+        Thread thread1 = new Thread(Increment);
+        Thread thread2 = new Thread(Increment);
+
+        thread1.Start();
+        thread2.Start();
+
+        thread1.Join();
+        thread2.Join();
+
+        Console.WriteLine($"Expected count: 2, Actual count: {count}");
+    }
+}
+```
+
+#### **Mencegah Race Condition:**
+
+Untuk mencegah race condition, Anda perlu menggunakan mekanisme sinkronisasi untuk mengontrol akses ke data yang dibagikan. Mekanisme sinkronisasi yang umum digunakan dalam C# termasuk:
+
+* **Lock:** Lock memungkinkan Anda untuk mengunci akses ke data sehingga hanya satu thread atau proses yang dapat mengaksesnya pada satu waktu.
+* **Mutex:** Mutex mirip dengan lock, tetapi hanya satu thread atau proses yang dapat memperoleh mutex pada satu waktu.
+* **Semaphore:** Semaphore memungkinkan Anda untuk membatasi jumlah thread atau proses yang dapat mengakses data secara bersamaan.
+* **Monitor:** Monitor menyediakan cara yang lebih fleksibel untuk menyinkronkan akses ke data, termasuk dukungan untuk sinyal dan kondisi.
+
+Selain mekanisme sinkronisasi, Anda juga dapat menggunakan teknik desain yang membantu mencegah race condition, seperti:
+
+* **Immutable data:** Gunakan data yang tidak dapat diubah oleh beberapa thread atau proses.
+* **Thread-safe data structures:** Gunakan struktur data yang dirancang untuk digunakan secara concurrent, seperti `ConcurrentDictionary` dan `ConcurrentQueue`.
+* **Avoiding shared state:** Minimalkan jumlah data yang dibagikan antara thread atau proses.
+
+```csharp
+public class RaceConditionDemo
+{
+    public static int count = 0;
+    private static object lockObject = new object();
+
+    public static void Increment()
+    {
+        lock (lockObject) // Ensures only one thread accesses the critical section
+        {
+            count++;
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        // ... (rest of the code)
+    }
+}
+
 ```
 
 # 8. Generic
@@ -2387,9 +2460,9 @@ Pengujian unit adalah proses pengujian perangkat lunak di mana unit-unit individ
 
 Dalam lingkungan pengembangan C#, ada beberapa alat yang sering digunakan untuk melakukan pengujian unit, termasuk:
 
-- [ ] **NUnit**: Ini adalah kerangka kerja pengujian unit yang populer dan kuat untuk C#.
-- [ ] **MSTest**: Kerangka kerja pengujian bawaan dari Microsoft yang sering digunakan dalam proyek-proyek C#.
-- [ ] **xUnit.net**: Alternatif lain yang cukup populer untuk pengujian unit dalam C#.
+- **NUnit**: Ini adalah kerangka kerja pengujian unit yang populer dan kuat untuk C#.
+- **MSTest**: Kerangka kerja pengujian bawaan dari Microsoft yang sering digunakan dalam proyek-proyek C#.
+- **xUnit.net**: Alternatif lain yang cukup populer untuk pengujian unit dalam C#.
 
 ### 2. Debugging dalam C#:
 
