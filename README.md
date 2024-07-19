@@ -2280,7 +2280,7 @@ public class RaceConditionDemo
 }
 ```
 
-#### **Mencegah Race Condition:**
+**Mencegah Race Condition:**
 
 Untuk mencegah race condition, Anda perlu menggunakan mekanisme sinkronisasi untuk mengontrol akses ke data yang dibagikan. Mekanisme sinkronisasi yang umum digunakan dalam C# termasuk:
 
@@ -2321,18 +2321,18 @@ public class RaceConditionDemo
 
 Dalam bahasa pemrograman, sistem tipe (type system) adalah sistem logis yang terdiri dari seperangkat aturan yang menetapkan properti atau tipe ke berbagai konstruksi program komputer, seperti variabel, ekspresi, fungsi, atau modul. Sistem tipe ini memformalkan atau memberikan standar kategori tersirat yang digunakan oleh programmer untuk tipe data, struktur data, atau komponen lainnya.
 
-#### Manfaat dari sound type system ini antara lain:
+**Manfaat dari sound type system ini antara lain:**
 
 - Ketelitian (Accuracy): Type system membantu memastikan bahwa data dan operasi yang dilakukan pada data adalah konsisten dan sesuai dengan yang diharapkan.
 - Keamanan (Security): Dengan memeriksa tipe data pada saat kompilasi, type system dapat membantu mencegah kesalahan runtime yang dapat menyebabkan kegagalan program atau kebocoran keamanan.
 - Dokumentasi (Documentation): Type system dapat berfungsi sebagai dokumentasi kode yang hidup. Dengan mengetahui tipe data variabel, pengembang lain dapat lebih mudah memahami bagaimana variabel tersebut digunakan dalam program.
 - Optimasi (Optimization): Type system dapat memungkinkan kompiler atau runtime environment untuk melakukan optimasi khusus berdasarkan tipe data, meningkatkan kinerja program.
 
-### Type Inference
+### 1. Type Inference
 
 Type Inference adalah kemampuan dari suatu bahasa pemrograman untuk secara otomatis menentukan tipe data variabel berdasarkan nilai yang diberikan kepadanya pada saat inisialisasi. Ini memungkinkan programmer untuk menulis kode yang lebih ringkas dan ekspresif tanpa harus secara eksplisit menentukan tipe data untuk setiap variabel.
 
-### Generic Class
+### 2. Generic Class
 
 ***Generic class** adalah class yang memiliki parameter type.*
 Tidak ada ketentuan dalam pembuatan generic parameter type, namun biasanya kebanyakan orang menggunakan 1 karakter sebagai generic parameter type .
@@ -2347,7 +2347,7 @@ class Pair<T> {
 }
 ```
 
-#### Nama generic parameter type yang biasa digunakan adalah :
+**Nama generic parameter type yang biasa digunakan adalah :**
 
 - E - Element (biasa digunakan di collection atau struktur data)
 - K - Key
@@ -2377,7 +2377,7 @@ class Program {
 }
 ```
 
-### Generic Function
+### 3. Generic Function
 
 Generic parameter type tidak hanya bisa digunakan pada class. Kita juga bisa menggunakan generic parameter type di function. Generic parameter type yang kita deklarasikan di function, hanya bisa diakses di function tersebut, tidak bisa digunakan di luar function. Ini cocok jika kita ingin membuat generic function, tanpa harus mengubah deklarasi class.
 
@@ -2385,7 +2385,7 @@ Generic parameter type tidak hanya bisa digunakan pada class. Kita juga bisa men
 public static void ReverseArray<T>(T[] array){}
 ```
 
-### Covariant
+### 4. Covariant
 
 Covariant artinya kita bisa melakukan subtitusi subtype (child) dengan supertype (parent), namun hati-hati ketika melakukan covariant, karena jika sampai salah mengubah datanya, maka akan terjadi error pada saat runtime, tidak akan terdeteksi ketika proses compile.
 
