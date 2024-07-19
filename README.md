@@ -368,11 +368,11 @@ unsafe class Program {
 
 > Umumnya dalam pengembangan perangkat lunak menggunakan C#, lebih disarankan untuk menghindari penggunaan pointer dan lebih memilih penggunaan `ref` dan `out` jika memungkinkan. Hal ini berkaitan dengan keamanan dan kemudahan kode saat dibaca serta interopibilitas dengan bahasa lain.
 
-##### Alternatif Pointer menggukana Ref atau Out
+##### Alternatif Pointer menggunakan Ref atau Out
 
 **Berikut adalah alasan-alasannya:**
 
-1. **Keamanan** : Penggunaan pointer dalam C# dapat memperkenalkan banyak masalah keamanan karena kemungkinan kesalahan akses memori yang tidak terkendali. Penggunaan `ref` dan `out` lebih aman karena nilai-nilai yang dilewatkan tetap dalam konteks tipe data yang aman.
+1. **Keamanan** : Penggunaan pointer dalam C# dapat akan mengalami banyak masalah keamanan karena kemungkinan kesalahan akses memori yang tidak terkendali. Penggunaan `ref` dan `out` lebih aman karena nilai-nilai yang dilewatkan tetap dalam konteks tipe data yang aman.
 2. **Kemudahan Membaca** : Penggunaan pointer dapat membuat kode menjadi sulit dibaca dan dipahami, karena perlu memperhatikan alamat memori secara eksplisit. Penggunaan `ref` dan `out` memberikan cara yang lebih jelas untuk mengindikasikan bahwa nilai akan dimodifikasi oleh metode.
 3. **Interoperabilitas** : Saat berinteraksi dengan kode yang ditulis dalam bahasa lain (seperti C++), Anda mungkin memerlukan penggunaan pointer. Namun, dalam kebanyakan kasus, bahasa C# menyediakan fitur-fitur yang memungkinkan untuk mencapai tujuan yang sama tanpa harus menggunakan pointer secara langsung.
 4. **Kemudahan Pengembangan** : Penggunaan `ref` dan `out` lebih konsisten dengan gaya pengembangan umum dalam bahasa C# dan lebih memungkinkan untuk menulis kode yang bersih, terbaca, dan mudah dikelola.
