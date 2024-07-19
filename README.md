@@ -6,6 +6,12 @@
 
 > Sumber: Wikipedia
 
+**Alasan-alasan Kenapa Menggunakan C# :**
+
+* Dukungan ekosistem yang besar menggunakan .NET
+* Fitur, sintaks dan keyword yang lengkap.
+* Kemampuan bahasa yang tinggi dan mature.
+
 **Karakteristik C# :**
 
 - **Ekstensi File**: C# menggunakan ekstensi file .cs
@@ -2216,19 +2222,40 @@ Menggunakan `throw` memberikan fleksibilitas dalam menangani kesalahan di C# dan
 
 # 7. Concurrency & Parallel Programming
 
+Concurrency dan parallelism adalah dua konsep penting dalam pemrograman modern yang memungkinkan aplikasi untuk menangani beberapa tugas secara bersamaan. Hal ini penting untuk beberapa meningkatkan performa dan penggunaan memori.
+
 ### 1. Concurrency
 
-Concurrency mengacu pada kemampuan sistem untuk menangani beberapa tugas secara bersamaan. Ini tidak berarti bahwa tugas-tugas tersebut benar-benar berjalan secara bersamaan pada saat yang sama, tetapi sistem dapat beralih antara tugas-tugas tersebut dengan cepat sehingga penggunaannya terasa serentak. Dalam C#, Anda dapat mencapai concurrency menggunakan teknik seperti multithreading, async/await, dan task parallel library (TPL).
+Concurrency mengacu pada kemampuan sistem untuk menangani beberapa tugas secara bersamaan. Ini tidak berarti bahwa tugas-tugas tersebut benar-benar berjalan secara bersamaan pada saat yang sama, tetapi sistem dapat beralih antara tugas-tugas tersebut dengan cepat sehingga penggunaannya terasa serentak.
+
+Di C#, concurrency dapat dicapai dengan berbagai teknik, seperti:
+
+* **Multithreading:** Membagi tugas menjadi beberapa thread yang dijalankan secara bersamaan.
+* **Async/await:** Menangani operasi asynchronous tanpa memblokir thread utama.
+* **Task Parallel Library (TPL):** Menyediakan pustaka siap pakai untuk operasi asynchronous yang kompleks. **Task** di C# merupakan representasi dari operasi  **asynchronous**. Mirip dengan **Promise** di JavaScript dan **Future** di Dart
 
 ```csharp
 public class Program {
-    public static async Task Main(string[] args) {
-        Console.WriteLine("Mulai");
-        await Task.Delay(1000); // Menggunakan await untuk menunggu delay tanpa blocking
-        Console.WriteLine("Selesai");
-    }
+  public static async Task Main(string[] args) {
+    Console.WriteLine("Mulai");
+    var result = await DatabaseQueryAsync(); // Menunggu hasil dari operasi database asynchronous
+    Console.WriteLine("Hasil: {0}", result);
+    Console.WriteLine("Selesai");
+  }
+
+  private static async Task<string> DatabaseQueryAsync() {
+    // Simulasi operasi database asynchronous
+    await Task.Delay(1000);
+    return "Data dari database";
+  }
 }
 ```
+
+> Catatan
+
+* **Kata kunci `async`** dan **tipe `Task`** saling terkait erat dalam pemrograman asynchronous C#.
+* `async` diperlukan untuk mendefinisikan metode asynchronous, sedangkan `Task` digunakan untuk merepresentasikan hasil dari operasi asynchronous.
+* Meskipun `Task` tidak selalu diperlukan, penggunaannya direkomendasikan untuk konsistensi dan kompatibilitas.
 
 ### 2. Parallelism
 
@@ -2248,7 +2275,42 @@ Parallel.For(0, iterations, i =>
 Console.WriteLine("Looping selesai.");
 ```
 
-### 3. Race Condition
+### 3. Contoh Kode Konkuren + Paralel
+
+```csharp
+using System;
+using System.Threading.Tasks;
+
+public class ConcurrentParallelExample {
+
+    public static async Task Main(string[] args) {
+        // Concurrent execution of tasks using 'await'
+        var concurrentTasks = new List<Task>();
+        for (int i = 0; i < 4; i++) {
+            concurrentTasks.Add(Task.Run(() => {
+                Console.WriteLine($"Concurrent Task {i} started");
+                // Simulate some work
+                await Task.Delay(1000);
+                Console.WriteLine($"Concurrent Task {i} completed");
+            }));
+        }
+
+        // Wait for all concurrent tasks to complete
+        await Task.WhenAll(concurrentTasks);
+
+        // Parallel execution of tasks using TPL
+        var parallelTasks = new ParallelOptions { MaxDegreeOfParallelism = 4 };
+        Parallel.ForEach(Enumerable.Range(0, 4), parallelTasks, (i) => {
+            Console.WriteLine($"Parallel Task {i} started");
+            // Simulate some work
+            Thread.Sleep(1000);
+            Console.WriteLine($"Parallel Task {i} completed");
+        });
+    }
+}
+```
+
+### 4. Race Condition
 
 **Race condition** adalah situasi yang dapat terjadi dalam program concurrent atau parallel ketika hasil eksekusi program bergantung pada urutan waktu di mana instruksi dijalankan. Hal ini dapat menyebabkan perilaku program yang tidak terduga dan bahkan berbahaya.
 
