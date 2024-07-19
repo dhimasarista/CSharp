@@ -8,9 +8,10 @@
 
 **Alasan-alasan Kenapa Menggunakan C# :**
 
-* Dukungan ekosistem yang besar menggunakan .NET
-* Fitur, sintaks dan keyword yang lengkap.
-* Kemampuan bahasa yang tinggi dan mature.
+* Dukungan ekosistem yang besar menggunakan .NET Runtime.
+* Fitur, sintaks dan keyword lebih lengkap dibandingkan bahasa lain.
+* Kematangan bahasa dari segi peforma dan kemampuan.
+* 
 
 **Karakteristik C# :**
 
