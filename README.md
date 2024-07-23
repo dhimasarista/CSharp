@@ -2661,3 +2661,11 @@ class Program
 }
 
 ```
+
+
+# 14. Best-Practices
+
+1. Gunakan PascalCase di Class, Method, Property dan Constant.
+2. Gunakan camelCase di variabel atau local property
+3. Gunakan penamaan yang jelas di query LINQ
+4. Gunakan Exception Handling seperti try, catch, finally.
