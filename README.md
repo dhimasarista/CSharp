@@ -2257,7 +2257,7 @@ public class Program {
 * `async` diperlukan untuk mendefinisikan metode asynchronous, sedangkan `Task` digunakan untuk merepresentasikan hasil dari operasi asynchronous.
 * Meskipun `Task` tidak selalu diperlukan, penggunaannya direkomendasikan untuk konsistensi dan kompatibilitas.
 
-### 2. Parallelism
+### 2. Parallel Programming
 
 Parallelism, di sisi lain, mengacu pada eksekusi tugas-tugas secara benar-benar bersamaan pada multiple core CPU atau multiple prosesor. Ini memungkinkan tugas-tugas untuk berjalan secara simultan, yang dapat menghasilkan peningkatan kinerja dan efisiensi. Dalam C#, Anda dapat mencapai parallelism menggunakan konstruksi seperti Parallel.For, Parallel.ForEach, dan PLINQ (Parallel Language-Integrated Query).
 
