@@ -1,4 +1,4 @@
-# C# Programming Language
+# arallC# Programming Language
 
 ![1713255318223](image/README/1713255318223.png)
 
@@ -2282,7 +2282,7 @@ Console.WriteLine("Looping selesai.");
 using System;
 using System.Threading.Tasks;
 
-public class ConcurrentParallelExample {
+public class Program {
 
     public static async Task Main(string[] args) {
         // Concurrent execution of tasks using 'await'
@@ -2318,28 +2318,14 @@ public class ConcurrentParallelExample {
 Race condition biasanya terjadi ketika beberapa thread atau proses mengakses dan memodifikasi data yang sama secara bersamaan. Tanpa mekanisme sinkronisasi yang tepat, thread atau proses yang berbeda dapat saling menginterupsi dan menghasilkan data yang tidak konsisten.
 
 ```csharp
-public class RaceConditionDemo
+var numbers = new List<int>();
+Parallel.For(0, 10, i =>
 {
-    public static int count = 0;
-
-    public static void Increment()
-    {
-        count++; // This is not atomic operation, race condition can occur
-    }
-
-    public static void Main(string[] args)
-    {
-        Thread thread1 = new Thread(Increment);
-        Thread thread2 = new Thread(Increment);
-
-        thread1.Start();
-        thread2.Start();
-
-        thread1.Join();
-        thread2.Join();
-
-        Console.WriteLine($"Expected count: 2, Actual count: {count}");
-    }
+    numbers.Add(i); // race condition
+});
+foreach (var x in numbers)
+{
+    Console.WriteLine(x);
 }
 ```
 
@@ -2348,9 +2334,65 @@ public class RaceConditionDemo
 Untuk mencegah race condition, Anda perlu menggunakan mekanisme sinkronisasi untuk mengontrol akses ke data yang dibagikan. Mekanisme sinkronisasi yang umum digunakan dalam C# termasuk:
 
 * **Lock:** Lock memungkinkan Anda untuk mengunci akses ke data sehingga hanya satu thread atau proses yang dapat mengaksesnya pada satu waktu.
-* **Mutex:** Mutex mirip dengan lock, tetapi hanya satu thread atau proses yang dapat memperoleh mutex pada satu waktu.
-* **Semaphore:** Semaphore memungkinkan Anda untuk membatasi jumlah thread atau proses yang dapat mengakses data secara bersamaan.
+  ```csharp
+  var numbers = new List<int>();
+  Parallel.For(0, 10, i =>
+  {
+      lock (numbers)
+      {
+          numbers.Add(i); // race condition
+      }
+  });
+  foreach (var x in numbers)
+  {
+      Console.WriteLine(x);
+  }
+  ```
+* **Interlocked**: Menggunakan kelas `Interlocked` untuk operasi atomik pada variabel integer.
+* **Mutex:** Mutex mirip dengan lock, tetapi hanya satu thread atau proses yang dapat memperoleh mutex pada satu waktu. Mutex di C# hampir mirip dengan mutex yang ada di Golang.
+  ```csharp
+  var numbers = new List<int>();
+  var mutex = new Mutex();
+  Parallel.For(0, 10, i =>
+  {
+      mutex.WaitOne();
+      numbers.Add(i);
+      mutex.ReleaseMutex();
+  });
+  foreach (var x in numbers)
+  {
+      Console.WriteLine(x);
+  }
+  ```
+* **SemaphoreSlim:** Semaphore memungkinkan Anda untuk membatasi jumlah thread atau proses yang dapat mengakses data secara bersamaan.
+  ```csharp
+  var numbers = new List<int>();
+  var semaphore = new SemaphoreSlim(1);
+  Parallel.For(0, 10, i =>
+  {
+      semaphore.Wait();
+      numbers.Add(i);
+      semaphore.Release();
+  });
+  foreach (var x in numbers)
+  {
+      Console.WriteLine(x);
+  }
+  ```
 * **Monitor:** Monitor menyediakan cara yang lebih fleksibel untuk menyinkronkan akses ke data, termasuk dukungan untuk sinyal dan kondisi.
+  ```csharp
+  var numbers = new List<int>();
+  Parallel.For(0, 10, i =>
+  {
+      Monitor.Enter(numbers);
+      numbers.Add(i);
+      Monitor.Exit(numbers);
+  });
+  foreach (var x in numbers)
+  {
+      Console.WriteLine(x);
+  }
+  ```
 
 Selain mekanisme sinkronisasi, Anda juga dapat menggunakan teknik desain yang membantu mencegah race condition, seperti:
 
@@ -2359,25 +2401,18 @@ Selain mekanisme sinkronisasi, Anda juga dapat menggunakan teknik desain yang me
 * **Avoiding shared state:** Minimalkan jumlah data yang dibagikan antara thread atau proses.
 
 ```csharp
-public class RaceConditionDemo
+var numbers = new List<int>();
+Parallel.For(0, 10, i =>
 {
-    public static int count = 0;
-    private static object lockObject = new object();
-
-    public static void Increment()
+    lock (numbers)
     {
-        lock (lockObject) // Ensures only one thread accesses the critical section
-        {
-            count++;
-        }
+        numbers.Add(i); // race condition
     }
-
-    public static void Main(string[] args)
-    {
-        // ... (rest of the code)
-    }
+});
+foreach (var x in numbers)
+{
+    Console.WriteLine(x);
 }
-
 ```
 
 # 8. Generic
@@ -2661,7 +2696,6 @@ class Program
 }
 
 ```
-
 
 # 14. Best-Practices
 
