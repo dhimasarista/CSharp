@@ -8,9 +8,10 @@
 
 **Alasan-alasan Kenapa Menggunakan C# :**
 
-* [ ] Dukungan ekosistem yang besar menggunakan .NET Runtime.
-* [ ] Fitur, sintaks dan keyword lebih lengkap dibandingkan bahasa lain.
-* [ ] Kematangan bahasa dari segi peforma dan ekosistem.
+* Dukungan ekosistem yang besar menggunakan .NET Runtime.
+* Fitur, sintaks dan keyword lebih lengkap dibandingkan bahasa lain.
+
+* Kematangan bahasa dari segi peforma dan ekosistem.
 
 **Karakteristik C# :**
 
@@ -2275,41 +2276,6 @@ Parallel.For(0, iterations, i =>
 Console.WriteLine("Looping selesai.");
 ```
 
-### 3. Contoh Kode Konkuren + Paralel
-
-```csharp
-using System;
-using System.Threading.Tasks;
-
-public class Program {
-
-    public static async Task Main(string[] args) {
-        // Concurrent execution of tasks using 'await'
-        var concurrentTasks = new List<Task>();
-        for (int i = 0; i < 4; i++) {
-            concurrentTasks.Add(Task.Run(() => {
-                Console.WriteLine($"Concurrent Task {i} started");
-                // Simulate some work
-                await Task.Delay(1000);
-                Console.WriteLine($"Concurrent Task {i} completed");
-            }));
-        }
-
-        // Wait for all concurrent tasks to complete
-        await Task.WhenAll(concurrentTasks);
-
-        // Parallel execution of tasks using TPL
-        var parallelTasks = new ParallelOptions { MaxDegreeOfParallelism = 4 };
-        Parallel.ForEach(Enumerable.Range(0, 4), parallelTasks, (i) => {
-            Console.WriteLine($"Parallel Task {i} started");
-            // Simulate some work
-            Thread.Sleep(1000);
-            Console.WriteLine($"Parallel Task {i} completed");
-        });
-    }
-}
-```
-
 ### 4. Race Condition
 
 **Race condition** adalah situasi yang dapat terjadi dalam program concurrent atau parallel ketika hasil eksekusi program bergantung pada urutan waktu di mana instruksi dijalankan. Hal ini dapat menyebabkan perilaku program yang tidak terduga dan bahkan berbahaya.
@@ -2330,7 +2296,7 @@ foreach (var x in numbers)
 
 **Mencegah Race Condition:**
 
-Untuk mencegah race condition, Anda perlu menggunakan mekanisme sinkronisasi untuk mengontrol akses ke data yang dibagikan. Mekanisme sinkronisasi yang umum digunakan dalam C# termasuk:
+Untuk mencegash race condition, Anda perlu menggunakan mekanisme sinkronisasi untuk mengontrol akses ke data yang dibagikan. Mekanisme sinkronisasi yang umum digunakan dalam C# termasuk:
 
 * **Lock:** Lock memungkinkan Anda untuk mengunci akses ke data sehingga hanya satu thread atau proses yang dapat mengaksesnya pada satu waktu.
   ```csharp
