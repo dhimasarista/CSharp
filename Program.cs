@@ -1,13 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-
-class Program
+﻿var numbers = new List<int>();
+var semaphore = new SemaphoreSlim(1);
+Parallel.For(0, 10, i =>
 {
-
-    public static async Task Main(string[] args)
-    {
-        Console.WriteLine(args[0]);
-        await Task.Delay(1000);
-        Console.WriteLine(args[1]);
-    }
+    semaphore.Wait();
+    numbers.Add(i);
+    semaphore.Release();
+});
+foreach (var x in numbers)
+{
+    Console.WriteLine(x);
 }
