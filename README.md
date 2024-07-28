@@ -1,4 +1,4 @@
-# arallC# Programming Language
+# C# Programming Language
 
 ![1713255318223](image/README/1713255318223.png)
 
@@ -8,10 +8,9 @@
 
 **Alasan-alasan Kenapa Menggunakan C# :**
 
-* Dukungan ekosistem yang besar menggunakan .NET Runtime.
-* Fitur, sintaks dan keyword lebih lengkap dibandingkan bahasa lain.
-* Kematangan bahasa dari segi peforma dan kemampuan.
-* 
+* [ ] Dukungan ekosistem yang besar menggunakan .NET Runtime.
+* [ ] Fitur, sintaks dan keyword lebih lengkap dibandingkan bahasa lain.
+* [ ] Kematangan bahasa dari segi peforma dan ekosistem.
 
 **Karakteristik C# :**
 
