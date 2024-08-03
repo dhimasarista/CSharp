@@ -2508,6 +2508,42 @@ Contoh package manager yang populer termasuk npm (Node.js), pip (Python), Compos
 
 Untuk bahasa pemrograman C#, package manager yang paling umum digunakan adalah NuGet. NuGet adalah package manager untuk platform pengembangan .NET yang digunakan untuk mengelola paket-paket perangkat lunak dalam proyek C# dan .NET. NuGet memungkinkan pengguna untuk mencari, menginstal, dan mengelola dependensi perangkat lunak yang diperlukan dalam proyek C#.
 
+### Cara Menggunakan NuGet di .NET Core
+
+1. Menambahkan ke dalam project
+   ```
+   dotnet add package <nama_paket>
+   ```
+2. Memperbarui paket
+   ```
+   dotnet update package <nama_paket>
+   ```
+3. Menghapus Paket
+   ```
+   dotnet remove package <nama_paket>
+   ```
+
+### Membuat paket menjadi global akses
+
+Menginstall paket dari NuGet kemudian paket tersebut dapat diakses secara global:
+
+```
+dotnet tool install -g <nama_paket>
+```
+
+kemudian cara menggunakannya adalah dengan perintah `<nama_paket> <argumen>`
+
+### Beberapa cara lain menggunakan .NET Package Manager
+
+```
+Mencari Paket:
+	dotnet search <keyword>
+Melihat Informasi Paket:
+	dotnet show package <nama_paket>
+Memperbarui Semua Paket:
+	dotnet restore
+```
+
 # 11. Testing & Debugging
 
 ### 1. Unit Testing dalam C#:
