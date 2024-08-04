@@ -1,1 +1,2 @@
-﻿Console.WriteLine("Hello, C#");
+﻿Console.Clear();
+Console.WriteLine("Hello, C#");
