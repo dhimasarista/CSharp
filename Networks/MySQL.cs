@@ -4,9 +4,10 @@ namespace Networks;
 
 class MySQL
 {
-    public MySQL(string dbName, string tableName){
+    public MySQL(string dbName, string tableName)
+    {
         string connectionString = $"server=localhost;user=root;database={dbName}";
-        
+
         // Membuat koneksi ke database
         using (MySqlConnection connection = new MySqlConnection(connectionString))
         {
