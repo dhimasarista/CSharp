@@ -2575,6 +2575,16 @@ Contoh penggunaan LINQ termasuk:
 - **Query XML**: Menjalankan kueri terhadap data XML menggunakan LINQ to XML.
 - **Query database**: Melakukan query terhadap database menggunakan LINQ to SQL atau Entity Framework.
 
+Keyword-Keyword Utama dalam LINQ
+
+* **from:** Menentukan sumber data untuk query.
+* **where:** Memfilter data berdasarkan kondisi tertentu.
+* **select:** Memilih properti atau elemen dari data yang diproses.
+* **orderby:** Mengurutkan data berdasarkan satu atau lebih kunci.
+* **groupby:** Mengelompokkan data berdasarkan satu atau lebih kunci.
+* **join:** Menggabungkan data dari dua atau lebih sumber.
+* **let:** Membuat variabel sementara dalam ekspresi query.
+
 Berikut adalah contoh sederhana penggunaan LINQ untuk menyaring data dalam sebuah array:
 
 ```csharp
