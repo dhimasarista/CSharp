@@ -70,7 +70,7 @@ public int Add(int a, int b)
 - **Avoid**:
   - file_name.cs
 
-## **Standard Library**
+**Standard Library**
 
 | Standard Library   | Deskripsi                                                                    |
 | ------------------ | ---------------------------------------------------------------------------- |
@@ -85,7 +85,7 @@ public int Add(int a, int b)
 | System.Security    | Berisi kelas-kelas untuk keamanan, enkripsi, dan hashing.                    |
 | System.Diagnostics | Berisi kelas-kelas untuk mengelola proses dan layanan di sistem.             |
 
-## Libraries & Frameworks
+**Libraries & Frameworks**
 
 | Kategori                          | Library/Framework                     | Deskripsi                                                                                         |
 | --------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -117,21 +117,23 @@ public int Add(int a, int b)
 | Logging dan Monitoring            | Serilog, NLog, log4net                | Library logging yang populer untuk pencatatan kejadian dan pemantauan aplikasi.                   |
 |                                   | Application Insights, Sentry          | Layanan pihak ketiga untuk pemantauan dan pelacakan kesalahan dalam aplikasi.                     |
 
-# 0. Menjalankan Program C#
+# 0. Introcduction
 
-### Menjalankan Kode C# dengan `dotnet run`:
+## 0.1 Menjalankan Kode C#
+
+**Menjalankan Kode C# dengan `dotnet run`:**
 
 1. Buka terminal atau command prompt.
 2. Navigasikan ke direktori proyek C#.
 3. Jalankan perintah `dotnet run` untuk menjalankan proyek. Ini akan mengkompilasi dan menjalankan proyek secara bersamaan, dimana kode `Program.cs` yang akan dieksekusi.
 
-### Menjalankan otomatis saat kode berubah:
+**Menjalankan otomatis saat kode berubah:**
 
 1. Buka terminal atau command prompt.
 2. Navigasikan ke direktori proyek C#.
 3. Jalankan perintah `dotnet watch run`  atau `dotnet watch` saja untuk menjalankan proyek. Ini akan mengkompilasi dan menjalankan proyek secara bersamaan, dimana kode `Program.cs` yang akan dieksekusi.
 
-### Mengompilasi Kode C# dengan JIT Compilation:
+**Mengompilasi Kode C# dengan JIT Compilation:**
 
 1. Pastikan Anda memiliki `.NET Core SDK` terinstal.
 2. Buka terminal atau command prompt.
@@ -140,11 +142,11 @@ public int Add(int a, int b)
 5. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`.
 6. compiler akan menghasilkan file `NamaProgram.dll` atau jika diwindows menghasilkan bersamaan `NamaProgram.exe` dan dilinux sebaliknya.
 
-### Mengompilasi Kode C# dengan AOT Compilation:
+**Mengompilasi Kode C# dengan AOT Compilation:**
 
 > Pastikan Anda memiliki `.NET Core SDK` dan `dotnet-runtime` terbaru yang mendukung AOT compilation.
 
-##### Cara pertama:
+Cara pertama:
 
 1. Buka file `.csproj` proyek Anda.
 2. Tambahkan elemen `<PublishAot>true</PublishAot>` di dalam tag `<PropertyGroup>`.
@@ -152,14 +154,14 @@ public int Add(int a, int b)
 4. Buka terminal atau command prompt.
 5. Dan jalankan perintah `dotnet publish` .
 
-##### Cara Kedua:
+Cara Kedua:
 
 1. Menambahkan `/p:PublishAot=true` saat melakukan kompilasi.
 2. `dotnet publish /p:PublishAot=true`
 
 Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`/native.
 
-### Opsi kompilasi .NET Core (dotnet) yang umum digunakan adalah:
+**Opsi kompilasi .NET Core (dotnet) yang umum digunakan adalah:**
 
 1. **Debug**: Opsi ini menghasilkan output yang tidak dioptimalkan dan menyertakan informasi debug lengkap untuk memudahkan debugging. Ini biasanya digunakan selama pengembangan dan pengujian.
 
@@ -193,14 +195,85 @@ Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/
    dotnet publish --self-contained true
    ```
 
-#### Perbedan Build dan Publish:
+**Perbedan Build dan Publish:**
 
 1. **Build** : Tahap build melibatkan kompilasi kode sumber Anda ke dalam format yang dapat dieksekusi oleh mesin. Saat Anda melakukan build proyek C#, compiler akan mengonversi kode C# Anda ke dalam bahasa mesin atau format intermediate seperti IL (Intermediate Language). Hasil dari tahap build ini adalah file-file seperti DLL atau EXE, yang dapat dijalankan oleh mesin CLR (Common Language Runtime).
 2. **Publish** : Tahap publish lebih lanjut dari tahap build. Ketika Anda melakukan publish proyek C#, Anda tidak hanya menghasilkan file-file yang diperlukan untuk eksekusi, tetapi juga menyiapkan proyek untuk dideploy atau didistribusikan. Ini termasuk mengemas semua file yang diperlukan (termasuk dependensi) ke dalam paket atau folder yang siap untuk dipindahkan atau diinstal di lingkungan produksi. Hasil dari tahap publish adalah distribusi siap pakai dari proyek Anda, yang dapat diterapkan ke server atau diinstal di mesin pengguna akhir.
 
+## 0.2 Workload
+
+**Workload** adalah kumpulan paket dan alat yang menyediakan dukungan untuk pengembangan pada target platform atau skenario tertentu dalam .NET. Workload ditambahkan ke .NET SDK untuk memperluas fungsionalitasnya sesuai dengan kebutuhan pengembang. Beberapa karakteristik utama workload adalah:
+
+* **Target Platform/Framework** : Workload berfokus pada menyediakan alat dan paket untuk mengembangkan aplikasi untuk platform atau framework tertentu, seperti .NET MAUI untuk pengembangan lintas platform atau Xamarin untuk pengembangan mobile.
+* **Modularitas** : Workload memungkinkan pengembang untuk menginstal hanya alat dan paket yang mereka butuhkan untuk proyek tertentu, sehingga mengurangi ukuran total SDK yang diinstal dan meningkatkan kinerja.
+* **CLI Management** : Workload dapat diinstal, dihapus, atau diperbarui menggunakan CLI .NET dengan perintah seperti `dotnet workload install`, `dotnet workload uninstall`, dan `dotnet workload update`.
+* **Kumpulan Alat dan SDK** : Workload biasanya mencakup lebih dari sekadar paket NuGet; mereka mungkin menyertakan alat baris perintah, emulator, debugger, dan berbagai komponen lain yang diperlukan untuk pengembangan pada target tertentu.
+
+**Perbedaan Workload dengan Nuget**
+
+**Scope dan Fungsionalitas** :
+
+* **Workload** berfokus pada penyediaan seluruh set alat dan SDK untuk platform atau skenario pengembangan tertentu, sering kali termasuk paket NuGet, alat CLI, emulator, dan lebih banyak lagi.
+* **NuGet** hanya berfokus pada paket manajemen untuk kode sumber, menyediakan cara yang efisien untuk mengelola referensi ke perpustakaan pihak ketiga dan internal.
+
+**Penggunaan** :
+
+* **Workload** digunakan untuk memperluas .NET SDK dengan komponen-komponen yang dibutuhkan untuk jenis proyek atau platform tertentu.
+* **NuGet** digunakan dalam proyek .NET untuk menambahkan dan mengelola dependensi paket.
+
+**Penginstalan** :
+
+* **Workload** diinstal melalui `dotnet` CLI dan biasanya mencakup sejumlah besar alat dan pustaka.
+* **NuGet** paket dapat diinstal melalui `nuget` CLI, `dotnet` CLI, atau melalui UI NuGet di Visual Studio.
+
+##### **Penggunaan Workload**
+
+Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
+
+1. **Menginstal Workload**:
+
+   - Untuk menginstal workload tertentu, gunakan perintah:
+     ```bash
+     dotnet workload install <nama-workload>
+     ```
+   - Contoh:
+     ```bash
+     dotnet workload install maui
+     ```
+2. **Menghapus Workload**:
+
+   - Untuk menghapus workload yang sudah diinstal, gunakan perintah:
+     ```bash
+     dotnet workload uninstall <nama-workload>
+     ```
+3. **Menampilkan Workload yang Diinstal**:
+
+   - Untuk melihat daftar workload yang sudah diinstal di sistem Anda, gunakan perintah:
+     ```bash
+     dotnet workload list
+     ```
+4. **Memperbarui Workload**:
+
+   - Untuk memperbarui semua workload yang terinstal, gunakan perintah:
+     ```bash
+     dotnet workload update
+     ```
+5. **Memeriksa Workload yang Tersedia**:
+
+   - Untuk melihat semua workload yang tersedia untuk instalasi, Anda dapat menggunakan:
+     ```bash
+     dotnet workload search
+     ```
+
+**Contoh Workload**
+
+- **maui**: Workload untuk pengembangan aplikasi lintas platform menggunakan .NET Multi-platform App UI (.NET MAUI).
+- **wasm-tools**: Workload untuk pengembangan aplikasi Blazor WebAssembly.
+- **android** dan **ios**: Workload untuk pengembangan aplikasi mobile menggunakan Xamarin.1. Basic
+
 # 1. Basic
 
-## 1. Data Types
+## 1.1 Data Types
 
 ***Data types atau tipe data** adalah sebuah pengklasifikasian data berdasarkan jenis data tersebut.*
 
@@ -499,7 +572,7 @@ Integer angka = 10;
 
 Dalam contoh di atas, kita membuat alias `Integer` untuk tipe data `System.Int32` (tipe data integer 32-bit). Dengan demikian, kita dapat menggunakan `Integer` sebagai alternatif untuk `Int32`. Ini memudahkan kita untuk menggunakan nama yang lebih deskriptif atau sesuai dengan konteks tertentu.
 
-## 2. Konversi, Type Check, & Casting Tipe Data
+## 1. 2 Konversi, Type Check, & Casting Tipe Data
 
 ```cs
 // Konversi tipe data, number ke number
@@ -533,7 +606,7 @@ int intNum = (int)num;
 Console.WriteLine("Casted integer: " + intNum);
 ```
 
-## 3. Data items
+## 1.3 Data items
 
 **Data items** adalah tempat penyimpanan tiap atribut dari sebuah entitas.
 
@@ -576,7 +649,7 @@ var name = "dhim";
 | object         | object obj = 10;         | Tipe data paling dasar, dapat menyimpan nilai dari semua jenis tipe data lainnya          |
 | Nullable types | int? nullableInt = null; | Tipe data yang memungkinkan nilai null pada tipe data nilai (value types)                 |
 
-## 4. Data Structures
+## 1.4 Data Structures
 
 ***Data Structure** adalah cara penyimpanan, penyusunan dan pengaturan data di dalam media penyimpanan komputer sehingga data tersebut dapat digunakan secara efisien.*
 
@@ -705,7 +778,7 @@ int[] arr2 = { 4, 5, 6 };
 int[] arr3 = [..arr1, ..arr2];
 ```
 
-## 5. Operators
+## 1.5 Operators
 
 Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler atau interpreter untuk melakukan operasi matematika,* relasional atau logis tertentu dan menghasilkan hasil akhir.
 
@@ -830,7 +903,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 | GetType() | Method instance yang digunakan untuk mendapatkan tipe dari objek pada waktu eksekusi |
 | typeof    | Mendapatkan tipe data pada waktu kompilasi                                           |
 
-## 6. Controls Flow
+## 1.6 Controls Flow
 
 ***Control Flow** adalah sebuah cara untuk memberi tahu program instruksi apa yang harus dijalankan.*
 
@@ -1717,6 +1790,40 @@ class Program
 ```
 
 > ⚠️ Tetapi akan terjadi masalah yang disebut dengan **Variables Shadowing.**
+
+### Destructor/Finalizer
+
+Di C#, destructor (atau  **finalizer** ) adalah metode khusus yang digunakan untuk membersihkan sumber daya sebelum objek dihapus dari memori oleh garbage collector. Meskipun C# memiliki **garbage collector** yang secara otomatis menangani manajemen memori, ada kalanya kita perlu melepaskan sumber daya tak dikelola (seperti file, soket jaringan, atau handle sistem operasi) secara manual. Di situlah destructor digunakan.
+
+**Karakteristik Destructor**
+
+1. **Sintaksis Destructor** : Destructor ditulis dengan menggunakan simbol tilde (`~`) diikuti dengan nama kelas, tanpa parameter dan tanpa modifier akses (seperti `public`, `private`).
+2. **Kapan Destructor Dipanggil** : Destructor dipanggil oleh garbage collector sebelum objek dihapus dari memori. Tidak ada jaminan kapan tepatnya destructor akan dipanggil, karena bergantung pada kapan garbage collector memutuskan untuk mengumpulkan objek
+3. **Kapan Menggunakan Destructor** : Destructor digunakan ketika kelas Anda memegang sumber daya yang tidak dikelola, seperti handle file, koneksi database, atau soket jaringan. Untuk membersihkan sumber daya yang dikelola, biasanya lebih baik menggunakan pola *dispose* dengan mengimplementasikan antarmuka `IDisposable`.
+4. **Kapan Menggunakan Destructor** : Destructor digunakan ketika kelas Anda memegang sumber daya yang tidak dikelola, seperti handle file, koneksi database, atau soket jaringan. Untuk membersihkan sumber daya yang dikelola, biasanya lebih baik menggunakan pola *dispose* dengan mengimplementasikan antarmuka `IDisposable`.
+   ```csharp
+   class MyClass {
+       // Constructor
+       public MyClass(){ // constructor }
+
+       // Destructor
+       ~MyClass() {}
+   }
+   ```
+
+### Destructor vs IDisposable
+
+1. **Destructor** :
+
+* Digunakan untuk membersihkan sumber daya tak dikelola.
+* Tidak dapat dipanggil secara langsung, hanya oleh garbage collector.
+* Tidak dijamin kapan akan dipanggil.
+
+2. **IDisposable** :
+
+* Menyediakan metode `Dispose()` untuk membersihkan sumber daya yang dikelola dan tak dikelola.
+* Dapat dipanggil secara eksplisit oleh kode pengguna melalui `Dispose()` atau melalui konstruk `using`.
+* Memberikan kontrol yang lebih baik atas siklus hidup sumber daya.
 
 ## 6. Variable Shadowing
 
