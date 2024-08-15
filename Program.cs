@@ -1,36 +1,24 @@
-class Program
+unsafe class Program
 {
     public static void Main(string[] args)
     {
-        var dhimas = new Programmer("Dhimas Arista");
-        dhimas.AddLanguage("C#");
-        dhimas.AddLanguage("Javascript");
-        dhimas.ShowLanguages();
-    }
-}
-
-class Programmer
-{
-    private List<dynamic> _languages = [];
-    private string _name = "";
-    public Programmer(string name)
-    {
-        this._name = name;
-
-        Console.WriteLine($"Hello, {_name}");
+        int x = 0;
+        Console.WriteLine($"sebelum operasi: {x}"); // 0
+        ChangeValue(&x);
+        Console.WriteLine($"sesudah operasi: {x}"); // 10
     }
 
-    public void AddLanguage(string language)
+    static void ChangeValue(int* x)
     {
-        _languages.Add(language);
-    }
-
-    public void ShowLanguages()
-    {
-        Console.WriteLine("My Languages:");
-        foreach (var language in _languages)
+        try
         {
-            Console.WriteLine($" - {language}");
+            Console.Write("Input Number: ");
+            string input = Console.ReadLine() ?? "0";
+            *x = int.Parse(input);
+        }
+        catch (Exception e)
+        {
+            throw e.GetBaseException();
         }
     }
 }

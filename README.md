@@ -59,7 +59,7 @@ public int Add(int a, int b)
   - Visual Studio Code ([https://code.visualstudio.com/](https://code.visualstudio.com/))
   - Visual Studio ([https://visualstudio.microsoft.com/](https://visualstudio.microsoft.com/))
 
-## **Aturan dan Penamaan Sintaks**
+## Aturan dan Penamaan Sintaks
 
 > ⚠️ Catatan: Hati-hati dengan case-sensitive terutama camelCase dan PascalCase.
 
@@ -117,7 +117,7 @@ public int Add(int a, int b)
 | Logging dan Monitoring            | Serilog, NLog, log4net                | Library logging yang populer untuk pencatatan kejadian dan pemantauan aplikasi.                   |
 |                                   | Application Insights, Sentry          | Layanan pihak ketiga untuk pemantauan dan pelacakan kesalahan dalam aplikasi.                     |
 
-# 0. Introcduction
+# 0. Introduction
 
 ## 0.1 Menjalankan Kode C#
 
@@ -226,7 +226,7 @@ Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/
 * **Workload** diinstal melalui `dotnet` CLI dan biasanya mencakup sejumlah besar alat dan pustaka.
 * **NuGet** paket dapat diinstal melalui `nuget` CLI, `dotnet` CLI, atau melalui UI NuGet di Visual Studio.
 
-##### **Penggunaan Workload**
+Cara Menggunakan Workload
 
 Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
 
@@ -277,7 +277,7 @@ Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
 
 ***Data types atau tipe data** adalah sebuah pengklasifikasian data berdasarkan jenis data tersebut.*
 
-#### Numbers
+**Numbers**
 
 - **Integer**:
   - 16-bit: short, ushort
@@ -300,11 +300,11 @@ Dengan menyelaraskan tipe data dan ukurannya, panduan ini menjadi lebih mudah di
 int hexadecimalNumber = 0xFF; // Output: 255
 ```
 
-### **String**
+**String**
 
 ***String** dalam pemrograman komputer adalah sebuah deret simbol.* Tipe data string adalah tipe data yang digunakan untuk menyimpan barisan karakter.
 
-### **Formatting String**
+**Formatting String**
 
 Formatting string adalah proses menentukan tampilan atau struktur dari sebuah string dengan menambahkan atau memasukkan nilai variabel ke dalamnya atau istilah lainnya adalah **string interpolasi**. Ini memungkinkan kita untuk membuat string yang lebih dinamis dengan menyisipkan nilai-nilai yang berubah-ubah ke dalam teks yang tetap. Di bahasa seperti Java, C++, atau Golang menggunakan `%` dalam format string sedangkan C# menggunakan tanda $ atau istilah yang sering digunakan adalah ***String Interpolasi***.
 
@@ -341,7 +341,7 @@ sebuah multiline
 string di C#.";
 ```
 
-### **Boolean**
+**Boolean**
 
 *Boolean adalah suatu tipe data yang hanya mempunyai dua nilai. Yaitu true atau false (benar atau salah).* Pada beberapa bahasa pemograman nilai true bisa digantikan 1 dan nilai false digantikan 0.
 
@@ -351,11 +351,11 @@ value = false;
 Console.Write(value);
 ```
 
-### **Pointer**
+**Pointer**
 
 Pointer adalah variabel khusus dalam bahasa pemrograman C# yang digunakan untuk menyimpan alamat memori dari variabel lain. Dengan menggunakan pointer, kita dapat mengakses dan memanipulasi nilai yang disimpan pada alamat memori tertentu. Pemahaman tentang pointer penting untuk melakukan operasi level rendah dan mengoptimalkan performa dalam pengembangan perangkat lunak.
 
-#### **Perbedaan antara Tipe Nilai & Tipe Referensi:**
+**Perbedaan antara Tipe Nilai & Tipe Referensi:**
 
 Perbedaan antara tipe nilai (value types) dan tipe referensi (reference types) adalah cara data disimpan dan diakses dalam memori, serta perilaku kapan data tersebut disalin atau dihapus.
 
@@ -383,7 +383,7 @@ int[] arr2 = arr1; // Hanya alamat memori dari arr1 yang disalin ke arr2
 
 Penting untuk dipahami bahwa perbedaan ini memiliki implikasi pada cara data digunakan dan dimanipulasi dalam program. Mengetahui perbedaan antara tipe nilai dan tipe referensi dapat membantu dalam pemrograman yang efisien dan menghindari kesalahan yang umum terkait dengan manajemen memori.
 
-#### **Contoh Penggunaan Pointer & Reference:**
+**Contoh Penggunaan Pointer & Reference:**
 
 Tambahkan kode ini terlebih dahulu `<AllowUnsafeBlocks>true</AllowUnsafeBlocks>` kedalam file csharp.csproj untuk mengizinkan penggunakan kode unsafe.
 
@@ -426,7 +426,7 @@ public static unsafe void Main(string[] args) {
 }
 ```
 
-### **Contoh Implementasi Pointer:**
+**Contoh Implementasi Pointer:**
 
 Dalam contoh di bawah ini, kita akan menggunakan pointer untuk mengubah nilai variabel yang sudah ada tanpa menggunakan return value. Ini membantu menghemat memori dan waktu karena kita tidak perlu membuat salinan variabel.
 
@@ -447,7 +447,7 @@ unsafe class Program {
 
 > Umumnya dalam pengembangan perangkat lunak menggunakan C#, lebih disarankan untuk menghindari penggunaan pointer dan lebih memilih penggunaan `ref` dan `out` jika memungkinkan. Hal ini berkaitan dengan keamanan dan kemudahan kode saat dibaca serta interopibilitas dengan bahasa lain.
 
-##### Alternatif Pointer menggunakan Ref atau Out
+**Alternatif Pointer menggunakan Ref atau Out**
 
 **Berikut adalah alasan-alasannya:**
 
@@ -490,7 +490,7 @@ unsafe class Program {
 
 Jadi, perbedaan utama antara `out` dan `ref` adalah bahwa `out` digunakan untuk mengembalikan beberapa nilai dari sebuah metode, sementara `ref` digunakan untuk mengakses dan memodifikasi nilai variabel yang dilewatkan ke sebuah metode. Selain itu, parameter dengan kata kunci `ref` harus diinisialisasi sebelum melewatinya ke metode, sedangkan parameter dengan kata kunci `out` tidak perlu diinisialisasi.
 
-### **Empty Data Type**
+**Empty Data Type**
 
 **null** merupakan tipe data representasi data kosong. Secara default, saat kita membuat variable data harus diisi, jika tidak diisi, maka variable tidak bisa digunakan dan compiler akan menampilkan pesan error
 
@@ -503,11 +503,11 @@ string? value3; // error
 string value4; // error
 ```
 
-### **Type Data Checking**
+**1.1.1 Type Data Checking**
 
 **Tipe data checking** adalah teknik dalam pemrograman yang digunakan untuk memeriksa tipe data dari sebuah objek atau nilai pada saat runtime. Hal ini memungkinkan pengembang untuk mengambil keputusan berdasarkan tipe data yang diterima oleh program.
 
-#### Operator is
+**Operator is**
 
 Operator `is` digunakan untuk memeriksa apakah suatu objek merupakan instance dari tipe data tertentu. Jika objek tersebut adalah instance dari tipe data yang ditentukan, maka kondisi akan bernilai `true`, jika tidak, maka kondisi akan bernilai `false`.
 
@@ -521,7 +521,7 @@ Operator `is` digunakan untuk memeriksa apakah suatu objek merupakan instance da
   }
 ```
 
-#### Operator typeof
+**Operator typeof**
 
 Operator `typeof` digunakan untuk mendapatkan tipe data dari sebuah objek pada saat kompilasi. Hasil dari operasi `typeof` adalah objek `Type` yang mewakili tipe data dari objek yang ditentukan.
 
@@ -530,7 +530,7 @@ Operator `typeof` digunakan untuk mendapatkan tipe data dari sebuah objek pada s
   Console.WriteLine($"Tipe data dari objek string adalah: {type}");
 ```
 
-#### Operator as
+**Operator as**
 
 Operator `as` digunakan untuk mencoba melakukan konversi tipe data secara aman (safe casting). Jika konversi berhasil, maka nilai akan dihasilkan sesuai dengan tipe data yang ditentukan. Jika konversi gagal, maka nilai `null` akan dihasilkan.
 
@@ -538,7 +538,7 @@ Operator `as` digunakan untuk mencoba melakukan konversi tipe data secara aman (
   string str = obj as string;
 ```
 
-#### Fungsi GetType()
+**Fungsi GetType()**
 
 Fungsi `GetType()` digunakan untuk mendapatkan tipe data dari sebuah objek pada saat runtime. Fungsi ini mengembalikan objek `Type` yang mewakili tipe data dari objek yang ditentukan.
 
@@ -546,7 +546,7 @@ Fungsi `GetType()` digunakan untuk mendapatkan tipe data dari sebuah objek pada 
   Type objType = obj.GetType();
 ```
 
-#### Operator sizeof
+**Operator sizeof**
 
 Operator `sizeof` digunakan untuk mendapatkan ukuran dalam byte dari sebuah tipe data pada saat kompilasi. Operator ini dapat digunakan untuk tipe data primitif seperti `byte`, `int`, `float`, `long`, dan `char`.
 
@@ -560,7 +560,7 @@ Operator `sizeof` digunakan untuk mendapatkan ukuran dalam byte dari sebuah tipe
 
 Dengan menggunakan berbagai teknik ini, pengembang dapat melakukan pengecekan dan manipulasi tipe data dengan lebih fleksibel dan aman dalam aplikasi C#.
 
-### Tipe Data Alias
+**Tipe Data Alias**
 
 Tipe data alias adalah teknik dalam pemrograman yang memungkinkan Anda untuk membuat nama alternatif untuk tipe data yang sudah ada. Hal ini berguna untuk membuat kode lebih mudah dibaca dan dapat meningkatkan kejelasan maksud dari kode.
 
@@ -768,7 +768,7 @@ public static Tuple<string, string> Hello(Tuple<string, string> preson){
 
 **Delegate**: Delegate adalah tipe data yang merepresentasikan referensi ke metode. Delegat memungkinkan Anda untuk menyimpan referensi ke metode dan memanggilnya nanti.
 
-### **Spread Operator**
+**Spread Operator**
 
 ***Spread Operator**: penggunaan sintaks **`..`** untuk memecah iterables seperti array menjadi elemen-elemen individual.* Spread operator dapat digunakan untuk mempermudah operasi seperti penggabungan iterable, pengubahan iterable menjadi tipe data yang berbeda, dan penggunaan nilai-nilai iterable sebagai parameter dalam function.
 
@@ -782,7 +782,7 @@ int[] arr3 = [..arr1, ..arr2];
 
 Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler atau interpreter untuk melakukan operasi matematika,* relasional atau logis tertentu dan menghasilkan hasil akhir.
 
-### **Arithmetic**
+**Arithmetic**
 
 ***Operator aritmatika** adalah operator yang digunakan untuk melakukan operasi matematika pada angka atau variabel numerik.* Operator ini digunakan untuk melakukan operasi seperti penjumlahan, pengurangan, perkalian, pembagian, dan sebagainya.
 
@@ -794,7 +794,7 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 | ~/ | Pembagian, Hasil int    |
 | %  | Modulus, Sisa Bagi      |
 
-### Assignment
+**Assignment**
 
 ***Operator assignment** adalah operator yang digunakan untuk menginisialisasi atau mengubah nilai dari suatu variabel dengan menggunakan nilai dari ekspresi lainnya.* Operator assignment digunakan untuk memberikan atau menugaskan nilai ekspresi ke variabel yang ditentukan.
 
@@ -807,7 +807,7 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 | a = a ~/ 10 | a =+ 10              |
 | a = a % 10  | a =% 10              |
 
-### **Comparison**
+**Comparison**
 
 ***Operator perbandingan**, juga dikenal sebagai operator relasional, digunakan untuk membandingkan dua nilai atau ekspresi.* Hasil perbandingan adalah nilai boolean (true atau false), yang menunjukkan apakah pernyataan perbandingan tersebut benar atau salah.
 
@@ -820,7 +820,7 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 | ≥        | Lebih dari sama dengan  |
 | ≤        | Kurang dari sama dengan |
 
-### **Logic**
+**Logic**
 
 ***Operator logika** digunakan untuk melakukan operasi logika pada nilai boolean (true atau false).* Operator logika menggabungkan atau memanipulasi nilai boolean untuk menghasilkan hasil yang baru.
 
@@ -853,7 +853,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 | true    | !        | false   |
 | false   | !        | true    |
 
-### Bitwise Operator
+**Bitwise Operator**
 
 *Operator bitwise adalah operator yang digunakan untuk melakukan operasi pada level bit individu dari bilangan biner.* Operator bitwise bekerja dengan memanipulasi dan memanipulasi bit-bit individu dalam representasi biner dari bilangan.
 
@@ -879,7 +879,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 | 5 >> 1   | 2     | 0101 >> 1   | 0010  |
 | 5 >>> 1  | 2     | 0101 >>> 1  | 0010  |
 
-### **Increment, Decrement**
+**Increment, Decrement**
 
 ***Increment dan decrement** adalah operasi yang digunakan untuk menambah atau mengurangi nilai suatu variabel secara berturut-turut. Dalam pemrograman, biasanya menggunakan operator increment (`++`) dan decrement (`--`) untuk melakukan operasi tersebut.*
 
@@ -891,7 +891,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 | —a                   |
 | a++ sama dengan a + 1 |
 
-### **Type Test**
+**Type Test**
 
 ***Type test** adalah operator yang digunakan untuk memeriksa tipe (jenis) suatu objek atau nilai dalam program.* Operator ini memberikan hasil berupa nilai boolean (true atau false) berdasarkan tipe objek yang diperiksa.
 
@@ -909,7 +909,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 
 Dalam konteks pemrograman, mengacu pada urutan dan aliran eksekusi instruksi atau pernyataan di dalam sebuah program. Kontrol alur memungkinkan program untuk membuat keputusan, melakukan percabangan, dan mengulang instruksi tertentu berdasarkan kondisi tertentu. Ini memungkinkan pengendalian bagaimana program berperilaku dan merespons input atau keadaan yang berbeda.
 
-### **Conditional**
+**Conditional**
 
 ***Conditional (kondisional)** dalam pemrograman merujuk pada struktur atau pernyataan yang memungkinkan program untuk membuat keputusan berdasarkan kondisi tertentu.* Pernyataan kondisional memungkinkan program untuk memilih jalur eksekusi yang berbeda berdasarkan nilai atau kondisi yang dievaluasi.
 
@@ -989,7 +989,7 @@ Operator ini digunakan untuk menentukan nilai default jika suatu nilai bernilai 
 var value = val1 ?? val2;
 ```
 
-### **Loopings**
+**Loopings**
 
 ***Looping** adalah sebuah konsep dalam pemrograman yang memungkinkan kita untuk mengulangi serangkaian pernyataan atau blok kode secara berulang. Dengan menggunakan loop, kita dapat menjalankan kode yang sama berulang kali selama kondisi tertentu terpenuhi.*
 
@@ -1035,7 +1035,7 @@ do{
 
 ---
 
-## **Null-Safety**
+## 1. 7 Null-Safety
 
 Pada tingkat bahasa pemrograman, C# memiliki fitur null safety.
 
@@ -1044,7 +1044,7 @@ Pada tingkat bahasa pemrograman, C# memiliki fitur null safety.
 - **Nullable Reference Types (mulai dari C# 8.0)**: C# 8.0 memperkenalkan fitur nullable reference types, yang memungkinkan penggunaan annotasi seperti `?` untuk menunjukkan bahwa sebuah referensi dapat bernilai null atau tidak.
 - **Non-nullable Reference Types (mulai dari C# 8.0)**: C# 8.0 juga memperkenalkan non-nullable reference types, yang memberikan lebih banyak keamanan pada saat kompilasi dengan menetapkan bahwa suatu referensi tidak boleh bernilai null.
 
-### **Null Handling/Check**
+**Null Handling/Check**
 
 Untuk mengakses atau menangani variabel null, ada beberapa cara yang bisa kita lakukan. Pertama, ubah parameter agar dapat menerima nilai null lalu lakukan pengecekan nilai null.
 
@@ -1090,7 +1090,7 @@ string? guest = null;
 var guestName = guest ?? "Guest";
 ```
 
-## **Input-Output**
+## 1. 8 Input-Output
 
 ***Input dan output (I/O)** mengacu pada proses menerima input dari pengguna atau sumber eksternal,* serta menampilkan output ke pengguna atau menyimpannya di sumber eksternal seperti file. C# menyediakan beberapa cara untuk melakukan I/O, tergantung pada jenis I/O yang ingin Anda lakukan. Berikut adalah beberapa konsep I/O yang umum digunakan:
 
@@ -1152,7 +1152,7 @@ var guestName = guest ?? "Guest";
 2. **File I/O**: adalah sebuah operasi membaca dan menulis file.
 3. **Network I/O**:  Adalah sebuah operasi I/O berbasis jaringan, seperti mengirim permintaan HTTP atau membuat koneksi socket.
 
-## **Using Keyword**
+## 1.9 Using Keyword
 
 kata kunci using di C# memiliki banyak kegunaan, diantaranya:
 
@@ -1189,11 +1189,11 @@ Tiap paradigma memiliki cara berpikir yang berbeda dalam menyelesaikan masalah p
 
 Dalam sebuah fungsi, kita dapat menentukan parameter sebagai input dan nilai kembali (return value) sebagai output. Parameter adalah variabel yang digunakan oleh fungsi untuk melakukan tugas tertentu, sedangkan nilai kembali adalah hasil yang dihasilkan oleh fungsi setelah menyelesaikan tugasnya.
 
-## **Functions are first-class citizen and can be higher-order**
+## 3.1 Functions are first-class citizen and can be higher-order
 
 Maksud dari function merupakan first-class citizen adalah bahwa function berlaku sama seperti komponen pemrograman yang lain. Sebuah fungsi bisa dimasukkan ke variabel menjadi parameter dalam suatu fungsi dan juga menjadi nilai kembalian pada fungsi. Higher order functions adalah fungsi yang mengambil fungsi lain sebagai argumen dan juga dapat mengembalikan fungsi.
 
-## **Main Function**
+## 3.2 Main Function
 
 Beberapa bahasa pemrograman seperti C, Java, atau Kotlin menggunakan main function sebagai fungsi utama yang akan dieksekusi oleh program. Berikut contoh kode main function di Golang/C# :
 
@@ -1206,7 +1206,7 @@ class Program
 }
 ```
 
-## **Pure Function**
+## 3.3 Pure Function
 
 Di dalam bahasa pemrograman, pure function (fungsi murni) adalah fungsi yang tidak memiliki efek samping (side effect) dan hanya bergantung pada input yang diberikan. Efek samping adalah perubahan yang terjadi di luar fungsi, seperti modifikasi variabel global atau output yang ditulis ke sistem file. **Fungsi murni** selalu mengembalikan nilai yang sama untuk input yang sama, dan tidak mengubah nilai input atau mempengaruhi lingkungan eksternal. Oleh karena itu, fungsi murni bersifat deterministik dan lebih mudah untuk dipahami, diuji, dan digunakan kembali dalam berbagai konteks.
 
@@ -1236,7 +1236,7 @@ public static int Jumlahkan(int[] angka){
 
 Fungsi **`Jumlahkan`** di atas memiliki efek samping yaitu mengubah nilai variabel **`total`** di setiap iterasi, sehingga tidak dapat dianggap sebagai fungsi murni.
 
-## **Recursion**
+## 3.4 Recursion
 
 Pada functional programming tidak ada konsep perulangan seperti for atau while. Iterasi pada functional programming dilakukan melalui rekursi atau pemanggilan fungsi dari fungsi itu sendiri, hingga mencapai kasus dasar.
 
@@ -1253,7 +1253,7 @@ public static int Factorial(int n){
 }
 ```
 
-## **Immutable Variabel di Function**
+## 3.5 Immutable Variabel di Function
 
 Immutable variable di dalam fungsi adalah variabel yang tidak dapat diubah nilainya setelah dideklarasikan. Konsep ini sangat penting di dalam pemrograman fungsional, di mana perubahan nilai variabel harus dihindari untuk memastikan bahwa fungsi bersifat murni (pure).
 
@@ -1270,7 +1270,7 @@ public static double HitungLuasLingkaran(double jariJari) {
 Variabel **`PI`** di atas dideklarasikan dengan kata kunci **`const`**, sehingga nilainya tidak dapat diubah setelah kompilasi.
 Penggunaan immutable variables di dalam fungsi dapat membantu mencegah perubahan nilai yang tidak sengaja terjadi, sehingga fungsi tetap bersifat murni d an dapat diuji dengan lebih mudah.
 
-## Fungsi dengan return value dan tidak
+## 3.6 Fungsi dengan return value dan tidak
 
 ```csharp
 int Hitung(int a, int b){
@@ -1288,7 +1288,7 @@ void Hitung(int a, int b){
 
 C# menggunakan kata kunci void untuk membuat sebuah fungsi/method tanpa pengembalian nilai.
 
-## Function Parameter
+## 3.7 Function Parameter
 
 Untuk mengirim informasi ke fungsi yang ingin kita panggil, kita perlu menambahkan parameter atau argumen di fungsi yang sudah kita buat. Cara membuat parameter sama seperti cara membuat variabel. Parameter ditempatkan di dalam kurung () di deklarasi fungsi. Jika ada lebih dari satu parameter, mereka dipisahkan menggunakan tanda koma. Saat memanggil fungsi, sebutkan namanya dan gunakan kurung (). Jika ada parameter dalam kurung (), masukkan parameter sesuai dengan jumlahnya.
 
@@ -1302,7 +1302,7 @@ Jadi jika fungsi tersebut dipanggil, kita dapat mengisi nilai didalam kurung kur
 Hitung(11, 10);
 ```
 
-## Main Function Parameter
+## 3.8 Main Function Parameter
 
 Main function memiliki sebuah parameter optional, yaitu adalah arguments, dimana data parameter tersebut berupa **string**.
 
@@ -1318,7 +1318,7 @@ public static void Main(string[] args){
 $ > dotnet run "Masukkan Arguments Disini"
 ```
 
-## Function Short Expression
+## 3.9 Function Short Expression
 
 C# mendukung function short expression, *dimana jika terdapat sebuah function yang hanya satu baris,* kita bisa menyingkatnya secara sederhana.Untuk membuat function short expression, kita tidak butuh kurung {} dan juga tidak butuh kata kunci return.
 Jika fungsi hanya memiliki satu baris kode atau instruksi di dalamnya, maka bisa disingkat dengan anotasi **`=>`**.
@@ -1332,11 +1332,11 @@ public static void Main(string[] args){
 public static int Angka (int x) => x;
 ```
 
-## Higher Order Function
+## 3.10 Higher Order Function
 
 Higher-order function adalah fungsi yang menerima satu atau lebih fungsi sebagai argumen dan/atau mengembalikan fungsi sebagai nilai kembali. Dalam konsep pemrograman fungsional, fungsi dianggap sebagai nilai yang dapat dioperasikan dan diproses oleh fungsi lainnya, sama seperti tipe data lainnya seperti integer, string, atau array.
 
-### Anonymous Function
+**Anonymous Function**
 
 Kita bisa memanfaatkan **anonymous function/lambda** untuk membuat **higher-order function.** *Higher order function adalah fungsi yang menggunakan fungsi lainnya sebagai parameter, menjadi tipe kembalian, atau keduanya.*
 
@@ -1371,7 +1371,7 @@ class Program {
 }
 ```
 
-### Inner Function
+**Inner Function**
 
 *Inner function* adalah fungsi yang didefinisikan di dalam fungsi lain. Dalam C#, kita dapat menentukan fungsi di dalam fungsi untuk membatasi cakupan (scope) fungsi tersebut dan membuat kode lebih terorganisir dan mudah dibaca.* Namun perlu diperhatikan, inner function yang dibuat di dalam outer function, hanya bisa diakses dari outer function saja, tidak bisa diakses dari luar outer function.
 
@@ -1387,7 +1387,7 @@ class Program {
 }
 ```
 
-### Scope
+**Scope**
 
 *Variable atau Function hanya bisa diakses di dalam area dimana mereka dibuat*. ***Hal ini disebut scope.*** Contoh, jika sebuah variable dibuat di function, maka hanya bisa diakses di method tersebut, atau jika dibuat didalam block, maka hanya bisa diakses didalam block tersebut.
 
@@ -1405,7 +1405,7 @@ class Program {
 
 Program akan mengutamakan variabel terdekat terlebih dahulu. Seperti variabel angka diatas, jika tidak ada variabel angka di lokal scope, maka program akan mencari variabel diluar lokal scope.
 
-### Closures
+**Closures**
 
 Suatu fungsi yang dapat mengakses variabel di dalam **lexical scope-nya** disebut dengan **closure.** Lexical scope berarti bahwa pada sebuah fungsi bersarang (nested functions), fungsi yang berada di dalam memiliki akses ke variabel di lingkup induknya.
 
@@ -1526,7 +1526,7 @@ class Program
 }
 ```
 
-### **Nested Class**
+**Nested Class**
 
 Nested class adalah sebuah kelas yang dideklarasikan di dalam kelas lain. Dalam konteks C# atau Java, nested class juga dikenal sebagai inner class.
 
@@ -2067,9 +2067,34 @@ class Program {
 
 ```
 
-### Base Constructor
+**Base Constructor**
 
 Tidak hanya untuk mengakses method atau field yang ada di parent class, kata kunci base juga bisa digunakan untuk mengakses constructor. Namun syaratnya untuk mengakses parent class constructor, kita harus mengaksesnya di dalam class child constructor. Memanggil base constructor hanya bisa dilakukan dalam bentuk Redirecting Constructor.
+
+```csharp
+// Parent Class
+public class Animal
+{
+    public string Name { get; set; }
+
+    // Constructor yang akan dijadikan Base Constructor
+    public Animal(string name) {
+        Name = name;
+        Console.WriteLine($"Animal constructor called. Name: {Name}");
+    }
+}
+
+// Child Class
+public class Dog : Animal {
+    public string Breed { get; set; }
+
+    // Constructor yang memanggil Base Constructor
+    public Dog(string name, string breed) : base(name) {
+        Breed = breed;
+        Console.WriteLine($"Dog constructor called. Breed: {Breed}");
+    }
+}
+```
 
 ## 12. Polymorphism
 
@@ -2625,7 +2650,7 @@ Contoh package manager yang populer termasuk npm (Node.js), pip (Python), Compos
 
 Untuk bahasa pemrograman C#, package manager yang paling umum digunakan adalah NuGet. NuGet adalah package manager untuk platform pengembangan .NET yang digunakan untuk mengelola paket-paket perangkat lunak dalam proyek C# dan .NET. NuGet memungkinkan pengguna untuk mencari, menginstal, dan mengelola dependensi perangkat lunak yang diperlukan dalam proyek C#.
 
-### Cara Menggunakan NuGet di .NET Core
+**Cara Menggunakan NuGet di .NET Core**
 
 1. Menambahkan ke dalam project
    ```
@@ -2640,7 +2665,7 @@ Untuk bahasa pemrograman C#, package manager yang paling umum digunakan adalah N
    dotnet remove package <nama_paket>
    ```
 
-### Membuat paket menjadi global akses
+**Membuat paket menjadi global akses**
 
 Menginstall paket dari NuGet kemudian paket tersebut dapat diakses secara global:
 
@@ -2650,7 +2675,7 @@ dotnet tool install -g <nama_paket>
 
 kemudian cara menggunakannya adalah dengan perintah `<nama_paket> <argumen>`
 
-### Beberapa cara lain menggunakan .NET Package Manager
+**Beberapa cara lain menggunakan .NET Package Manager**
 
 ```
 Mencari Paket:
@@ -2665,11 +2690,11 @@ Memperbarui Semua Paket:
 
 ### 1. Unit Testing dalam C#:
 
-#### Pengenalan tentang Pengujian Unit:
+**Pengenalan tentang Pengujian Unit:**
 
 Pengujian unit adalah proses pengujian perangkat lunak di mana unit-unit individu dari sebuah program diuji secara terisolasi untuk memastikan bahwa masing-masing unit berfungsi sebagaimana mestinya. Dalam konteks C#, unit-unit ini biasanya merupakan metode atau fungsi individual.
 
-#### Penggunaan Alat Pengujian Unit dalam C#:
+**Penggunaan Alat Pengujian Unit dalam C#:**
 
 Dalam lingkungan pengembangan C#, ada beberapa alat yang sering digunakan untuk melakukan pengujian unit, termasuk:
 
@@ -2679,7 +2704,7 @@ Dalam lingkungan pengembangan C#, ada beberapa alat yang sering digunakan untuk 
 
 ### 2. Debugging dalam C#:
 
-#### Teknik Debugging:
+**Teknik Debugging:**
 
 Debugging adalah proses mengidentifikasi, memahami, dan memperbaiki kesalahan dalam kode program. Dalam C#, Anda dapat menggunakan beberapa teknik debugging, termasuk:
 
@@ -2688,7 +2713,7 @@ Debugging adalah proses mengidentifikasi, memahami, dan memperbaiki kesalahan da
 - **Step Into, Step Over, dan Step Out**: Anda dapat menavigasi melalui kode baris demi baris dengan opsi "Step Into" (masuk ke dalam fungsi), "Step Over" (melompati fungsi), dan "Step Out" (keluar dari fungsi saat Anda berada di dalamnya).
 - **Exception Handling**: Memahami bagaimana menangani pengecualian (exceptions) dan menggunakan fitur-fitur seperti "try-catch" untuk menangkap dan memperlakukan pengecualian yang terjadi.
 
-# **12. Using Keyword**
+# 12. Using Keyword
 
 kata kunci using di C# memiliki banyak kegunaan, diantaranya:
 
@@ -2726,15 +2751,15 @@ kata kunci using di C# memiliki banyak kegunaan, diantaranya:
 
 # 13. Regular-Expression
 
-#### Apa itu Regex?
+**Apa itu Regex?**
 
 Regex (Regular Expressions) adalah sebuah bahasa formal untuk mencocokkan dan memanipulasi pola teks. Dalam konteks C#, Anda dapat menggunakan regex untuk mencari, mencocokkan, dan memanipulasi teks sesuai dengan pola yang Anda tentukan.
 
-#### Cara Membuat Regex dalam C#
+**Cara Membuat Regex dalam C#**
 
 Untuk membuat regex dalam C#, Anda menggunakan kelas `Regex` yang terdapat dalam namespace `System.Text.RegularExpressions`. Regex dapat dibuat dengan menggunakan string literal atau objek `Regex`.
 
-#### Keyword dan Fungsi Regex dalam C#
+**Keyword dan Fungsi Regex dalam C#**
 
 Berikut adalah beberapa contoh keyword (metakarakter dan penanda) yang umum digunakan dalam ekspresi reguler (regex):
 
@@ -2812,9 +2837,113 @@ class Program
 
 ```
 
-# 14. Best-Practices
+# 14. Preprocessor Directives
 
-1. Gunakan PascalCase di Class, Method, Property dan Constant.
-2. Gunakan camelCase di variabel atau local property
-3. Gunakan penamaan yang jelas di query LINQ
-4. Gunakan Exception Handling seperti try, catch, finally.
+Direktif praprosesor (preprocessor directives) dalam C# adalah instruksi khusus yang diproses oleh praprosesor sebelum kompilasi kode sumber dimulai. Direktif ini digunakan untuk mengontrol proses kompilasi, menyertakan atau mengecualikan bagian-bagian kode tertentu, dan mendefinisikan simbol-simbol yang memengaruhi kompilasi. Berikut adalah penjelasan lengkap tentang direktif praprosesor dan kata kunci terkait dalam C#.
+
+1. **Direktif Praprosesor di C#**
+
+Direktif praprosesor diawali dengan simbol `#` dan biasanya diletakkan di bagian atas file sumber atau sebelum blok kode yang ingin dikendalikan.
+
+a. **`#if` dan `#endif`**
+
+- **`#if`**: Memeriksa apakah simbol praprosesor tertentu didefinisikan. Jika simbol tersebut didefinisikan, maka bagian kode setelah `#if` hingga `#endif` akan diproses.
+
+  ```csharp
+  #if DEBUG
+      Console.WriteLine("Debug mode");
+  #endif
+  ```
+- **`#endif`**: Menandai akhir dari blok `#if`. Semua kode antara `#if` dan `#endif` akan diikutsertakan atau diabaikan tergantung pada kondisi `#if`.
+
+b. **`#elif` dan `#else`**
+
+- **`#elif`**: Menyediakan alternatif kondisi jika kondisi `#if` sebelumnya tidak terpenuhi. Digunakan setelah `#if` dan sebelum `#endif`.
+
+  ```csharp
+  #if DEBUG
+      Console.WriteLine("Debug mode");
+  #elif RELEASE
+      Console.WriteLine("Release mode");
+  #else
+      Console.WriteLine("Other mode");
+  #endif
+  ```
+- **`#else`**: Menyediakan alternatif jika kondisi `#if` tidak terpenuhi.
+
+c. **`#define` dan `#undef`**
+
+- **`#define`**: Mendefinisikan simbol praprosesor yang bisa digunakan dengan `#if`.
+
+  ```csharp
+  #define DEBUG
+  ```
+- **`#undef`**: Menghapus definisi simbol praprosesor.
+
+  ```csharp
+  #undef DEBUG
+  ```
+
+d. **`#warning` dan `#error`**
+
+- **`#warning`**: Menampilkan pesan peringatan saat kompilasi.
+
+  ```csharp
+  #warning This is a warning message
+  ```
+- **`#error`**: Menghasilkan kesalahan dan menghentikan proses kompilasi.
+
+  ```csharp
+  #error This is an error message
+  ```
+
+e. **`#region` dan `#endregion`**
+
+- **`#region`**: Menandai awal dari bagian kode yang dapat dilipat di IDE yang mendukung fitur ini.
+
+  ```csharp
+  #region MyRegion
+      // Code here
+  #endregion
+  ```
+- **`#endregion`**: Menandai akhir dari bagian kode yang dilipat.
+
+2. **Kata Kunci dan Simbol Praprosesor**
+
+- **`DEBUG`**: Simbol praprosesor yang biasanya didefinisikan secara otomatis dalam konfigurasi build debug. Digunakan untuk memisahkan kode yang hanya relevan untuk mode debug.
+- **`TRACE`**: Mirip dengan `DEBUG`, tetapi biasanya digunakan untuk tujuan pelacakan yang lebih umum.
+- **`RELEASE`**: Simbol yang biasanya didefinisikan secara otomatis dalam konfigurasi build release. Digunakan untuk menyertakan kode yang khusus untuk mode rilis.
+
+3. **Contoh Penggunaan**
+
+- **Mengaktifkan Fitur Debugging**
+
+  ```csharp
+  #if DEBUG
+      Console.WriteLine("Debug mode is active.");
+  #endif
+  ```
+- **Menambahkan Fitur Berdasarkan Build**
+
+  ```csharp
+  #if DEBUG
+      Console.WriteLine("Running in Debug mode");
+  #elif RELEASE
+      Console.WriteLine("Running in Release mode");
+  #else
+      Console.WriteLine("Running in other mode");
+  #endif
+  ```
+- **Menangani Peringatan dan Kesalahan**
+
+  ```csharp
+  #warning This code is deprecated
+  #error This is a compile-time error
+  ```
+- **Membagi Kode dalam Bagian yang Dapat Dilipat**
+
+  ```csharp
+  #region ImportantMethods
+      // Methods here
+  #endregion
+  ```
