@@ -860,7 +860,6 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 | Operator | Name                | Penggunaan | Deskripsi                                                |
 | -------- | ------------------- | ---------- | -------------------------------------------------------- |
 | &        | AND                 | a & b      | Menghasilkan 1 jika bit yang dibandingkan keduanya 1     |
-|          |                     | OR         | a                                                        |
 | ^        | XOR                 | a ^ b      | Menghasilkan 1 jika hanya salah satu bit 1               |
 | ~        | NOT                 | ~ a        | Menghasilkan lawan dari bit, 1 jadi 0,0 jadi 1           |
 | <<       | Geser kiri          | a << b     | Menggeser setiap bit ke kiri                             |
