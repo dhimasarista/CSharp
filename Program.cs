@@ -4,17 +4,19 @@ class Program
 {
     static void Main()
     {
-        // Mendefinisikan dua bilangan bulat
-        int number1 = 10; // 1010 dalam biner
-        int number2 = 5;  // 0101 dalam biner
+        // Mendefinisikan dua variabel
+        int a = 5;
+        int b = 10;
 
-        // Melakukan operasi XOR
-        int result = number1 ^ number2;
+        // Menampilkan nilai awal
+        Console.WriteLine($"Sebelum swap: a = {a}, b = {b}");
 
-        // Menampilkan hasil operasi XOR
-        Console.WriteLine($"Hasil XOR dari {number1} dan {number2} adalah: {result}");
+        // Menukar nilai menggunakan XOR
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
 
-        // Menampilkan hasil dalam biner
-        Console.WriteLine($"Dalam biner: {Convert.ToString(number1, 2)} ^ {Convert.ToString(number2, 2)} = {Convert.ToString(result, 2)}");
+        // Menampilkan hasil setelah swap
+        Console.WriteLine($"Setelah swap: a = {a}, b = {b}");
     }
 }
