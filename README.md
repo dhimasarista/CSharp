@@ -1454,7 +1454,7 @@ public struct Point {
 }
 ```
 
-Cara Mengugnakan Struct:
+Cara Menggunakan Struct:
 
 ```csharp
 // Cara Pertama
