@@ -1454,6 +1454,23 @@ public struct Point {
 }
 ```
 
+Cara Mengugnakan Struct:
+
+```csharp
+// Cara Pertama
+Point point = new();
+point.x = 12;
+point.y = 22;
+```
+
+```csharp
+// Cara Kedua
+Point point = new(){
+  x = 12,
+  y = 22
+};
+```
+
 # 5. Object-Oriented Programming
 
 ***Pemrograman berorientasi objek** (English: object-oriented programming disingkat OOP) merupakan paradigma pemrograman berdasarkan konsep "objek", yang dapat berisi data, dalam bentuk field atau dikenal juga sebagai atribut; serta kode, dalam bentuk fungsi/prosedur atau dikenal juga sebagai method. Semua data dan fungsi di dalam paradigma ini dibungkus dalam kelas-kelas atau objek-objek.*

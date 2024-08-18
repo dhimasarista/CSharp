@@ -4,17 +4,22 @@ class Program
 {
     static void Main()
     {
-        // Mendefinisikan dua bilangan bulat
-        int number1 = 10; // 1010 dalam biner
-        int number2 = 5;  // 0101 dalam biner
+        Point point = new();
+        point.x = 12;
+        point.y = 22;
+        int multiple = point.multiple();
+        Console.WriteLine(multiple);
+    }
+}
 
-        // Melakukan operasi XOR
-        int result = number1 ^ number2;
+public struct Point
+{
+    public int x;
+    public int y;
 
-        // Menampilkan hasil operasi XOR
-        Console.WriteLine($"Hasil XOR dari {number1} dan {number2} adalah: {result}");
 
-        // Menampilkan hasil dalam biner
-        Console.WriteLine($"Dalam biner: {Convert.ToString(number1, 2)} ^ {Convert.ToString(number2, 2)} = {Convert.ToString(result, 2)}");
+    public int multiple()
+    {
+        return x * y;
     }
 }
