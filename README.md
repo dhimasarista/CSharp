@@ -1434,20 +1434,25 @@ Dengan menggunakan variabel yang berisi closure tersebut, kita dapat memanggilny
 
 # 4. Struct
 
-Struct adalah jenis data yang digunakan untuk menggabungkan beberapa bidang (fields) yang terkait bersama. Struct mirip dengan kelas (class), tetapi dengan beberapa perbedaan penting. Salah satu perbedaan utamanya adalah bahwa struct adalah tipe data nilai (value type), yang berarti ketika Anda membuat variabel dari struct, nilai sebenarnya disimpan dalam variabel tersebut. Sebaliknya, kelas adalah tipe data referensi (reference type), di mana variabel hanya menyimpan referensi ke objek di heap. Selain itu, struct tidak mendukung inheritance (warisan) dan tidak dapat memiliki constructor tanpa parameter.
+Struct adalah jenis data yang digunakan untuk menggabungkan beberapa bidang (fields) yang terkait bersama. Struct mirip dengan kelas (class), tetapi dengan beberapa perbedaan penting. Salah satu perbedaan utamanya adalah bahwa struct adalah tipe data nilai (value type), yang berarti ketika Anda membuat variabel dari struct, nilai sebenarnya disimpan dalam variabel tersebut. Sebaliknya, kelas adalah tipe data referensi (reference type), di mana variabel hanya menyimpan referensi ke objek di heap. Selain itu, struct tidak mendukung inheritance (warisan) dan tidak dapat memiliki constructor tanpa parameter (Kecuali di C#).
 
-> Berikut contoh kode Struct dan Methodnya.
+> Struct di C# tetap bisa melakukan pewarisan menggunakan Interface serta dapat memiliki Constructor.
+
+Berikut contoh kode Struct, Constructor dan Methodnya:
 
 ```go
 public struct Point {
+    // Properties
     public int X;
     public int Y;
 
+    // Constructor
     public Point(int x, int y) {
         X = x;
         Y = y;
     }
 
+    // Method
     public void Display() {
         Console.WriteLine($"X: {X}, Y: {Y}");
     }
@@ -1469,6 +1474,12 @@ Point point = new(){
   x = 12,
   y = 22
 };
+```
+
+Menggunakan Struct Constructor:
+
+```csharp
+Point point = new(12, 22);
 ```
 
 # 5. Object-Oriented Programming
