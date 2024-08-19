@@ -4,19 +4,26 @@ class Program
 {
     static void Main()
     {
-        // Mendefinisikan dua variabel
-        int a = 5;
-        int b = 10;
+        Point point = new(12, 22);
 
-        // Menampilkan nilai awal
-        Console.WriteLine($"Sebelum swap: a = {a}, b = {b}");
+        int multiple = point.multiple();
+        Console.WriteLine(multiple);
+    }
+}
 
-        // Menukar nilai menggunakan XOR
-        a = a ^ b;
-        b = a ^ b;
-        a = a ^ b;
+public struct Point
+{
+    public int x;
+    public int y;
 
-        // Menampilkan hasil setelah swap
-        Console.WriteLine($"Setelah swap: a = {a}, b = {b}");
+    public Point(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int multiple()
+    {
+        return x * y;
     }
 }
