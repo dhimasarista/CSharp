@@ -948,8 +948,11 @@ else {
 }
 ```
 
-- **Switch**
-  ```csharp
+- **Switch Expression**
+
+Berbeda dari `switch` tradisional, `switch expression` jauh lebih ringkas dan bersifat **expression-based** (menghasilkan nilai), bukan **statement-based** (blok pernyataan). Tidak diperlukan `break` atau `return` di setiap `case`, karena nilai dihasilkan langsung dari setiap ekspresi.
+
+- ```csharp
   string GetDayType(int day) => day switch {
       1 => "Senin",
       2 => "Selasa",
@@ -962,7 +965,9 @@ else {
   };
 
   ```
-- **Switch Case**
+
+  **
+- ****Switch Case****
 
 Pernyataan `switch-case` digunakan untuk memilih blok kode yang akan dijalankan berdasarkan nilai ekspresi yang cocok dengan nilai case tertentu. J
 
