@@ -727,19 +727,19 @@ var dictionary2 = new Dictionary<string, object>(){
 
 **Struct**: Struct adalah tipe data yang mirip dengan class tetapi merupakan tipe data nilai (value type) bukan tipe data referensi (reference type). Struct biasanya digunakan untuk menyimpan data sederhana seperti angka, titik koordinat, dll.
 
-> Dibahasa di Bab Struct.
+> dibahas di Bab Struct.
 
 **Interface**: Interface adalah kontrak yang mendefinisikan perilaku atau fungsi yang harus diimplementasikan oleh kelas. Interface memungkinkan polimorfisme dan abstraksi dalam pemrograman berorientasi objek.
 
-> *Dibahasa di Bab Object-Oriented Programming.*
+> *dibahas di Bab Object-Oriented Programming.*
 
 **Enum**: Enum (enumeration) adalah tipe data yang digunakan untuk mendefinisikan kumpulan nilai yang berurutan. Enum digunakan untuk membuat kumpulan nilai yang memiliki makna yang terkait.
 
-> *Dibahasa di Bab Object-Oriented Programming.*
+> *dibahas di Bab Object-Oriented Programming.*
 
 **Object**: Object adalah kelas dasar di C# yang digunakan untuk mewakili objek dalam pemrograman berorientasi objek. Semua tipe data di C#, termasuk tipe data primitif, secara implisit merupakan turunan dari Object.
 
-> *Dibahasa di Bab Object-Oriented Programming.*
+> *dibahas di Bab Object-Oriented Programming.*
 
 **Tuple**: Tuple adalah struktur data yang dapat menyimpan kumpulan elemen dengan tipe data yang berbeda. Tuple biasanya digunakan ketika Anda perlu mengembalikan beberapa nilai dari suatu metode atau menyimpan beberapa nilai secara bersamaan.
 
