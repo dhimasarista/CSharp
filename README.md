@@ -948,6 +948,20 @@ else {
 }
 ```
 
+- **Switch**
+  ```csharp
+  string GetDayType(int day) => day switch {
+      1 => "Senin",
+      2 => "Selasa",
+      3 => "Rabu",
+      4 => "Kamis",
+      5 => "Jumat",
+      6 => "Sabtu",
+      7 => "Minggu",
+      _ => "Hari tidak valid"
+  };
+
+  ```
 - **Switch Case**
 
 Pernyataan `switch-case` digunakan untuk memilih blok kode yang akan dijalankan berdasarkan nilai ekspresi yang cocok dengan nilai case tertentu. J
