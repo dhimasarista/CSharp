@@ -653,7 +653,7 @@ var name = "dhim";
 
 ***Data Structure** adalah cara penyimpanan, penyusunan dan pengaturan data di dalam media penyimpanan komputer sehingga data tersebut dapat digunakan secara efisien.*
 
-**1. Array**: Merupakan data item di C# yang digunakan untuk menyimpan kumpulan objek dalam urutan tertentu.
+**Array**: Merupakan data item di C# yang digunakan untuk menyimpan kumpulan objek dalam urutan tertentu.
 
 Membuat array:
 
@@ -776,6 +776,23 @@ public static Tuple<string, string> Hello(Tuple<string, string> preson){
 int[] arr1 = { 1, 2, 3 };
 int[] arr2 = { 4, 5, 6 };
 int[] arr3 = [..arr1, ..arr2];
+```
+
+**Anonymous Type**
+
+adalah tipe data yang tidak memiliki nama eksplisit, dan biasanya digunakan untuk membuat objek dengan cepat tanpa harus membuat kelas khusus. Tipe ini biasanya didefinisikan dengan new { } diikuti dengan properti-properti yang diinginkan.
+
+```csharp
+var person = new {
+  Name = "John",
+  Age = 30,
+}
+```
+
+Biasanya digunakan untuk membuat objek yang hanya sementara terutama saat menggunakan LINQ. Jika digunakan dengan tipe yang sudah didefinisikan (new ClassName {}), bisa disebut object initializer bukan anonymous type lagi.
+
+```csharp
+var person = new Person {}
 ```
 
 ## 1.5 Operators
