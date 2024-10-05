@@ -2477,7 +2477,7 @@ Console.WriteLine("Looping selesai.");
 
 **Race condition** adalah situasi yang dapat terjadi dalam program concurrent atau parallel ketika hasil eksekusi program bergantung pada urutan waktu di mana instruksi dijalankan. Hal ini dapat menyebabkan perilaku program yang tidak terduga dan bahkan berbahaya.
 
-Race condition biasanya terjadi ketika beberapa thread atau proses mengakses dan memodifikasi data yang sama secara bersamaan. Tanpa mekanisme sinkronisasi yang tepat, thread atau proses yang berbeda dapat saling menginterupsi dan menghasilkan data yang tidak konsisten.
+* [ ]  Race condition biasanya terjadi ketika beberapa thread atau proses mengakses dan memodifikasi data yang sama secara bersamaan. Tanpa mekanisme sinkronisasi yang tepat, thread atau proses yang berbeda dapat saling menginterupsi dan menghasilkan data yang tidak konsisten.
 
 ```csharp
 var numbers = new List<int>();

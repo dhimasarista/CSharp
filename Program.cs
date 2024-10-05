@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -19,19 +20,31 @@ class Program
                 // Hitung waktu mulai menggunakan Stopwatch
                 var stopwatch = Stopwatch.StartNew();
 
-                // Eksekusi query untuk mengambil kolom id dan name saja
+                // Eksekusi query untuk mengambil kolom id dan name
                 string query = "SELECT id, name FROM tps";
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
                     using (DbDataReader reader = await command.ExecuteReaderAsync())
                     {
+                        // List untuk menyimpan tugas parsing
+                        var tasks = new List<Task>();
+
                         // Parsing hasil query
                         while (await reader.ReadAsync())
                         {
+                            // Mengambil data di setiap iterasi
                             string id = reader["id"]?.ToString() ?? "null";
                             string name = reader["name"]?.ToString() ?? "null";
-                            Console.WriteLine($"ID: {id}, Name: {name}");
+
+                            // Menambahkan tugas ke list
+                            tasks.Add(Task.Run(() => 
+                                Console.WriteLine($"ID: {id}, Name: {name}");
+                            {
+                            }));
                         }
+
+                        // Menunggu semua tugas selesai
+                        await Task.WhenAll(tasks);
                     }
                 }
 
