@@ -72,6 +72,7 @@ public int Add(int a, int b)
 
 **Standard Library**
 
+
 | Standard Library   | Deskripsi                                                                    |
 | ------------------ | ---------------------------------------------------------------------------- |
 | System             | Namespace yang berisi tipe data dan fungsi-fungsi dasar dalam bahasa C#.     |
@@ -86,6 +87,7 @@ public int Add(int a, int b)
 | System.Diagnostics | Berisi kelas-kelas untuk mengelola proses dan layanan di sistem.             |
 
 **Libraries & Frameworks**
+
 
 | Kategori                          | Library/Framework                     | Deskripsi                                                                                         |
 | --------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -290,6 +292,7 @@ Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
 
 Dengan menyelaraskan tipe data dan ukurannya, panduan ini menjadi lebih mudah dipahami oleh pembaca.
 
+
 | Sistem bilangan           | Sintaks                  | Contoh |
 | ------------------------- | ------------------------ | ------ |
 | Desimal ( dasar 10 )      | Bilangan bulat biasa     |        |
@@ -388,7 +391,6 @@ Penting untuk dipahami bahwa perbedaan ini memiliki implikasi pada cara data dig
 Tambahkan kode ini terlebih dahulu `<AllowUnsafeBlocks>true</AllowUnsafeBlocks>` kedalam file csharp.csproj untuk mengizinkan penggunakan kode unsafe.
 
 ```html
-
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -512,7 +514,7 @@ string value4; // error
 Operator `is` digunakan untuk memeriksa apakah suatu objek merupakan instance dari tipe data tertentu. Jika objek tersebut adalah instance dari tipe data yang ditentukan, maka kondisi akan bernilai `true`, jika tidak, maka kondisi akan bernilai `false`.
 
 ```csharp
-  var obj = "Hello";
+var obj = "Hello";
   if (obj is string) {
       Console.WriteLine("obj adalah string");
   }
@@ -526,7 +528,7 @@ Operator `is` digunakan untuk memeriksa apakah suatu objek merupakan instance da
 Operator `typeof` digunakan untuk mendapatkan tipe data dari sebuah objek pada saat kompilasi. Hasil dari operasi `typeof` adalah objek `Type` yang mewakili tipe data dari objek yang ditentukan.
 
 ```csharp
-  Type type = typeof(string);
+Type type = typeof(string);
   Console.WriteLine($"Tipe data dari objek string adalah: {type}");
 ```
 
@@ -535,7 +537,7 @@ Operator `typeof` digunakan untuk mendapatkan tipe data dari sebuah objek pada s
 Operator `as` digunakan untuk mencoba melakukan konversi tipe data secara aman (safe casting). Jika konversi berhasil, maka nilai akan dihasilkan sesuai dengan tipe data yang ditentukan. Jika konversi gagal, maka nilai `null` akan dihasilkan.
 
 ```csharp
-  string str = obj as string;
+string str = obj as string;
 ```
 
 **Fungsi GetType()**
@@ -543,7 +545,7 @@ Operator `as` digunakan untuk mencoba melakukan konversi tipe data secara aman (
 Fungsi `GetType()` digunakan untuk mendapatkan tipe data dari sebuah objek pada saat runtime. Fungsi ini mengembalikan objek `Type` yang mewakili tipe data dari objek yang ditentukan.
 
 ```csharp
-  Type objType = obj.GetType();
+Type objType = obj.GetType();
 ```
 
 **Operator sizeof**
@@ -551,7 +553,7 @@ Fungsi `GetType()` digunakan untuk mendapatkan tipe data dari sebuah objek pada 
 Operator `sizeof` digunakan untuk mendapatkan ukuran dalam byte dari sebuah tipe data pada saat kompilasi. Operator ini dapat digunakan untuk tipe data primitif seperti `byte`, `int`, `float`, `long`, dan `char`.
 
 ```csharp
-  Console.WriteLine(sizeof(byte)); // 1
+Console.WriteLine(sizeof(byte)); // 1
   Console.WriteLine(sizeof(int)); // 4
   Console.WriteLine(sizeof(float)); // 4
   Console.WriteLine(sizeof(long)); // 8
@@ -628,6 +630,7 @@ const double pi = 3.14;
 var name = "dhim";
 ```
 
+
 | Jenis Data     | Contoh Nilai             | Deskripsi                                                                                 |
 | -------------- | ------------------------ | ----------------------------------------------------------------------------------------- |
 | bool           | true                     | Nilai kebenaran, true atau false                                                          |
@@ -660,7 +663,7 @@ Membuat array:
 ```csharp
 int[] array = { 0, 1, 2 }; // Jumlah dinamis
 var array2 = new int[3]; // Maksimal 3 elemen
-var array3 = new int[] { 0, 1, 2}; // Jumlah dinamis 
+var array3 = new int[] { 0, 1, 2}; // Jumlah dinamis
 ```
 
 Mendapatkan panjang array:
@@ -803,6 +806,7 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 
 ***Operator aritmatika** adalah operator yang digunakan untuk melakukan operasi matematika pada angka atau variabel numerik.* Operator ini digunakan untuk melakukan operasi seperti penjumlahan, pengurangan, perkalian, pembagian, dan sebagainya.
 
+
 | +  | Pertambahn              |
 | -- | ----------------------- |
 | -  | Pengurangan             |
@@ -814,6 +818,7 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 **Assignment**
 
 ***Operator assignment** adalah operator yang digunakan untuk menginisialisasi atau mengubah nilai dari suatu variabel dengan menggunakan nilai dari ekspresi lainnya.* Operator assignment digunakan untuk memberikan atau menugaskan nilai ekspresi ke variabel yang ditentukan.
+
 
 | Arithmetic  | Augmented Assignment |
 | ----------- | -------------------- |
@@ -827,6 +832,7 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 **Comparison**
 
 ***Operator perbandingan**, juga dikenal sebagai operator relasional, digunakan untuk membandingkan dua nilai atau ekspresi.* Hasil perbandingan adalah nilai boolean (true atau false), yang menunjukkan apakah pernyataan perbandingan tersebut benar atau salah.
+
 
 | Operators | Description             |
 | --------- | ----------------------- |
@@ -845,6 +851,7 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 
 Operator `&&` dalam pemrograman adalah operator logika AND. Operator ini digunakan untuk menggabungkan dua kondisi atau ekspresi boolean. Operator `&&` akan menghasilkan nilai `true` hanya jika kedua kondisi atau ekspresi tersebut bernilai `true`. Jika salah satu atau kedua kondisi tersebut bernilai `false`, maka hasilnya akan menjadi `false`.
 
+
 | Nilai 1 | Operator | Nilai 2 | Hasil |
 | ------- | -------- | ------- | ----- |
 | true    | &&       | true    | true  |
@@ -854,6 +861,7 @@ Operator `&&` dalam pemrograman adalah operator logika AND. Operator ini digunak
 **Operator ||**
 
 Operator `||` dalam pemrograman adalah operator logika OR. Operator ini digunakan untuk menggabungkan dua kondisi atau ekspresi boolean. Operator `||` akan menghasilkan nilai `true` jika salah satu dari kondisi atau ekspresi tersebut bernilai `true`. Jika kedua kondisi atau ekspresi tersebut bernilai `false`, maka hasilnya akan menjadi `false`.
+
 
 | Nilai 1 | Operator | Nilai 2 | Hasil |
 | ------- | -------- | ------- | ----- |
@@ -865,6 +873,7 @@ Operator `||` dalam pemrograman adalah operator logika OR. Operator ini digunaka
 
 Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator ini digunakan untuk membalikkan nilai boolean dari suatu kondisi atau ekspresi. Jika kondisi atau ekspresi awalnya bernilai `true`, operator `!` akan menghasilkan `false`, dan sebaliknya jika kondisi atau ekspresi awalnya bernilai `false`, operator `!` akan menghasilkan `true`.
 
+
 | Nilai 1 | Operator | Nilai 2 |
 | ------- | -------- | ------- |
 | true    | !        | false   |
@@ -873,6 +882,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 **Bitwise Operator**
 
 *Operator bitwise adalah operator yang digunakan untuk melakukan operasi pada level bit individu dari bilangan biner.* Operator bitwise bekerja dengan memanipulasi dan memanipulasi bit-bit individu dalam representasi biner dari bilangan.
+
 
 | Operator | Name                | Penggunaan | Deskripsi                                                |
 | -------- | ------------------- | ---------- | -------------------------------------------------------- |
@@ -884,6 +894,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 | >>>      | Geser kanan isi nol | a >>> b    | Menggeser setiap bit kekanan yang paling kanan diisi nol |
 
 **Contoh:**
+
 
 | Operator | Hasil | Biner       | Hasil |
 | -------- | ----- | ----------- | ----- |
@@ -899,6 +910,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 
 ***Increment dan decrement** adalah operasi yang digunakan untuk menambah atau mengurangi nilai suatu variabel secara berturut-turut. Dalam pemrograman, biasanya menggunakan operator increment (`++`) dan decrement (`--`) untuk melakukan operasi tersebut.*
 
+
 | Operators             |
 | --------------------- |
 | a++                   |
@@ -910,6 +922,7 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 **Type Test**
 
 ***Type test** adalah operator yang digunakan untuk memeriksa tipe (jenis) suatu objek atau nilai dalam program.* Operator ini memberikan hasil berupa nilai boolean (true atau false) berdasarkan tipe objek yang diperiksa.
+
 
 | Operators | Description                                                                          |
 | --------- | ------------------------------------------------------------------------------------ |
@@ -980,7 +993,6 @@ Berbeda dari `switch` tradisional, `switch expression` jauh lebih ringkas dan be
       7 => "Minggu",
       _ => "Hari tidak valid"
   };
-
   ```
 
   **
@@ -1182,7 +1194,6 @@ var guestName = guest ?? "Guest";
            Console.ReadKey();
        }
    }
-
    ```
 2. **File I/O**: adalah sebuah operasi membaca dan menulis file.
 3. **Network I/O**:  Adalah sebuah operasi I/O berbasis jaringan, seperti mengirim permintaan HTTP atau membuat koneksi socket.
@@ -1248,7 +1259,6 @@ Di dalam bahasa pemrograman, pure function (fungsi murni) adalah fungsi yang tid
 **Contoh dari pure function adalah seperti berikut ini:**
 
 ```csharp
-
 public static int Hitung(int a, int b){
         return a + b;
 }
@@ -1534,7 +1544,6 @@ public class Car {
         return model + " " + brand;
     }
 }
-
 ```
 
 ## 1. Object
@@ -1642,7 +1651,6 @@ class Program
         innerObj.DisplayOuterValue();
     }
 }
-
 ```
 
 ## 3. Property & Method
@@ -1807,7 +1815,6 @@ public class Programmer {
         Console.WriteLine("Hello, I'm a " + language + " Programmer.");
     }
 }
-
 ```
 
 ### Getter dan Setter Yang Tidak Perlu
@@ -2100,7 +2107,6 @@ class Program
         myObject.DisplayNumber();
     }
 }
-
 ```
 
 ## 11. Base Keyword
@@ -2127,7 +2133,6 @@ class Program {
         child.SomeMethod();
     }
 }
-
 ```
 
 **Base Constructor**
@@ -2429,18 +2434,18 @@ Di C#, concurrency dapat dicapai dengan berbagai teknik, seperti:
 
 ```csharp
 public class Program {
-  public static async Task Main(string[] args) {
-    Console.WriteLine("Mulai");
-    var result = await DatabaseQueryAsync(); // Menunggu hasil dari operasi database asynchronous
-    Console.WriteLine("Hasil: {0}", result);
-    Console.WriteLine("Selesai");
-  }
+  public static async Task Main(string[] args) {
+    Console.WriteLine("Mulai");
+    var result = await DatabaseQueryAsync(); // Menunggu hasil dari operasi database asynchronous
+    Console.WriteLine("Hasil: {0}", result);
+    Console.WriteLine("Selesai");
+  }
 
-  private static async Task<string> DatabaseQueryAsync() {
-    // Simulasi operasi database asynchronous
-    await Task.Delay(1000);
-    return "Data dari database";
-  }
+  private static async Task<string> DatabaseQueryAsync() {
+    // Simulasi operasi database asynchronous
+    await Task.Delay(1000);
+    return "Data dari database";
+  }
 }
 ```
 
@@ -2468,11 +2473,11 @@ Parallel.For(0, iterations, i =>
 Console.WriteLine("Looping selesai.");
 ```
 
-### 4. Race Condition
+### 3. Race Condition
 
 **Race condition** adalah situasi yang dapat terjadi dalam program concurrent atau parallel ketika hasil eksekusi program bergantung pada urutan waktu di mana instruksi dijalankan. Hal ini dapat menyebabkan perilaku program yang tidak terduga dan bahkan berbahaya.
 
-Race condition biasanya terjadi ketika beberapa thread atau proses mengakses dan memodifikasi data yang sama secara bersamaan. Tanpa mekanisme sinkronisasi yang tepat, thread atau proses yang berbeda dapat saling menginterupsi dan menghasilkan data yang tidak konsisten.
+* [ ]  Race condition biasanya terjadi ketika beberapa thread atau proses mengakses dan memodifikasi data yang sama secara bersamaan. Tanpa mekanisme sinkronisasi yang tepat, thread atau proses yang berbeda dapat saling menginterupsi dan menghasilkan data yang tidak konsisten.
 
 ```csharp
 var numbers = new List<int>();
@@ -2897,7 +2902,6 @@ class Program
         Console.WriteLine("After replacement: " + replaced);
     }
 }
-
 ```
 
 # 14. Preprocessor Directives
@@ -3010,3 +3014,4 @@ e. **`#region` dan `#endregion`**
       // Methods here
   #endregion
   ```
+  sdsd
