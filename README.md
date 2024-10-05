@@ -572,7 +572,7 @@ Integer angka = 10;
 
 Dalam contoh di atas, kita membuat alias `Integer` untuk tipe data `System.Int32` (tipe data integer 32-bit). Dengan demikian, kita dapat menggunakan `Integer` sebagai alternatif untuk `Int32`. Ini memudahkan kita untuk menggunakan nama yang lebih deskriptif atau sesuai dengan konteks tertentu.
 
-## 1. 2 Konversi, Type Check, & Casting Tipe Data
+## 1.2 Konversi, Type Check, & Casting Tipe Data
 
 ```cs
 // Konversi tipe data, number ke number
