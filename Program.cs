@@ -1,25 +1,34 @@
 using System;
-using System.IO;
-using System.Reflection;
-// Dapatkan assembly saat ini
-        var assembly = Assembly.GetExecutingAssembly();
+using System.Diagnostics;
+using System.Threading.Tasks;
 
-        // Nama file resource - gunakan namespace lengkap + nama file
-        string resourceName = "CSharp.Sample.txt"; // Sesuaikan dengan namespace Anda
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        const int iterations = 10_000_000;
 
-        // Buka stream untuk membaca resource
-        using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+        // Task Parallel
+        var sw = Stopwatch.StartNew();
+        Parallel.For(0, iterations, i =>
         {
-            if (stream != null)
+            var result = Math.Sqrt(i);
+        });
+        sw.Stop();
+        Console.WriteLine($"Task Parallel Execution Time: {sw.ElapsedMilliseconds} ms");
+
+        // Async
+        sw.Restart();
+        var tasks = new Task[iterations];
+        for (int i = 0; i < iterations; i++)
+        {
+            tasks[i] = Task.Run(() =>
             {
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    string content = reader.ReadToEnd();
-                    Console.WriteLine(content);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Resource tidak ditemukan.");
-            }
+                var result = Math.Sqrt(i);
+            });
         }
+        await Task.WhenAll(tasks);
+        sw.Stop();
+        Console.WriteLine($"Async Execution Time: {sw.ElapsedMilliseconds} ms");
+    }
+}

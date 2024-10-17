@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.3.0" />
-    <EmbeddedResource Include="./Sample.txt" />
   </ItemGroup>
 
 </Project>
