@@ -1,20 +1,32 @@
 using System;
-using System.Linq;
+using System.IO;
+using System.Reflection;
 
 class Program
 {
     static void Main()
     {
-        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        // Dapatkan assembly saat ini
+        var assembly = Assembly.GetExecutingAssembly();
 
-        // Menyaring bilangan genap
-        var evenNumbers = from num in numbers
-                          where num % 2 == 0
-                          select num;
+        // Nama file resource - gunakan namespace lengkap + nama file
+        string resourceName = "CSharp.Sample.txt"; // Sesuaikan dengan namespace Anda
 
-        foreach (var num in evenNumbers)
+        // Buka stream untuk membaca resource
+        using (Stream stream = assembly.GetManifestResourceStream(resourceName))
         {
-            Console.WriteLine(num); // Output: 2, 4, 6, 8, 10
+            if (stream != null)
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string content = reader.ReadToEnd();
+                    Console.WriteLine(content);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Resource tidak ditemukan.");
+            }
         }
     }
 }

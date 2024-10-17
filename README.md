@@ -2772,7 +2772,7 @@ Dalam lingkungan pengembangan C#, ada beberapa alat yang sering digunakan untuk 
 
 #### Cara Menggunakan Nunit:
 
-1. Dari direktori utama project, jalankan perintah di terminal `dotnet new nunit -N TestProject1`.
+1.  Dari direktori utama project, jalankan perintah di terminal `dotnet new nunit -N TestProject1`.
 2. Maka akan menghasilkan folder baru bernama TestProject1, dengan isi .csproject dan UnitTest1.cs
 3. Masuk ke direktori TestProject, buat file `Using.cs`:
 
