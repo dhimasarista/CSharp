@@ -1,12 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
-
-class Program
-{
-    static void Main()
-    {
-        // Dapatkan assembly saat ini
+// Dapatkan assembly saat ini
         var assembly = Assembly.GetExecutingAssembly();
 
         // Nama file resource - gunakan namespace lengkap + nama file
@@ -28,5 +23,3 @@ class Program
                 Console.WriteLine("Resource tidak ditemukan.");
             }
         }
-    }
-}

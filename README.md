@@ -72,7 +72,6 @@ public int Add(int a, int b)
 
 **Standard Library**
 
-
 | Standard Library   | Deskripsi                                                                    |
 | ------------------ | ---------------------------------------------------------------------------- |
 | System             | Namespace yang berisi tipe data dan fungsi-fungsi dasar dalam bahasa C#.     |
@@ -87,7 +86,6 @@ public int Add(int a, int b)
 | System.Diagnostics | Berisi kelas-kelas untuk mengelola proses dan layanan di sistem.             |
 
 **Libraries & Frameworks**
-
 
 | Kategori                          | Library/Framework                     | Deskripsi                                                                                         |
 | --------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -291,7 +289,6 @@ Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
   - 64-bit: double
 
 Dengan menyelaraskan tipe data dan ukurannya, panduan ini menjadi lebih mudah dipahami oleh pembaca.
-
 
 | Sistem bilangan           | Sintaks                  | Contoh |
 | ------------------------- | ------------------------ | ------ |
@@ -630,7 +627,6 @@ const double pi = 3.14;
 var name = "dhim";
 ```
 
-
 | Jenis Data     | Contoh Nilai             | Deskripsi                                                                                 |
 | -------------- | ------------------------ | ----------------------------------------------------------------------------------------- |
 | bool           | true                     | Nilai kebenaran, true atau false                                                          |
@@ -806,7 +802,6 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 
 ***Operator aritmatika** adalah operator yang digunakan untuk melakukan operasi matematika pada angka atau variabel numerik.* Operator ini digunakan untuk melakukan operasi seperti penjumlahan, pengurangan, perkalian, pembagian, dan sebagainya.
 
-
 | +  | Pertambahan             |
 | -- | ----------------------- |
 | -  | Pengurangan             |
@@ -818,7 +813,6 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 **Assignment**
 
 ***Operator assignment** adalah operator yang digunakan untuk menginisialisasi atau mengubah nilai dari suatu variabel dengan menggunakan nilai dari ekspresi lainnya.* Operator assignment digunakan untuk memberikan atau menugaskan nilai ekspresi ke variabel yang ditentukan.
-
 
 | Arithmetic  | Augmented Assignment |
 | ----------- | -------------------- |
@@ -832,7 +826,6 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 **Comparison**
 
 ***Operator perbandingan**, juga dikenal sebagai operator relasional, digunakan untuk membandingkan dua nilai atau ekspresi.* Hasil perbandingan adalah nilai boolean (true atau false), yang menunjukkan apakah pernyataan perbandingan tersebut benar atau salah.
-
 
 | Operators | Description             |
 | --------- | ----------------------- |
@@ -851,7 +844,6 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 
 Operator `&&` dalam pemrograman adalah operator logika AND. Operator ini digunakan untuk menggabungkan dua kondisi atau ekspresi boolean. Operator `&&` akan menghasilkan nilai `true` hanya jika kedua kondisi atau ekspresi tersebut bernilai `true`. Jika salah satu atau kedua kondisi tersebut bernilai `false`, maka hasilnya akan menjadi `false`.
 
-
 | Nilai 1 | Operator | Nilai 2 | Hasil |
 | ------- | -------- | ------- | ----- |
 | true    | &&       | true    | true  |
@@ -861,7 +853,6 @@ Operator `&&` dalam pemrograman adalah operator logika AND. Operator ini digunak
 **Operator ||**
 
 Operator `||` dalam pemrograman adalah operator logika OR. Operator ini digunakan untuk menggabungkan dua kondisi atau ekspresi boolean. Operator `||` akan menghasilkan nilai `true` jika salah satu dari kondisi atau ekspresi tersebut bernilai `true`. Jika kedua kondisi atau ekspresi tersebut bernilai `false`, maka hasilnya akan menjadi `false`.
-
 
 | Nilai 1 | Operator | Nilai 2 | Hasil |
 | ------- | -------- | ------- | ----- |
@@ -873,7 +864,6 @@ Operator `||` dalam pemrograman adalah operator logika OR. Operator ini digunaka
 
 Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator ini digunakan untuk membalikkan nilai boolean dari suatu kondisi atau ekspresi. Jika kondisi atau ekspresi awalnya bernilai `true`, operator `!` akan menghasilkan `false`, dan sebaliknya jika kondisi atau ekspresi awalnya bernilai `false`, operator `!` akan menghasilkan `true`.
 
-
 | Nilai 1 | Operator | Nilai 2 |
 | ------- | -------- | ------- |
 | true    | !        | false   |
@@ -882,7 +872,6 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 **Bitwise Operator**
 
 *Operator bitwise adalah operator yang digunakan untuk melakukan operasi pada level bit individu dari bilangan biner.* Operator bitwise bekerja dengan memanipulasi dan memanipulasi bit-bit individu dalam representasi biner dari bilangan.
-
 
 | Operator | Name                | Penggunaan | Deskripsi                                                |
 | -------- | ------------------- | ---------- | -------------------------------------------------------- |
@@ -894,7 +883,6 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 | >>>      | Geser kanan isi nol | a >>> b    | Menggeser setiap bit kekanan yang paling kanan diisi nol |
 
 **Contoh:**
-
 
 | Operator | Hasil | Biner       | Hasil |
 | -------- | ----- | ----------- | ----- |
@@ -910,7 +898,6 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 
 ***Increment dan decrement** adalah operasi yang digunakan untuk menambah atau mengurangi nilai suatu variabel secara berturut-turut. Dalam pemrograman, biasanya menggunakan operator increment (`++`) dan decrement (`--`) untuk melakukan operasi tersebut.*
 
-
 | Operators             |
 | --------------------- |
 | a++                   |
@@ -922,7 +909,6 @@ Operator `!` dalam pemrograman adalah operator logika NOT atau negasi. Operator 
 **Type Test**
 
 ***Type test** adalah operator yang digunakan untuk memeriksa tipe (jenis) suatu objek atau nilai dalam program.* Operator ini memberikan hasil berupa nilai boolean (true atau false) berdasarkan tipe objek yang diperiksa.
-
 
 | Operators | Description                                                                          |
 | --------- | ------------------------------------------------------------------------------------ |
@@ -1142,6 +1128,7 @@ var guestName = guest ?? "Guest";
 ***Input dan output (I/O)** mengacu pada proses menerima input dari pengguna atau sumber eksternal,* serta menampilkan output ke pengguna atau menyimpannya di sumber eksternal seperti file. C# menyediakan beberapa cara untuk melakukan I/O, tergantung pada jenis I/O yang ingin Anda lakukan. Berikut adalah beberapa konsep I/O yang umum digunakan:
 
 1. **Console Input/Output**: adalah proses I/O dengan cara menampilkannya ke konsol
+
    ```csharp
    using System;
 
@@ -1196,7 +1183,94 @@ var guestName = guest ?? "Guest";
    }
    ```
 2. **File I/O**: adalah sebuah operasi membaca dan menulis file.
-3. **Network I/O**:  Adalah sebuah operasi I/O berbasis jaringan, seperti mengirim permintaan HTTP atau membuat koneksi socket.
+
+   ```csharp
+   using System.IO;
+
+   class Program
+   {
+       static void Main()
+       {
+           // Menulis ke file
+           File.WriteAllText("example.txt", "Hello, File I/O!");
+
+           // Membaca dari file
+           string content = File.ReadAllText("example.txt");
+           System.Console.WriteLine(content);
+       }
+   }
+
+   ```
+3. **Network I/O**:  adalah sebuah operasi I/O berbasis jaringan, seperti mengirim permintaan HTTP atau membuat koneksi socket.
+
+```csharp
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        HttpClient client = new HttpClient();
+        string result = await client.GetStringAsync("https://api.github.com");
+        Console.WriteLine(result);
+    }
+}
+
+```
+
+1. **Embedded Resource**: Di C# memungkinkan untuk menyertakan file (seperti teks, gambar, JSON, dll.) langsung ke dalam assembly aplikasi Anda. Dengan cara ini, file tersebut menjadi bagian dari assembly dan dapat diakses tanpa perlu berada di disk sebagai file terpisah saat aplikasi dijalankan.
+
+   **Langkah-langkah untuk Menggunakan Embedded Resources di C#:**
+
+* Buat file dengan format .txt seperti `Sample.txt`
+* Menambahkan file embedded resource ke file .csproj:
+
+```xml
+<ItemGroup>
+    <!-- Menambahkan file example.txt sebagai Embedded Resource -->
+    <EmbeddedResource Include="./Sample.txt" />
+  </ItemGroup>
+```
+
+* Contoh kode embedded resource:
+
+```csharp
+using System;
+using System.IO;
+using System.Reflection;
+
+class Program
+{
+    static void Main()
+    {
+        // Dapatkan assembly saat ini
+        var assembly = Assembly.GetExecutingAssembly();
+
+        // Nama file resource - gunakan namespace lengkap + nama file
+        string resourceName = "NamaProject.Sample.txt"; // Sesuaikan dengan namespace Anda
+
+        // Buka stream untuk membaca resource
+        using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+        {
+            if (stream != null)
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string content = reader.ReadToEnd();
+                    Console.WriteLine(content);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Resource tidak ditemukan.");
+            }
+        }
+    }
+}
+
+```
 
 ## 1.9 Using Keyword
 
@@ -2477,7 +2551,7 @@ Console.WriteLine("Looping selesai.");
 
 **Race condition** adalah situasi yang dapat terjadi dalam program concurrent atau parallel ketika hasil eksekusi program bergantung pada urutan waktu di mana instruksi dijalankan. Hal ini dapat menyebabkan perilaku program yang tidak terduga dan bahkan berbahaya.
 
-* [ ]  Race condition biasanya terjadi ketika beberapa thread atau proses mengakses dan memodifikasi data yang sama secara bersamaan. Tanpa mekanisme sinkronisasi yang tepat, thread atau proses yang berbeda dapat saling menginterupsi dan menghasilkan data yang tidak konsisten.
+* [ ] Race condition biasanya terjadi ketika beberapa thread atau proses mengakses dan memodifikasi data yang sama secara bersamaan. Tanpa mekanisme sinkronisasi yang tepat, thread atau proses yang berbeda dapat saling menginterupsi dan menghasilkan data yang tidak konsisten.
 
 ```csharp
 var numbers = new List<int>();
@@ -2772,8 +2846,8 @@ Dalam lingkungan pengembangan C#, ada beberapa alat yang sering digunakan untuk 
 
 #### Cara Menggunakan Nunit:
 
-1.  Dari direktori utama project, jalankan perintah di terminal `dotnet new nunit -N TestProject1`.
-2. Maka akan menghasilkan folder baru bernama TestProject1, dengan isi .csproject dan UnitTest1.cs
+1. Diluar project utama buat project khusus testing, jalankan perintah di terminal `dotnet new nunit -N TestProject1`.
+2. Maka akan menghasilkan folder bernama `TestProject1`, dengan isi `.csproject `dan `UnitTest1.cs`
 3. Masuk ke direktori TestProject, buat file `Using.cs`:
 
 ```cs
@@ -2805,7 +2879,7 @@ public class UnitTest1
 
 ```
 
-5. Masih di direktori testing, jalankan perintah `dotnet test` untuk menjalankan unit test.
+5. Kemudian, jalankan perintah `dotnet test` untuk menjalankan unit test.
 6. Menjalankan file tertentu, menggunakan `dotnet test --filter "FullyQualifiedName~UnitTest2"`.
 7. Menjalankan file yang namanya ada unsur kata yang diinginkan, `dotnet test --filter "Name~Test2"`
 
