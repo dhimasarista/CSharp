@@ -1,13 +1,28 @@
-class Program {
-    public static void Main(){
-        var numbers = new List<int>();
-        Parallel.For(0, 10, i => {
-            numbers.Add(i);
-        });
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-        foreach (var item in numbers)
+namespace ExampleApp.Tests
+{
+    [TestClass]
+    public class CalculatorTests
+    {
+        [TestMethod]
+        public void Add_ShouldReturnCorrectSum()
         {
-            Console.WriteLine(item); 
+            // Arrange
+            var calculator = new Calculator();
+            int a = 5;
+            int b = 10;
+
+            // Act
+            var result = calculator.Add(a, b);
+
+            // Assert
+            Assert.AreEqual(15, result);
         }
+    }
+
+    public class Calculator
+    {
+        public int Add(int x, int y) => x + y;
     }
 }
