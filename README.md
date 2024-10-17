@@ -152,7 +152,7 @@ Cara pertama:
 2. Tambahkan elemen `<PublishAot>true</PublishAot>` di dalam tag `<PropertyGroup>`.
 3. Simpan perubahan dan tutup file `.csproj`.
 4. Buka terminal atau command prompt.
-5. Dan jalankan perintah `dotnet publish` .
+5. Dan jalankan perintah `dotnet publish -c Release -r linux-x64`
 
 Cara Kedua: Tanpa Menambahkan elemen ke .csproj
 
