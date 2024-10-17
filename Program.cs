@@ -1,28 +1,20 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Linq;
 
-namespace ExampleApp.Tests
+class Program
 {
-    [TestClass]
-    public class CalculatorTests
+    static void Main()
     {
-        [TestMethod]
-        public void Add_ShouldReturnCorrectSum()
+        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+        // Menyaring bilangan genap
+        var evenNumbers = from num in numbers
+                          where num % 2 == 0
+                          select num;
+
+        foreach (var num in evenNumbers)
         {
-            // Arrange
-            var calculator = new Calculator();
-            int a = 5;
-            int b = 10;
-
-            // Act
-            var result = calculator.Add(a, b);
-
-            // Assert
-            Assert.AreEqual(15, result);
+            Console.WriteLine(num); // Output: 2, 4, 6, 8, 10
         }
-    }
-
-    public class Calculator
-    {
-        public int Add(int x, int y) => x + y;
     }
 }
