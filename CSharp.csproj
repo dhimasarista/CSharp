@@ -6,9 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-<PublishAot>true</PublishAot> <!-- Mengaktifkan AOT Compilation -->
-    <SelfContained>true</SelfContained> <!-- Mengaktifkan Self-Contained Deployment -->
-    <RuntimeIdentifier>linux-x64</RuntimeIdentifier> <!-- Ganti dengan platform yang sesuai -->
+    <PublishAot>true</PublishAot>
+    <!-- <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier> -->
   </PropertyGroup>
 
   <ItemGroup>
