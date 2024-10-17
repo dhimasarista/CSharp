@@ -133,7 +133,7 @@ public int Add(int a, int b)
 2. Navigasikan ke direktori proyek C#.
 3. Jalankan perintah `dotnet watch run`  atau `dotnet watch` saja untuk menjalankan proyek. Ini akan mengkompilasi dan menjalankan proyek secara bersamaan, dimana kode `Program.cs` yang akan dieksekusi.
 
-**Mengompilasi Kode C# dengan JIT Compilation:**
+**Mengompilasi Kode C# dengan JIT Compilation:** Kompilasi dilakukan saat eksekusi, memberikan fleksibilitas dan optimasi berdasarkan runtime.
 
 1. Pastikan Anda memiliki `.NET Core SDK` terinstal.
 2. Buka terminal atau command prompt.
@@ -142,7 +142,7 @@ public int Add(int a, int b)
 5. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`.
 6. compiler akan menghasilkan file `NamaProgram.dll` atau jika diwindows menghasilkan bersamaan `NamaProgram.exe` dan dilinux sebaliknya.
 
-**Mengompilasi Kode C# dengan AOT Compilation:**
+**Mengompilasi Kode C# dengan AOT Compilation:** Kompilasi dilakukan sebelum eksekusi, menghasilkan kecepatan startup yang lebih cepat.
 
 > Pastikan Anda memiliki `.NET Core SDK` dan `dotnet-runtime` terbaru yang mendukung AOT compilation.
 
@@ -154,12 +154,30 @@ Cara pertama:
 4. Buka terminal atau command prompt.
 5. Dan jalankan perintah `dotnet publish` .
 
-Cara Kedua:
+Cara Kedua: Tanpa Menambahkan elemen ke .csproj
 
 1. Menambahkan `/p:PublishAot=true` saat melakukan kompilasi.
 2. `dotnet publish /p:PublishAot=true`
+3. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`/native.
 
-Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`/native.
+**Mengompilasi Kode C# dengan Self-Contained**: Aplikasi yang dibundel dengan semua dependensi, termasuk runtime, untuk kemudahan distribusi dan portabilitas.
+
+1. Pertama menambahkan beberapa elemen penting di .csproj:
+
+```csharp
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <SelfContained>true</SelfContained> <!-- Tambahkan dengan nilai true -->
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier> <!-- Ganti dengan platform yang sesuai -->
+  </PropertyGroup>
+</Project>
+
+```
+
+2. Kemudian di terminal dengan perintah, `dotnet publish -c Release -r linux-x64 --self-contained`
+3. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/`.
 
 **Opsi kompilasi .NET Core (dotnet) yang umum digunakan adalah:**
 
