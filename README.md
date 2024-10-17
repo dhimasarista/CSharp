@@ -2811,8 +2811,6 @@ public class UnitTest1
 
 ### 2. Debugging dalam C#:
 
-**Teknik Debugging:**
-
 Debugging adalah proses mengidentifikasi, memahami, dan memperbaiki kesalahan dalam kode program. Dalam C#, Anda dapat menggunakan beberapa teknik debugging, termasuk:
 
 - **Breakpoints**: Anda dapat menempatkan titik henti (breakpoints) di dalam kode Anda untuk memberhentikan eksekusi dan memeriksa nilai variabel pada titik tertentu dalam eksekusi program.
