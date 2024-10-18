@@ -1,28 +1,29 @@
-public struct Point {
-    // Properties
-    public int X;
-    public int Y;
+using System;
+using System.Collections.Generic;
 
-    // Constructor
-    public Point(int x, int y) {
-        X = x;
-        Y = y;
-    }
+class Animal
+{
+    public virtual void Speak() => Console.WriteLine("Animal sound");
+}
 
-    // Method
-    public void Display() {
-        Console.WriteLine($"X: {X}, Y: {Y}");
-    }
+class Dog : Animal
+{
+    public override void Speak() => Console.WriteLine("Dog barks");
 }
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        Point point = new();
-        point.X = 12;
-        point.Y = 22;
+        // Array of Dogs
+        Dog[] dogs = new Dog[] { new Dog(), new Dog() };
 
-        Console.WriteLine(point.X);
+        // Covariance: IEnumerable<Dog> can be assigned to IEnumerable<Animal>
+        IEnumerable<Animal> animals = dogs;
+
+        foreach (Animal animal in animals)
+        {
+            animal.Speak();  // Calls Dog's Speak method
+        }
     }
 }
