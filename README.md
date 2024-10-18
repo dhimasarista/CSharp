@@ -2741,6 +2741,39 @@ public static void ReverseArray<T>(T[] array){}
 
 Covariant artinya kita bisa melakukan subtitusi subtype (child) dengan supertype (parent), namun hati-hati ketika melakukan covariant, karena jika sampai salah mengubah datanya, maka akan terjadi error pada saat runtime, tidak akan terdeteksi ketika proses compile.
 
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Animal
+{
+    public virtual void Speak() => Console.WriteLine("Animal sound");
+}
+
+class Dog : Animal
+{
+    public override void Speak() => Console.WriteLine("Dog barks");
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Array of Dogs
+        Dog[] dogs = new Dog[] { new Dog(), new Dog() };
+
+        // Covariance: IEnumerable<Dog> can be assigned to IEnumerable<Animal>
+        IEnumerable<Animal> animals = dogs;
+
+        foreach (Animal animal in animals)
+        {
+            animal.Speak();  // Calls Dog's Speak method
+        }
+    }
+}
+
+```
+
 # 9. Language Integrated Query (LINQ)
 
 LINQ adalah singkatan dari Language Integrated Query, yang merupakan fitur kunci dalam bahasa pemrograman C# (dan juga dalam Visual Basic .NET) yang memungkinkan Anda menulis kueri terhadap berbagai jenis sumber data langsung di dalam kode Anda. Dengan LINQ, Anda dapat melakukan operasi query terhadap berbagai jenis data, seperti array, koleksi objek, XML, dan database relasional, menggunakan sintaks yang mirip dengan SQL (Structured Query Language).
