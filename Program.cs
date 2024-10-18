@@ -1,11 +1,28 @@
-using System;
+public struct Point {
+    // Properties
+    public int X;
+    public int Y;
+
+    // Constructor
+    public Point(int x, int y) {
+        X = x;
+        Y = y;
+    }
+
+    // Method
+    public void Display() {
+        Console.WriteLine($"X: {X}, Y: {Y}");
+    }
+}
 
 class Program
 {
     static void Main(string[] args)
     {
-        int hex = 0xFF;
-        Console.WriteLine(hex == 255);
-        Console.WriteLine(hex == 0);
+        Point point = new();
+        point.X = 12;
+        point.Y = 22;
+
+        Console.WriteLine(point.X);
     }
 }
