@@ -2713,8 +2713,8 @@ Parameter type di Generic class boleh lebih dari satu. Namun harus menggunakan n
 
 ```csharp
 class Pair<K, V> {
-    K first;
-    V second;
+    public K First;
+    public V Second;
     public Pair(K first, V second)
     {
         this.first = first;
