@@ -547,7 +547,7 @@ Operator `typeof` digunakan untuk mendapatkan tipe data dari sebuah objek pada s
 
 ```csharp
 Type type = typeof(string);
-  Console.WriteLine($"Tipe data dari objek string adalah: {type}");
+Console.WriteLine($"Tipe data dari objek string adalah: {type}");
 ```
 
 **Operator as**
