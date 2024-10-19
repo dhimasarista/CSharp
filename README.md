@@ -287,7 +287,7 @@ Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
 
 - **maui**: Workload untuk pengembangan aplikasi lintas platform menggunakan .NET Multi-platform App UI (.NET MAUI).
 - **wasm-tools**: Workload untuk pengembangan aplikasi Blazor WebAssembly.
-- **android** dan **ios**: Workload untuk pengembangan aplikasi mobile menggunakan Xamarin.1. Basic
+- **android** dan **ios**: Workload untuk pengembangan aplikasi mobile menggunakan Xamarin.
 
 # 1. Basic
 
