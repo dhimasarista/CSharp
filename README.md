@@ -397,6 +397,9 @@ Tipe Referensi (Reference Types)
 ```csharp
 int[] arr1 = {1, 2, 3};
 int[] arr2 = arr1; // Hanya alamat memori dari arr1 yang disalin ke arr2
+arr2[1] = 4;
+
+Console.WriteLine(arr1[1]); // output: 4
 ```
 
 Penting untuk dipahami bahwa perbedaan ini memiliki implikasi pada cara data digunakan dan dimanipulasi dalam program. Mengetahui perbedaan antara tipe nilai dan tipe referensi dapat membantu dalam pemrograman yang efisien dan menghindari kesalahan yang umum terkait dengan manajemen memori.

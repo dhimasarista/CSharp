@@ -1,14 +1,5 @@
-class Pair<K, V> {
-    public K First;
-    public V Second;
-    public Pair(K first, V second)
-    {
-        this.first = first;
-        this.second = second;
-    }
-}
-class Program {
-    public static void Main(string[] args){
-        var pair = new Pair<string, string>("Hello", "World");
-    }
-}
+int[] arr1 = {1, 2, 3};
+int[] arr2 = arr1; // Hanya alamat memori dari arr1 yang disalin ke arr2
+arr2[1] = 4;
+
+Console.WriteLine(arr1[1]); // output: 4
