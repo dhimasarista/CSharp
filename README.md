@@ -571,7 +571,7 @@ Type objType = obj.GetType();
 Operator `sizeof` digunakan untuk mendapatkan ukuran dalam byte dari sebuah tipe data pada saat kompilasi. Operator ini dapat digunakan untuk tipe data primitif seperti `byte`, `int`, `float`, `long`, dan `char`.
 
 ```csharp
-Console.WriteLine(sizeof(byte)); // 1
+  Console.WriteLine(sizeof(byte)); // 1
   Console.WriteLine(sizeof(int)); // 4
   Console.WriteLine(sizeof(float)); // 4
   Console.WriteLine(sizeof(long)); // 8
