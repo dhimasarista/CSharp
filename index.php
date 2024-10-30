@@ -123,3 +123,4 @@ function decode(string $text): string
 }
 
 echo encode("Muhammad Dhimas Arista");
+echo decode(encode("Muhammad Dhimas Arista"));
