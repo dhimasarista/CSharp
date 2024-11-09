@@ -2,7 +2,7 @@
 
 ![1713255318223](image/README/1713255318223.png)
 
-****C#** (dibaca:  ***see sharp*** ) adalah sebuah [bahasa pemrograman](https://id.wikipedia.org/wiki/Bahasa_pemrograman "Bahasa pemrograman") [berorientasi objek ( *object-oriented language* )](https://id.wikipedia.org/wiki/Pemrograman_Berorientasi_Objek "Pemrograman Berorientasi Objek") yang dikembangkan oleh [Microsoft](https://id.wikipedia.org/wiki/Microsoft "Microsoft") sebagai bagian dari inisiatif kerangka [.NET Framework](https://id.wikipedia.org/wiki/Microsoft_.NET "Microsoft .NET"). Bahasa pemrograman ini dibuat berbasiskan bahasa [C++](https://id.wikipedia.org/wiki/C%2B%2B "C++") yang telah dipengaruhi oleh aspek-aspek ataupun fitur bahasa yang terdapat pada bahasa-bahasa pemrograman lainnya seperti [Java](https://id.wikipedia.org/wiki/Java "Java"), [Delphi](https://id.wikipedia.org/wiki/Delphi "Delphi"), [Visual Basic](https://id.wikipedia.org/wiki/Visual_Basic "Visual Basic"), dan lain-lain dengan beberapa penyederhanaan. Menurut standar***[ECMA-334 C# Language Specification](http://www.ecma-international.org/publications/standards/Ecma-334.htm)***, nama C# terdiri atas sebuah huruf Latin [C](https://id.wikipedia.org/wiki/C "C") **(**[U+0043](https://id.wikipedia.org/wiki/Unicode "Unicode")**) yang diikuti oleh tanda pagar yang menandakan angka # **(**[U+0023](https://id.wikipedia.org/wiki/Unicode "Unicode")). Tanda pagar # yang digunakan memang bukan tanda kres dalam seni musik (U+266F), dan tanda pagar # (U+0023) tersebut digunakan karena karakter kres dalam seni musik tidak terdapat di dalam**[papan tombol](https://id.wikipedia.org/wiki/Papan_tombol "Papan tombol")**standar.**
+**C#** (dibaca:  ***see sharp*** ) adalah sebuah bahasa pemrograman berorientasi objek ( *object-oriented language* ) yang dikembangkan oleh **Microsoft** sebagai bagian dari inisiatif kerangka **.NET Framework**. Bahasa pemrograman ini dibuat berbasiskan bahasa C++ yang telah dipengaruhi oleh aspek-aspek ataupun fitur bahasa yang terdapat pada bahasa-bahasa pemrograman lainnya seperti Java, Delphi, VisualBasic, dan lain-lain dengan beberapa penyederhanaan. Menurut standar ***ECMA-334 C# Language Specification***, nama C# terdiri atas sebuah huruf Latin C **(**U+0043**)** yang diikuti oleh tanda pagar yang menandakan angka # (U+0023). Tanda pagar # yang digunakan memang bukan tanda kres dalam seni musik (U+266F), dan tanda pagar # (U+0023) tersebut digunakan karena karakter kres dalam seni musik tidak terdapat di dalam papan tombol standar.
 
 > Sumber: Wikipedia
 
@@ -133,7 +133,7 @@ public int Add(int a, int b)
 2. Navigasikan ke direktori proyek C#.
 3. Jalankan perintah `dotnet watch run`  atau `dotnet watch` saja untuk menjalankan proyek. Ini akan mengkompilasi dan menjalankan proyek secara bersamaan, dimana kode `Program.cs` yang akan dieksekusi.
 
-**Mengompilasi Kode C# dengan JIT Compilation:**
+**Mengompilasi Kode C# dengan JIT Compilation:** Kompilasi dilakukan saat eksekusi, memberikan fleksibilitas dan optimasi berdasarkan runtime.
 
 1. Pastikan Anda memiliki `.NET Core SDK` terinstal.
 2. Buka terminal atau command prompt.
@@ -142,7 +142,7 @@ public int Add(int a, int b)
 5. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`.
 6. compiler akan menghasilkan file `NamaProgram.dll` atau jika diwindows menghasilkan bersamaan `NamaProgram.exe` dan dilinux sebaliknya.
 
-**Mengompilasi Kode C# dengan AOT Compilation:**
+**Mengompilasi Kode C# dengan AOT Compilation:** Kompilasi dilakukan sebelum eksekusi, menghasilkan kecepatan startup yang lebih cepat.
 
 > Pastikan Anda memiliki `.NET Core SDK` dan `dotnet-runtime` terbaru yang mendukung AOT compilation.
 
@@ -152,14 +152,32 @@ Cara pertama:
 2. Tambahkan elemen `<PublishAot>true</PublishAot>` di dalam tag `<PropertyGroup>`.
 3. Simpan perubahan dan tutup file `.csproj`.
 4. Buka terminal atau command prompt.
-5. Dan jalankan perintah `dotnet publish` .
+5. Dan jalankan perintah `dotnet publish -c Release -r linux-x64`
 
-Cara Kedua:
+Cara Kedua: Tanpa Menambahkan elemen ke .csproj
 
 1. Menambahkan `/p:PublishAot=true` saat melakukan kompilasi.
 2. `dotnet publish /p:PublishAot=true`
+3. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`/native.
 
-Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/publish`/native.
+**Mengompilasi Kode C# dengan Self-Contained**: Aplikasi yang dibundel dengan semua dependensi, termasuk runtime, untuk kemudahan distribusi dan portabilitas.
+
+1. Pertama menambahkan beberapa elemen penting di .csproj:
+
+```csharp
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <SelfContained>true</SelfContained> <!-- Tambahkan dengan nilai true -->
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier> <!-- Ganti dengan platform yang sesuai -->
+  </PropertyGroup>
+</Project>
+
+```
+
+2. Kemudian di terminal dengan perintah, `dotnet publish -c Release -r linux-x64 --self-contained`
+3. Setelah selesai, Anda akan menemukan file yang dipublikasikan di direktori `bin/Release/netcoreapp<version>/<target-runtime>/`.
 
 **Opsi kompilasi .NET Core (dotnet) yang umum digunakan adalah:**
 
@@ -269,7 +287,7 @@ Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
 
 - **maui**: Workload untuk pengembangan aplikasi lintas platform menggunakan .NET Multi-platform App UI (.NET MAUI).
 - **wasm-tools**: Workload untuk pengembangan aplikasi Blazor WebAssembly.
-- **android** dan **ios**: Workload untuk pengembangan aplikasi mobile menggunakan Xamarin.1. Basic
+- **android** dan **ios**: Workload untuk pengembangan aplikasi mobile menggunakan Xamarin.
 
 # 1. Basic
 
@@ -379,6 +397,9 @@ Tipe Referensi (Reference Types)
 ```csharp
 int[] arr1 = {1, 2, 3};
 int[] arr2 = arr1; // Hanya alamat memori dari arr1 yang disalin ke arr2
+arr2[1] = 4;
+
+Console.WriteLine(arr1[1]); // output: 4
 ```
 
 Penting untuk dipahami bahwa perbedaan ini memiliki implikasi pada cara data digunakan dan dimanipulasi dalam program. Mengetahui perbedaan antara tipe nilai dan tipe referensi dapat membantu dalam pemrograman yang efisien dan menghindari kesalahan yang umum terkait dengan manajemen memori.
@@ -388,7 +409,6 @@ Penting untuk dipahami bahwa perbedaan ini memiliki implikasi pada cara data dig
 Tambahkan kode ini terlebih dahulu `<AllowUnsafeBlocks>true</AllowUnsafeBlocks>` kedalam file csharp.csproj untuk mengizinkan penggunakan kode unsafe.
 
 ```html
-
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -512,7 +532,7 @@ string value4; // error
 Operator `is` digunakan untuk memeriksa apakah suatu objek merupakan instance dari tipe data tertentu. Jika objek tersebut adalah instance dari tipe data yang ditentukan, maka kondisi akan bernilai `true`, jika tidak, maka kondisi akan bernilai `false`.
 
 ```csharp
-  var obj = "Hello";
+var obj = "Hello";
   if (obj is string) {
       Console.WriteLine("obj adalah string");
   }
@@ -526,8 +546,8 @@ Operator `is` digunakan untuk memeriksa apakah suatu objek merupakan instance da
 Operator `typeof` digunakan untuk mendapatkan tipe data dari sebuah objek pada saat kompilasi. Hasil dari operasi `typeof` adalah objek `Type` yang mewakili tipe data dari objek yang ditentukan.
 
 ```csharp
-  Type type = typeof(string);
-  Console.WriteLine($"Tipe data dari objek string adalah: {type}");
+Type type = typeof(string);
+Console.WriteLine($"Tipe data dari objek string adalah: {type}");
 ```
 
 **Operator as**
@@ -535,7 +555,7 @@ Operator `typeof` digunakan untuk mendapatkan tipe data dari sebuah objek pada s
 Operator `as` digunakan untuk mencoba melakukan konversi tipe data secara aman (safe casting). Jika konversi berhasil, maka nilai akan dihasilkan sesuai dengan tipe data yang ditentukan. Jika konversi gagal, maka nilai `null` akan dihasilkan.
 
 ```csharp
-  string str = obj as string;
+string str = obj as string;
 ```
 
 **Fungsi GetType()**
@@ -543,7 +563,7 @@ Operator `as` digunakan untuk mencoba melakukan konversi tipe data secara aman (
 Fungsi `GetType()` digunakan untuk mendapatkan tipe data dari sebuah objek pada saat runtime. Fungsi ini mengembalikan objek `Type` yang mewakili tipe data dari objek yang ditentukan.
 
 ```csharp
-  Type objType = obj.GetType();
+Type objType = obj.GetType();
 ```
 
 **Operator sizeof**
@@ -572,7 +592,7 @@ Integer angka = 10;
 
 Dalam contoh di atas, kita membuat alias `Integer` untuk tipe data `System.Int32` (tipe data integer 32-bit). Dengan demikian, kita dapat menggunakan `Integer` sebagai alternatif untuk `Int32`. Ini memudahkan kita untuk menggunakan nama yang lebih deskriptif atau sesuai dengan konteks tertentu.
 
-## 1. 2 Konversi, Type Check, & Casting Tipe Data
+## 1.2 Konversi, Type Check, & Casting Tipe Data
 
 ```cs
 // Konversi tipe data, number ke number
@@ -660,7 +680,7 @@ Membuat array:
 ```csharp
 int[] array = { 0, 1, 2 }; // Jumlah dinamis
 var array2 = new int[3]; // Maksimal 3 elemen
-var array3 = new int[] { 0, 1, 2}; // Jumlah dinamis 
+var array3 = new int[] { 0, 1, 2}; // Jumlah dinamis
 ```
 
 Mendapatkan panjang array:
@@ -803,7 +823,7 @@ Dalam bahasa pemrograman ***operator** adalah simbol yang memberitahu compiler a
 
 ***Operator aritmatika** adalah operator yang digunakan untuk melakukan operasi matematika pada angka atau variabel numerik.* Operator ini digunakan untuk melakukan operasi seperti penjumlahan, pengurangan, perkalian, pembagian, dan sebagainya.
 
-| +  | Pertambahn              |
+| +  | Pertambahan             |
 | -- | ----------------------- |
 | -  | Pengurangan             |
 | *  | Perkal                  |
@@ -980,7 +1000,6 @@ Berbeda dari `switch` tradisional, `switch expression` jauh lebih ringkas dan be
       7 => "Minggu",
       _ => "Hari tidak valid"
   };
-
   ```
 
   **
@@ -1130,6 +1149,7 @@ var guestName = guest ?? "Guest";
 ***Input dan output (I/O)** mengacu pada proses menerima input dari pengguna atau sumber eksternal,* serta menampilkan output ke pengguna atau menyimpannya di sumber eksternal seperti file. C# menyediakan beberapa cara untuk melakukan I/O, tergantung pada jenis I/O yang ingin Anda lakukan. Berikut adalah beberapa konsep I/O yang umum digunakan:
 
 1. **Console Input/Output**: adalah proses I/O dengan cara menampilkannya ke konsol
+
    ```csharp
    using System;
 
@@ -1182,10 +1202,96 @@ var guestName = guest ?? "Guest";
            Console.ReadKey();
        }
    }
-
    ```
 2. **File I/O**: adalah sebuah operasi membaca dan menulis file.
-3. **Network I/O**:  Adalah sebuah operasi I/O berbasis jaringan, seperti mengirim permintaan HTTP atau membuat koneksi socket.
+
+   ```csharp
+   using System.IO;
+
+   class Program
+   {
+       static void Main()
+       {
+           // Menulis ke file
+           File.WriteAllText("example.txt", "Hello, File I/O!");
+
+           // Membaca dari file
+           string content = File.ReadAllText("example.txt");
+           System.Console.WriteLine(content);
+       }
+   }
+
+   ```
+3. **Network I/O**:  adalah sebuah operasi I/O berbasis jaringan, seperti mengirim permintaan HTTP atau membuat koneksi socket.
+
+```csharp
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        HttpClient client = new HttpClient();
+        string result = await client.GetStringAsync("https://api.github.com");
+        Console.WriteLine(result);
+    }
+}
+
+```
+
+1. **Embedded Resource**: Di C# memungkinkan untuk menyertakan file (seperti teks, gambar, JSON, dll.) langsung ke dalam assembly aplikasi Anda. Dengan cara ini, file tersebut menjadi bagian dari assembly dan dapat diakses tanpa perlu berada di disk sebagai file terpisah saat aplikasi dijalankan.
+
+   **Langkah-langkah untuk Menggunakan Embedded Resources di C#:**
+
+* Buat file dengan format .txt seperti `Sample.txt`
+* Menambahkan file embedded resource ke file .csproj:
+
+```xml
+<ItemGroup>
+    <!-- Menambahkan file example.txt sebagai Embedded Resource -->
+    <EmbeddedResource Include="./Sample.txt" />
+  </ItemGroup>
+```
+
+* Contoh kode embedded resource:
+
+```csharp
+using System;
+using System.IO;
+using System.Reflection;
+
+class Program
+{
+    static void Main()
+    {
+        // Dapatkan assembly saat ini
+        var assembly = Assembly.GetExecutingAssembly();
+
+        // Nama file resource - gunakan namespace lengkap + nama file
+        string resourceName = "NamaProject.Sample.txt"; // Sesuaikan dengan namespace Anda
+
+        // Buka stream untuk membaca resource
+        using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+        {
+            if (stream != null)
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string content = reader.ReadToEnd();
+                    Console.WriteLine(content);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Resource tidak ditemukan.");
+            }
+        }
+    }
+}
+
+```
 
 ## 1.9 Using Keyword
 
@@ -1248,7 +1354,6 @@ Di dalam bahasa pemrograman, pure function (fungsi murni) adalah fungsi yang tid
 **Contoh dari pure function adalah seperti berikut ini:**
 
 ```csharp
-
 public static int Hitung(int a, int b){
         return a + b;
 }
@@ -1534,7 +1639,6 @@ public class Car {
         return model + " " + brand;
     }
 }
-
 ```
 
 ## 1. Object
@@ -1642,7 +1746,6 @@ class Program
         innerObj.DisplayOuterValue();
     }
 }
-
 ```
 
 ## 3. Property & Method
@@ -1807,7 +1910,6 @@ public class Programmer {
         Console.WriteLine("Hello, I'm a " + language + " Programmer.");
     }
 }
-
 ```
 
 ### Getter dan Setter Yang Tidak Perlu
@@ -2100,7 +2202,6 @@ class Program
         myObject.DisplayNumber();
     }
 }
-
 ```
 
 ## 11. Base Keyword
@@ -2127,7 +2228,6 @@ class Program {
         child.SomeMethod();
     }
 }
-
 ```
 
 **Base Constructor**
@@ -2429,18 +2529,18 @@ Di C#, concurrency dapat dicapai dengan berbagai teknik, seperti:
 
 ```csharp
 public class Program {
-  public static async Task Main(string[] args) {
-    Console.WriteLine("Mulai");
-    var result = await DatabaseQueryAsync(); // Menunggu hasil dari operasi database asynchronous
-    Console.WriteLine("Hasil: {0}", result);
-    Console.WriteLine("Selesai");
-  }
+  public static async Task Main(string[] args) {
+    Console.WriteLine("Mulai");
+    var result = await DatabaseQueryAsync(); // Menunggu hasil dari operasi database asynchronous
+    Console.WriteLine("Hasil: {0}", result);
+    Console.WriteLine("Selesai");
+  }
 
-  private static async Task<string> DatabaseQueryAsync() {
-    // Simulasi operasi database asynchronous
-    await Task.Delay(1000);
-    return "Data dari database";
-  }
+  private static async Task<string> DatabaseQueryAsync() {
+    // Simulasi operasi database asynchronous
+    await Task.Delay(1000);
+    return "Data dari database";
+  }
 }
 ```
 
@@ -2468,7 +2568,7 @@ Parallel.For(0, iterations, i =>
 Console.WriteLine("Looping selesai.");
 ```
 
-### 4. Race Condition
+### 3. Race Condition
 
 **Race condition** adalah situasi yang dapat terjadi dalam program concurrent atau parallel ketika hasil eksekusi program bergantung pada urutan waktu di mana instruksi dijalankan. Hal ini dapat menyebabkan perilaku program yang tidak terduga dan bahkan berbahaya.
 
@@ -2616,8 +2716,8 @@ Parameter type di Generic class boleh lebih dari satu. Namun harus menggunakan n
 
 ```csharp
 class Pair<K, V> {
-    K first;
-    V second;
+    public K First;
+    public V Second;
     public Pair(K first, V second)
     {
         this.first = first;
@@ -2643,6 +2743,39 @@ public static void ReverseArray<T>(T[] array){}
 ### 4. Covariant
 
 Covariant artinya kita bisa melakukan subtitusi subtype (child) dengan supertype (parent), namun hati-hati ketika melakukan covariant, karena jika sampai salah mengubah datanya, maka akan terjadi error pada saat runtime, tidak akan terdeteksi ketika proses compile.
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Animal
+{
+    public virtual void Speak() => Console.WriteLine("Animal sound");
+}
+
+class Dog : Animal
+{
+    public override void Speak() => Console.WriteLine("Dog barks");
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Array of Dogs
+        Dog[] dogs = new Dog[] { new Dog(), new Dog() };
+
+        // Covariance: IEnumerable<Dog> can be assigned to IEnumerable<Animal>
+        IEnumerable<Animal> animals = dogs;
+
+        foreach (Animal animal in animals)
+        {
+            animal.Speak();  // Calls Dog's Speak method
+        }
+    }
+}
+
+```
 
 # 9. Language Integrated Query (LINQ)
 
@@ -2765,9 +2898,46 @@ Dalam lingkungan pengembangan C#, ada beberapa alat yang sering digunakan untuk 
 - **MSTest**: Kerangka kerja pengujian bawaan dari Microsoft yang sering digunakan dalam proyek-proyek C#.
 - **xUnit.net**: Alternatif lain yang cukup populer untuk pengujian unit dalam C#.
 
-### 2. Debugging dalam C#:
+**Cara Menggunakan Nunit:**
 
-**Teknik Debugging:**
+1. Diluar project utama buat project khusus testing, jalankan perintah di terminal `dotnet new nunit -N TestProject1`.
+2. Maka akan menghasilkan folder bernama `TestProject1`, dengan isi `.csproject `dan `UnitTest1.cs`
+3. Masuk ke direktori TestProject, buat file `Using.cs`:
+
+```cs
+global using NUnit.Framework;
+```
+
+4. Contoh kode untuk file UnitTest1.cs
+
+```csharp
+namespace TestProject1;
+
+[TestFixture]
+public class UnitTest1
+{
+    [Test]
+    public void TestMethod1()
+    {
+        // Arrange
+        int a = 5;
+        int b = 10;
+
+        // Act
+        int result = a + b;
+
+        // Assert
+        Assert.AreEqual(15, result);
+    }
+}
+
+```
+
+5. Kemudian, jalankan perintah `dotnet test` untuk menjalankan unit test.
+6. Menjalankan file tertentu, menggunakan `dotnet test --filter "FullyQualifiedName~UnitTest2"`.
+7. Menjalankan file yang namanya ada unsur kata yang diinginkan, `dotnet test --filter "Name~Test2"`
+
+### 2. Debugging dalam C#:
 
 Debugging adalah proses mengidentifikasi, memahami, dan memperbaiki kesalahan dalam kode program. Dalam C#, Anda dapat menggunakan beberapa teknik debugging, termasuk:
 
@@ -2897,7 +3067,6 @@ class Program
         Console.WriteLine("After replacement: " + replaced);
     }
 }
-
 ```
 
 # 14. Preprocessor Directives
@@ -3010,3 +3179,4 @@ e. **`#region` dan `#endregion`**
       // Methods here
   #endregion
   ```
+  sdsd
