@@ -3179,4 +3179,115 @@ e. **`#region` dan `#endregion`**
       // Methods here
   #endregion
   ```
-  sdsd
+
+  # 15. Garbage Collection
+
+#### 1. Apa itu Garbage Collection (GC)?
+
+Garbage Collection (GC) adalah proses otomatis yang dilakukan oleh runtime .NET untuk mengelola memori dalam aplikasi C#. Tujuannya adalah untuk secara otomatis mendeteksi dan menghapus objek yang tidak lagi digunakan (garbage), sehingga memori yang digunakan oleh objek tersebut dapat dibebaskan dan digunakan kembali.
+
+Di C#, **Garbage Collector** bekerja di background untuk:
+
+- Memantau objek yang telah tidak terpakai (tidak lagi memiliki referensi yang menunjuk ke objek tersebut).
+- Menghapus objek-objek tersebut dari **managed heap**.
+- Membebaskan memori yang digunakan oleh objek-objek tersebut, yang kemudian dapat digunakan oleh objek lain.
+
+Proses ini mengurangi beban programmer untuk mengelola memori secara manual (seperti yang dilakukan di bahasa pemrograman seperti C atau C++) dan meminimalkan kemungkinan terjadinya **memory leaks**.
+
+#### 2. Cara Kerja Garbage Collection (GC)
+
+Garbage Collection di .NET berfungsi dengan beberapa tahapan berikut:
+
+- **Marking**: GC mencari objek-objek yang tidak lagi digunakan (terpisah dari objek yang masih bisa diakses) dengan memeriksa apakah ada referensi aktif terhadap objek tersebut.
+- **Sweeping**: Setelah menandai objek yang tidak lagi digunakan, GC kemudian akan menghapus objek tersebut dari heap.
+- **Compact**: Untuk mencegah fragmentasi, GC dapat mengkompakkan heap dengan memindahkan objek yang masih digunakan ke bagian awal heap.
+
+C# menggunakan model **generational garbage collection**, yang berarti bahwa objek dikelompokkan dalam **Generasi 0, 1, dan 2** berdasarkan umur mereka:
+
+- **Generasi 0**: Objek yang baru saja dibuat, yang paling sering dikumpulkan.
+- **Generasi 1**: Objek yang telah bertahan setelah satu siklus GC.
+- **Generasi 2**: Objek yang telah bertahan setelah lebih dari satu siklus GC dan biasanya berukuran lebih besar dan lebih lama digunakan.
+
+#### 3. Mengapa GC Dapat Menjadi Masalah?
+
+Walaupun Garbage Collection secara otomatis mengelola memori, ada beberapa alasan mengapa GC dapat menimbulkan masalah:
+
+- **Overhead Performansi**:
+
+  - Proses GC dapat mengganggu eksekusi aplikasi, terutama jika aplikasi sering mengalokasikan dan membuang objek dalam jumlah besar. Ini dapat menyebabkan **latency spikes**, yang tidak diinginkan dalam aplikasi dengan kebutuhan waktu respons cepat.
+- **Pengumpulan Sampah Tidak Terkendali**:
+
+  - Jika objek besar sering dialokasikan dan dibuang, GC harus bekerja ekstra untuk mengelola memori, yang mengarah pada waktu kompaksi heap yang lebih lama dan peningkatan penggunaan CPU.
+- **Fragmentasi Memori**:
+
+  - Walaupun GC mengkompakkan heap, heap yang terfragmentasi dapat menyebabkan overhead memori yang lebih besar, terutama jika objek-objek kecil dan besar dicampur di heap.
+
+#### 4. Cara Mengatasi Masalah yang Dapat Dihadapi oleh GC
+
+Untuk mengatasi masalah terkait Garbage Collection, Anda dapat menerapkan beberapa praktik terbaik berikut:
+
+- **Kurangi Alokasi Objek yang Sering**:
+
+  - Usahakan agar objek tidak sering dibuat dan dibuang. Cobalah untuk menggunakan objek yang dapat **di-reuse** seperti dengan **Object Pooling** atau menghindari alokasi di dalam loop.
+- **Gunakan Value Types (structs) daripada Reference Types (classes)**:
+
+  - Value types seperti **structs** disalin ke stack daripada heap, sehingga tidak memerlukan pengelolaan memori oleh GC.
+- **Gunakan `Span<T>` dan `Memory<T>`**:
+
+  - Jika Anda bekerja dengan data dalam jumlah besar, **`Span<T>`** dan **`Memory<T>`** memungkinkan manipulasi buffer data tanpa perlu membuat alokasi heap yang baru.
+  - Dengan menggunakan **`Span<T>`**, Anda dapat menghindari overhead tambahan yang disebabkan oleh alokasi memori di heap.
+- **Optimalkan Penggunaan Koleksi**:
+
+  - Hindari penggunaan koleksi seperti **List`<T>`** atau **Dictionary`<T>`** yang sering berubah ukurannya, karena dapat menyebabkan overhead yang besar.
+  - Gunakan koleksi yang lebih efisien dan sesuai kebutuhan, seperti **LinkedList`<T>`** untuk penyisipan dan penghapusan data.
+- **Manajemen Sumber Daya**:
+
+  - Pastikan untuk membersihkan sumber daya eksternal seperti koneksi database, file, atau socket dengan menggunakan **`IDisposable`** dan **`Dispose()`** untuk mencegah kebocoran memori.
+- **Jangan Memanggil `GC.Collect()` Terlalu Sering**:
+
+  - Secara umum, tidak disarankan untuk memanggil **`GC.Collect()`** karena GC secara otomatis mengelola pengumpulan sampah dengan baik. Namun, dalam beberapa kasus tertentu, Anda bisa memanggil **`GC.Collect()`** untuk memaksa pengumpulan sampah, tetapi gunakan ini dengan bijak.
+- **Gunakan `GCSettings.LatencyMode` untuk Mengontrol GC**:
+
+  - Anda dapat mengatur mode latensi GC menggunakan **`GCSettings.LatencyMode`** untuk aplikasi yang membutuhkan performa lebih tinggi dan latensi lebih rendah, seperti pada aplikasi real-time atau permainan.
+
+#### 5. Mengoptimalkan GC dengan `GC.Collect()`
+
+Jika Anda memilih untuk memanggil **`GC.Collect()`** secara eksplisit untuk mengoptimalkan proses pengumpulan sampah, pastikan Anda memahami kapan ini diperlukan:
+
+- Setelah batch operasi besar.
+- Ketika Anda tahu bahwa sebagian besar objek dalam memori tidak lagi diperlukan.
+
+Namun, perlu diingat bahwa pemanggilan **`GC.Collect()`** dapat menyebabkan **overhead tambahan** jika dilakukan terlalu sering atau tidak perlu.
+
+#### 6. GC Latency Modes di C#
+
+C# menyediakan beberapa mode latensi untuk GC yang dapat disesuaikan dengan kebutuhan aplikasi Anda:
+
+- **Interactive**: Mode default yang cocok untuk aplikasi interaktif, memungkinkan pengumpulan sampah otomatis secara periodik.
+- **LowLatency**: Menurunkan latensi GC untuk aplikasi yang sangat sensitif terhadap waktu.
+- **SustainedLowLatency**: Mode untuk aplikasi yang memerlukan latensi rendah dalam jangka panjang (misalnya, aplikasi streaming).
+- **Batch**: Mode ini jarang digunakan, cocok untuk aplikasi yang dapat menangani pengumpulan sampah lebih jarang.
+
+Contoh cara mengubah **GC Latency Mode**:
+
+```csharp
+using System;
+using System.Runtime.GCSettings;
+
+GCSettings.LatencyMode = GCLatencyMode.LowLatency; // Menurunkan latensi GC
+```
+
+#### 7. Implementasi Garbage Collection yang Lebih Lanjut
+
+Ada beberapa konsep dan fitur lanjutan yang dapat digunakan untuk mengelola memori dengan lebih efisien di C#:
+
+- **Pinned Memory**: Digunakan untuk memastikan objek tetap berada di memori (tidak dipindahkan oleh GC). Ini digunakan dalam situasi seperti interoperabilitas dengan kode unmanaged (native).
+- **MemoryPool `<T>` dan ArrayPool `<T>`**: Ini adalah fitur yang memungkinkan Anda untuk mengelola koleksi memori yang lebih besar dan menghindari pemborosan memori yang dapat terjadi dengan alokasi berulang.
+
+**Ringkasan Praktik Terbaik untuk Mengelola GC di C#**
+
+- Hindari alokasi objek berulang, gunakan **Object Pooling** untuk objek yang sering digunakan.
+- Gunakan **`Span<T>`** dan **`Memory<T>`** untuk menghindari alokasi yang tidak perlu di heap.
+- Gunakan **value types** (structs) untuk objek yang lebih kecil dan tidak memerlukan pengelolaan memori oleh GC.
+- Bersihkan objek yang mengelola sumber daya eksternal dengan **`Dispose()`**.
+- Jangan memanggil **`GC.Collect()`** terlalu sering, kecuali dalam kondisi tertentu.
