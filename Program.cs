@@ -1,43 +1,29 @@
 using System;
-using Algorithms;
+using System.Diagnostics;
+using System.Runtime;
+
 class Program
 {
     static void Main()
     {
-        Foo foo = new("Dhimas Arista");
-        Bar bar = new(foo);
-        bar.DisplayName();
-    }
-}
+        // Set GC Latency Mode ke Batch
+        GCSettings.LatencyMode = GCLatencyMode.Batch;
 
-// Kelas Foo dengan konstruktor untuk menyuntikkan nama
-class Foo
-{
-    private string name;
+        Console.WriteLine("GC Latency Mode: Batch");
 
-    public Foo(string name)
-    {
-        this.name = name;
-    }
+        // Mengukur waktu eksekusi
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
 
-    public string GetName()
-    {
-        return name;
-    }
-}
+        // Simulasi alokasi objek
+        for (int i = 0; i < 1000000; i++)
+        {
+            var obj = new object(); // Membuat objek baru
+        }
 
-// Kelas Bar dengan konstruktor untuk menyuntikkan objek Foo
-class Bar
-{
-    private Foo foo;
+        stopwatch.Stop();
+        Console.WriteLine($"Time taken: {stopwatch.ElapsedMilliseconds} ms");
 
-    public Bar(Foo foo)
-    {
-        this.foo = foo;
-    }
-
-    public void DisplayName()
-    {
-        Console.WriteLine("Foo's name is: " + foo.GetName());
+        Console.WriteLine("Done!");
     }
 }
