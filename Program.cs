@@ -1,32 +1,36 @@
 using System;
 using System.Diagnostics;
-using System.Runtime;
 
 class Program
 {
     static void Main()
     {
-        Car lascar = new();
-        lascar.Start();
-    }
-}
+        // Mulai menghitung waktu eksekusi
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
 
-interface Engine
-{
-    void Start();
-    void Stop();
-}
+        int counter = 0;
 
-class Car : Engine
-{
-    public Car() { }
+        // Loop 4 tingkat
+        for (int i = 0; i < 1000; i++)
+        {
+            for (int j = 0; j < 1000; j++)
+            {
+                for (int k = 0; k < 1000; k++)
+                {
+                    for (int l = 0; l < 5; l++)
+                    {
+                        counter++;
+                    }
+                }
+            }
+        }
 
-    public void Start()
-    {
-        Console.WriteLine("Start Engine...");
-    }
-    public void Stop()
-    {
-        Console.WriteLine("Stop Engine");
+        // Menghitung waktu eksekusi
+        stopwatch.Stop();
+
+        // Menampilkan waktu eksekusi dan jumlah iterasi
+        Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds:F6} seconds");
+        Console.WriteLine($"Iterations: {counter}");
     }
 }
