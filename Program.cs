@@ -1,36 +1,34 @@
 using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 class Program
 {
-    static void Main()
+    static async Task Main(string[] args)
     {
-        // Mulai menghitung waktu eksekusi
-        Stopwatch stopwatch = new Stopwatch();
-        stopwatch.Start();
+        // Membuat data besar
+        int totalRecords = 100000000;
+        var data = Enumerable.Range(1, totalRecords).ToList();
 
-        int counter = 0;
+        Stopwatch stopwatch = Stopwatch.StartNew();
 
-        // Loop 4 tingkat
-        for (int i = 0; i < 1000; i++)
+        // Parallel async processing (simulasi query SQL)
+        var sumResult = await Task.WhenAll(data.Select(async number =>
         {
-            for (int j = 0; j < 1000; j++)
-            {
-                for (int k = 0; k < 1000; k++)
-                {
-                    for (int l = 0; l < 5; l++)
-                    {
-                        counter++;
-                    }
-                }
-            }
-        }
+            return await Task.Run(() => ProcessData(number));
+        }));
 
-        // Menghitung waktu eksekusi
         stopwatch.Stop();
 
-        // Menampilkan waktu eksekusi dan jumlah iterasi
-        Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds:F6} seconds");
-        Console.WriteLine($"Iterations: {counter}");
+        Console.WriteLine($"Total Sum: {sumResult.Sum()}", stopwatch.ElapsedMilliseconds);
+        Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+    }
+
+    static int ProcessData(int number)
+    {
+        // Simulasi proses data seperti query
+        return number % 2 == 0 ? number : 0;
     }
 }
