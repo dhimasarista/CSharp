@@ -1592,11 +1592,6 @@ public struct Point {
         X = x;
         Y = y;
     }
-
-    // Method
-    public void Display() {
-        Console.WriteLine($"X: {X}, Y: {Y}");
-    }
 }
 ```
 
@@ -1607,20 +1602,35 @@ Cara Menggunakan Struct:
 Point point = new();
 point.x = 12;
 point.y = 22;
-```
 
-```csharp
 // Cara Kedua
 Point point = new(){
   x = 12,
   y = 22
 };
+
+// Cara Ketiga
+var point = new Point { X = 0, Y = 0, };
 ```
 
 Menggunakan Struct Constructor:
 
 ```csharp
 Point point = new(12, 22);
+```
+
+Menggunakan Intreface Di Struct:
+
+> Interface akan dibahas di bab Object-Oriented Programming
+
+```csharp
+public struct Point : IPoint {
+    // Display Wajib Di Wariskan Dari IPoint Ke Point
+    public void Display(){}
+}
+
+// Kontrak Struct Dengan Interface
+interface IPoint { void Display(); }
 ```
 
 # 5. Object-Oriented Programming
@@ -3238,8 +3248,8 @@ Untuk mengatasi masalah terkait Garbage Collection, Anda dapat menerapkan bebera
   - Dengan menggunakan **`Span<T>`**, Anda dapat menghindari overhead tambahan yang disebabkan oleh alokasi memori di heap.
 - **Optimalkan Penggunaan Koleksi**:
 
-  - Hindari penggunaan koleksi seperti **List`<T>`** atau **Dictionary`<T>`** yang sering berubah ukurannya, karena dapat menyebabkan overhead yang besar.
-  - Gunakan koleksi yang lebih efisien dan sesuai kebutuhan, seperti **LinkedList`<T>`** untuk penyisipan dan penghapusan data.
+  - Hindari penggunaan koleksi seperti **List `<T>`** atau **Dictionary `<T>`** yang sering berubah ukurannya, karena dapat menyebabkan overhead yang besar.
+  - Gunakan koleksi yang lebih efisien dan sesuai kebutuhan, seperti **LinkedList `<T>`** untuk penyisipan dan penghapusan data.
 - **Manajemen Sumber Daya**:
 
   - Pastikan untuk membersihkan sumber daya eksternal seperti koneksi database, file, atau socket dengan menggunakan **`IDisposable`** dan **`Dispose()`** untuk mencegah kebocoran memori.
