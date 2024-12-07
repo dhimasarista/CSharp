@@ -1,142 +1,104 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
-namespace CoffeeMachineOOP
+public interface IUserService
 {
-    // Interface untuk Logger
-    public interface ILogger
+    Dictionary<string, string> CreateUser(string username, string password);
+    bool DeleteUser(string username);
+    List<Dictionary<string, string>> ShowUsers();
+}
+
+public class UserService : IUserService
+{
+    private List<Dictionary<string, string>> users = new List<Dictionary<string, string>>();
+
+    public Dictionary<string, string> CreateUser(string username, string password)
     {
-        void Log(string message);
+        var user = new Dictionary<string, string>
+        {
+            { "user_id", new Random().Next(10, 20).ToString() },
+            { "username", username },
+            { "password", HashPassword(password) }
+        };
+        users.Add(user);
+        return user;
     }
 
-    // Abstract class: Mesin dasar
-    public abstract class CoffeeMachine
+    public bool DeleteUser(string username)
     {
-        public string Brand { get; private set; }
-        public bool IsOn { get; private set; }
-
-        protected CoffeeMachine(string brand)
+        var user = users.FirstOrDefault(u => u["username"] == username);
+        if (user != null)
         {
-            Brand = brand;
-            IsOn = false;
+            users.Remove(user);
+            return true;
         }
-
-        public void TurnOn()
-        {
-            IsOn = true;
-            Console.WriteLine($"{Brand} Coffee Machine is now ON.");
-        }
-
-        public void TurnOff()
-        {
-            IsOn = false;
-            Console.WriteLine($"{Brand} Coffee Machine is now OFF.");
-        }
-
-        public abstract Task MakeCoffeeAsync(string coffeeType); // Abstract method
+        return false;
     }
 
-    // Class Turunan: Mesin Kopi Otomatis
-    public class AutomaticCoffeeMachine : CoffeeMachine, ILogger
+    public List<Dictionary<string, string>> ShowUsers()
     {
-        private readonly List<string> _coffeeMenu = new() { "Espresso", "Latte", "Cappuccino" };
-
-        public AutomaticCoffeeMachine(string brand) : base(brand) { }
-
-        // Implementasi abstract method
-        public override async Task MakeCoffeeAsync(string coffeeType)
-        {
-            if (!IsOn)
-            {
-                throw new InvalidOperationException("The coffee machine is OFF. Please turn it ON first.");
-            }
-
-            if (!_coffeeMenu.Contains(coffeeType))
-            {
-                throw new ArgumentException($"Coffee type '{coffeeType}' is not available.");
-            }
-
-            Console.WriteLine($"Preparing your {coffeeType}...");
-            await Task.Delay(2000); // Simulasi pembuatan kopi
-            Console.WriteLine($"{coffeeType} is ready! Enjoy your coffee.");
-        }
-
-        // Implementasi Interface ILogger
-        public void Log(string message)
-        {
-            Console.WriteLine($"[Log] {message}");
-        }
+        return users;
     }
 
-    // Class Generik untuk Penyimpanan Data (seperti daftar pesanan kopi)
-    public class CoffeeOrderRepository<T> where T : class
+    private string HashPassword(string password)
     {
-        private readonly List<T> _orders = new();
+        using var sha256 = SHA256.Create();
+        var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+        return Convert.ToBase64String(hashedBytes);
+    }
+}
 
-        public void AddOrder(T order)
-        {
-            _orders.Add(order);
-            Console.WriteLine($"Order '{order}' added.");
-        }
+public class UserController
+{
+    private readonly IUserService userService;
 
-        public IEnumerable<T> GetOrders()
-        {
-            return _orders;
-        }
+    public UserController(IUserService userService)
+    {
+        this.userService = userService;
     }
 
-    // Custom Exception
-    public class CoffeeMachineException : Exception
+    public Dictionary<string, string> Create(string username, string password)
     {
-        public CoffeeMachineException(string message) : base(message) { }
+        return userService.CreateUser(username, password);
     }
 
-    // Program Utama
-    public class Program
+    public bool Delete(string username)
     {
-        public static async Task Main(string[] args)
+        return userService.DeleteUser(username);
+    }
+
+    public List<Dictionary<string, string>> All()
+    {
+        return userService.ShowUsers();
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var userController = new UserController(new UserService());
+
+        userController.Create("dhimasarista", "hellophp8");
+        userController.Create("anto", "hellophp8");
+        userController.Create("ujang", "hellophp8");
+
+        Console.WriteLine("All users:");
+        foreach (var user in userController.All())
         {
-            try
-            {
-                // Membuat mesin kopi otomatis
-                AutomaticCoffeeMachine coffeeMachine = new("CoffeeMaster 3000");
+            Console.WriteLine(string.Join(", ", user.Select(kv => $"{kv.Key}: {kv.Value}")));
+        }
 
-                // Menghidupkan mesin kopi
-                coffeeMachine.TurnOn();
+        Console.WriteLine("\nDeleting 'anto'...");
+        userController.Delete("anto");
 
-                // Membuat kopi (Async)
-                await coffeeMachine.MakeCoffeeAsync("Latte");
-
-                // Menyimpan pesanan ke repositori
-                var coffeeOrderRepo = new CoffeeOrderRepository<string>();
-                coffeeOrderRepo.AddOrder("Latte");
-
-                // Menampilkan semua pesanan
-                Console.WriteLine("All Orders:");
-                foreach (var order in coffeeOrderRepo.GetOrders())
-                {
-                    Console.WriteLine($"- {order}");
-                }
-
-                // Logging
-                coffeeMachine.Log("Latte was successfully prepared.");
-
-                // Mematikan mesin kopi
-                coffeeMachine.TurnOff();
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine($"Invalid Operation: {ex.Message}");
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Unexpected Error: {ex.Message}");
-            }
+        Console.WriteLine("All users after deletion:");
+        foreach (var user in userController.All())
+        {
+            Console.WriteLine(string.Join(", ", user.Select(kv => $"{kv.Key}: {kv.Value}")));
         }
     }
 }
