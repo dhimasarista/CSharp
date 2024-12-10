@@ -2095,15 +2095,9 @@ class MobileDev : Programmer
 
 ### Interface
 
-Selain abstract class, cara lain yang bisa kita gunakan untuk menerapkan abstraksi dalam OOP adalah dengan interface. **Interface** atau antarmuka merupakan set instruksi yang bisa diimplementasi oleh objek. Secara umum, interface berfungsi sebagai penghubung antara sesuatu yang abstrak dengan sesuatu yang nyata. Di C# jika kita ingin membuat interface menggunakan kata kunci **interface**.
+Selain abstract class, cara lain yang bisa kita gunakan untuk menerapkan abstraksi dalam OOP adalah dengan interface. **Interface** atau antarmuka merupakan set instruksi yang bisa diimplementasi oleh objek. Secara sederhana, interface adalah kontrak bagaimana class diimplementasikan. Di C# jika kita ingin membuat interface menggunakan kata kunci **interface**.
 
 > ⚠️ Standar penamaan inerface di c# adalah menambahkan huruh I sebelum nama interface. Seperti kode berikut:
-
-```cs
-interface ICoding{
-    void Platform();
-}
-```
 
 ```cs
 namespace MyNamespace;
