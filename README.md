@@ -2171,6 +2171,8 @@ enum Level {
 
 ***Extension Method** adalah cara menambahkan method terhadap Class yang sudah ada, tanpa harus mengubah Class tersebut*. Ketika Anda menggunakan library, baik itu library bawaan C# atau pun library milik orang lain, ada kemungkinan library tersebut kurang lengkap sehingga kita perlu menambahkan beberapa fungsionalitas. Namun akan jadi PR kita untuk mengubah library yang sudah ada. Dengan extension method, kita dapat membuat fungsi atau method tambahan lalu menggunakannya sesuai dengan kebutuhan aplikasi kita.
 
+**Cara Membuat Extension Method** : Pertama kita harus membuat class baru dan methodnya dengan menambahkan parameter this NamaClass seperti ini `public static void DisplayNumber(this MyClass myClass)` . ini contoh kode lengkapnya:
+
 ```csharp
 using System;
 
