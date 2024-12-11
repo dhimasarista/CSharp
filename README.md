@@ -3195,7 +3195,7 @@ e. **`#region` dan `#endregion`**
   #endregion
   ```
 
-  # 15. Garbage Collection
+# 15. Garbage Collection
 
 #### 1. Apa itu Garbage Collection (GC)?
 
