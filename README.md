@@ -2167,6 +2167,15 @@ enum Level {
 }
 ```
 
+```csharp
+public enum ErrorCode
+{
+    NotFound = 404,
+    Unauthorized = 401,
+    InternalServerError = 500
+}
+```
+
 ## 10. Extensions Method
 
 ***Extension Method** adalah cara menambahkan method terhadap Class yang sudah ada, tanpa harus mengubah Class tersebut*. Ketika Anda menggunakan library, baik itu library bawaan C# atau pun library milik orang lain, ada kemungkinan library tersebut kurang lengkap sehingga kita perlu menambahkan beberapa fungsionalitas. Namun akan jadi PR kita untuk mengubah library yang sudah ada. Dengan extension method, kita dapat membuat fungsi atau method tambahan lalu menggunakannya sesuai dengan kebutuhan aplikasi kita.
