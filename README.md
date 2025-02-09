@@ -3725,7 +3725,7 @@ Ada beberapa konsep dan fitur lanjutan yang dapat digunakan untuk mengelola memo
 - Bersihkan objek yang mengelola sumber daya eksternal dengan **`Dispose()`**.
 - Jangan memanggil **`GC.Collect()`** terlalu sering, kecuali dalam kondisi tertentu.
 
-# 16. Runtime Tunning
+# 16. Runtime Tuning
 
 Kalo dibahasa pemrograman Java, ada yang namanya JVM Tuning sedangkan di C# khususnya dotnet istilah ini disebut Runtime Tuning. Runtime tuning adalah proses mengoptimalkan performa aplikasi dengan mengatur konfigurasi runtime. Di lingkungan .NET, runtime tuning mencakup pengelolaan memori, pemrosesan paralel, pengaturan ThreadPool, hingga optimasi Just-In-Time (JIT) compiler.
 
