@@ -1906,7 +1906,6 @@ Beberapa cara untuk membuat dan menggunakan namespace di C#:
        // Kode di sini
    }
    ```
-
 3. Nesting Namespace:
 
 ```csharp
@@ -3725,3 +3724,85 @@ Ada beberapa konsep dan fitur lanjutan yang dapat digunakan untuk mengelola memo
 - Gunakan **value types** (structs) untuk objek yang lebih kecil dan tidak memerlukan pengelolaan memori oleh GC.
 - Bersihkan objek yang mengelola sumber daya eksternal dengan **`Dispose()`**.
 - Jangan memanggil **`GC.Collect()`** terlalu sering, kecuali dalam kondisi tertentu.
+
+# 16. Runtime Tunning
+
+Kalo dibahasa pemrograman Java, ada yang namanya JVM Tuning sedangkan di C# khususnya dotnet istilah ini disebut Runtime Tuning. Runtime tuning adalah proses mengoptimalkan performa aplikasi dengan mengatur konfigurasi runtime. Di lingkungan .NET, runtime tuning mencakup pengelolaan memori, pemrosesan paralel, pengaturan ThreadPool, hingga optimasi Just-In-Time (JIT) compiler.
+
+Tujuan utama runtime tuning adalah:
+
+* Meningkatkan performa aplikasi.
+* Mengurangi latensi.
+* Mengoptimalkan penggunaan sumber daya seperti CPU dan memori.
+
+## Garbage Collection (GC) Tuning
+
+Garbage Collection (GC) bertanggung jawab untuk mengelola memori secara otomatis. Meskipun telah dibahas di Bab 15, tuning GC memiliki peran penting dalam runtime tuning.
+
+**Mode GC:**
+
+* **Workstation GC:** Optimal untuk aplikasi desktop, fokus pada responsivitas.
+* **Server GC:** Optimal untuk aplikasi server, memanfaatkan paralelisme.
+* **Low-Latency GC:** Digunakan untuk aplikasi real-time, mengurangi jeda waktu pause.
+
+**Konfigurasi GC:**
+
+```xml
+<configuration>
+  <runtime>
+    <gcServer enabled="true" />
+    <gcConcurrent enabled="true" />
+    <GCLatencyMode value="LowLatency" />
+  </runtime>
+</configuration>
+```
+
+## ThreadPool Optimization
+
+ThreadPool mengelola kumpulan thread untuk menjalankan tugas-tugas secara paralel.
+
+**Konfigurasi ThreadPool:**
+
+* **MinThreads:** Jumlah minimal thread yang tersedia.
+* **MaxThreads:** Batas maksimum thread.
+
+**Contoh Pengaturan ThreadPool:**
+
+```csharp
+ThreadPool.SetMinThreads(100, 100);
+ThreadPool.SetMaxThreads(500, 500);
+```
+
+## JIT Compiler Optimization
+
+Just-In-Time (JIT) Compiler mengubah kode IL menjadi kode mesin saat runtime. Optimasi JIT dapat meningkatkan performa eksekusi.
+
+**Jenis Optimasi JIT:**
+
+* **Tiered Compilation:** Kombinasi interpretasi dan optimasi progresif.
+* **Aggressive Inlining:** Mengurangi overhead pemanggilan fungsi.
+
+**Contoh Konfigurasi JIT:**
+
+```xml
+<configuration>
+  <runtime>
+    <TieredCompilation enabled="true" />
+    <JITMinOpts enabled="false" />
+  </runtime>
+</configuration>
+```
+
+## Monitoring dan Profiling Tools
+
+Untuk memastikan tuning berjalan efektif, diperlukan alat monitoring dan profiling:
+
+* **dotnet-counters:** Memantau performa aplikasi secara real-time.
+* **dotnet-trace:** Mengumpulkan data tracing untuk analisis mendalam.
+* **Visual Studio Profiler:** Memberikan visualisasi performa aplikasi.
+
+**Contoh Penggunaan dotnet-counters:**
+
+```bash
+dotnet-counters monitor -p <process_id>
+```
