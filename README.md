@@ -1676,7 +1676,7 @@ public class Car {
 }
 ```
 
-## 1. Object
+## Object
 
 **Object** adalah data yang berisi field / properties / attributes dan method / function / behavior. Model data berorientasi objek dikatakan dapat memberi fleksibilitas yang lebih, kemudahan mengubah program, dan digunakan luas dalam software engineering skala besar. Lebih jauh lagi, pendukung OOP mengklaim bahwa OOP lebih mudah dipelajari bagi pemula dibanding dengan pendekatan sebelumnya, dan pendekatan OOP lebih mudah dikembangkan dan dirawat.
 
@@ -1687,7 +1687,7 @@ public class Car {
 - **Inheritance** adalah pewarisan sebuah object dari object utama.
 - **Polymorphism** dalam bahasa Yunani berarti “banyak bentuk.” Sederhananya objek dapat memiliki bentuk atau implementasi yang berbeda-beda pada satu metode yang sama.
 
-## 2. Class
+## Class
 
 ***Class** merupakan sebuah blueprint untuk membuat objek. Di dalam kelas ini kita mendefinisikan sifat (attribute) dan perilaku (behaviour) dari objek yang akan dibuat.* Pembuatan nama di class sendiri menurut best-practice harus menggunakan **PascalCase** atau huruf kapital dihuruf pertama, tidak seperti pembuatan variable dan function yang menggunakan **camelCase**.
 
@@ -1783,7 +1783,7 @@ class Program
 }
 ```
 
-## 3. Property & Method
+## Property & Method
 
 - **Property/Atribute/Field = variable**
 - **Method/Behaviour = Function**
@@ -1806,7 +1806,7 @@ var programmer = new Programmer();
 programmer.sayHello();
 ```
 
-### Access Modifier:
+## Access Modifier:
 
 Dalam C#, biasanya kita menggunakan modifier aksesibilitas seperti `private` atau `public` untuk menentukan siapa yang bisa mengakses property atau method. Kita dapat menggunakan namespace untuk mengatur aksesibilitas class dan membernya.
 
@@ -1861,7 +1861,7 @@ class Program
 
 Dalam kode di atas, kita mencoba mengakses properti `language`, `objectOriented`, dan `born` dari luar namespace `MyNamespace`, yang menyebabkan kesalahan karena properti-properti tersebut adalah `private` dan hanya dapat diakses di dalam namespace yang sama.
 
-### Keyword lain untuk property & method:
+**Keyword lain untuk property & method:**
 
 1. **`protected internal`**: Kombinasi dari `protected` dan `internal`, memungkinkan akses dari kelas turunan dan dari assembly yang sama.
 2. **`static`**: Menandakan bahwa method atau property adalah milik kelas, bukan dari instance objek.
@@ -1873,13 +1873,11 @@ Dalam kode di atas, kita mencoba mengakses properti `language`, `objectOriented`
 8. **`readonly`**: Menandakan bahwa nilai property hanya dapat diatur sekali, biasanya selama inisialisasi.
 9. **`params`**: Memungkinkan method menerima jumlah argumen variabel sebagai array.
 
-### Namespace
+## Namespace
 
 Namespace dalam C# adalah sebuah mekanisme yang digunakan untuk mengelompokkan dan mengorganisir kode ke dalam kelompok yang terpisah. Fungsinya adalah untuk mencegah konflik nama antara kelas, metode, dan variabel yang mungkin memiliki nama yang sama, tetapi berasal dari sumber yang berbeda.
 
 Beberapa cara untuk membuat dan menggunakan namespace di C#:
-
-### 1. Deklarasi Namespace:
 
 1. **Single Namespace**:
 
@@ -1909,7 +1907,7 @@ Beberapa cara untuk membuat dan menggunakan namespace di C#:
    }
    ```
 
-### 2. Nesting Namespace:
+3. Nesting Namespace:
 
 ```csharp
 namespace ParentNamespace
@@ -1921,37 +1919,30 @@ namespace ParentNamespace
 }
 ```
 
-## 4. Enkapsulasi
+## Enkapsulasi
 
 ***Encapsulation** artinya memastikan data sensitif sebuah object tersembunyi dari akses luar*. Hal ini bertujuan agar kita bisa menjaga agar data sebuah object tetap baik dan valid. Untuk mencapai ini, biasanya kita akan membuat semua field yang tidak bisa diakses dari luar. Agar bisa diubah, kita akan menyediakan method untuk mengubah dan mendapatkan field tersebut
 
 > Proses encapsulation sudah dibuat standarisasinya, dimana kita bisa menggunakan Getter dan Setter method
 
-### Setter & Getter
+**Setter & Getter**
 
 - **Getter** adalah function yang dibuat untuk mengambil data field. Untuk Getter, kita bisa menggunakan kata kunci **get**
 - **Setter** adalah function untuk mengubah data field. Untuk Setter, kita bisa menggunakan kata kunci **set**
 
 ```cs
-public class Programmer {
-    private string language = "";
-
-    public string Language {
-        get { return language; }
-        set { language = value; }
-    }
-
-    public void SayHello() {
-        Console.WriteLine("Hello, I'm a " + language + " Programmer.");
-    }
+public class Person {
+    // Property dengan getter dan setter
+    public string Name { get; set; }
+    public int Age { get; set; }
 }
 ```
 
-### Getter dan Setter Yang Tidak Perlu
+**Getter dan Setter Yang Tidak Perlu**
 
 **penggunaan Getter dan Setter tidak perlu jika hanya melakukan redirect data ke Field.** Hal ini dikarenakan kita bisa langsung menggunakan Field tanpa perlu membuat Getter dan Setter. Pendekatan ini memungkinkan kita untuk menambahkan Getter dan Setter di masa depan tanpa mengubah kode client.
 
-## 5. Constructor
+## Constructor
 
 Di C#, constructor didefinisikan dengan nama yang sama seperti nama kelasnya. Ini berbeda dengan beberapa bahasa pemrograman lain yang menggunakan `Constructor()`. Ketika membuat objek, semua properti dalam kelas tersebut harus memiliki nilai. Properti dapat diinisialisasi langsung atau melalui constructor. **Constructor adalah fungsi khusus dalam sebuah kelas yang digunakan untuk membuat objek.**
 
@@ -1991,7 +1982,7 @@ class Program
 
 > ⚠️ Tetapi akan terjadi masalah yang disebut dengan **Variables Shadowing.**
 
-### Destructor/Finalizer
+**Destructor/Finalizer**
 
 Di C#, destructor (atau  **finalizer** ) adalah metode khusus yang digunakan untuk membersihkan sumber daya sebelum objek dihapus dari memori oleh garbage collector. Meskipun C# memiliki **garbage collector** yang secara otomatis menangani manajemen memori, ada kalanya kita perlu melepaskan sumber daya tak dikelola (seperti file, soket jaringan, atau handle sistem operasi) secara manual. Di situlah destructor digunakan.
 
@@ -2011,7 +2002,7 @@ Di C#, destructor (atau  **finalizer** ) adalah metode khusus yang digunakan unt
    }
    ```
 
-### Destructor vs IDisposable
+Destructor vs IDisposable
 
 1. **Destructor** :
 
@@ -2025,9 +2016,9 @@ Di C#, destructor (atau  **finalizer** ) adalah metode khusus yang digunakan unt
 * Dapat dipanggil secara eksplisit oleh kode pengguna melalui `Dispose()` atau melalui konstruk `using`.
 * Memberikan kontrol yang lebih baik atas siklus hidup sumber daya.
 
-## 6. Variable Shadowing
+## Variable Shadowing
 
-***Variable shadowing** adalah kejadian ketika kita membuat nama variable dengan nama yang sama di scope yang menutupi variable dengan nama yang sama di scope diatasnya.* Ini biasa terjadi seperti kita membuat nama parameter di method sama dengan nama field di class. Saat terjadi variable shadowing, maka secara otomatis variable di scope diatasnya tidak bisa diakses.
+***Variable shadowing** adalah kejadian ketika kita membuat nama properti dengan nama yang sama di scope yang menutupi variable dengan nama yang sama di scope diatasnya.* Ini biasa terjadi seperti kita membuat nama parameter di method sama dengan nama field di class. Saat terjadi variable shadowing, maka secara otomatis variable di scope diatasnya tidak bisa diakses.
 
 **Gunakan This Keyword**. **this** bisa digunakan untuk mengatasi masalah variable shadowing.
 
@@ -2039,7 +2030,7 @@ public Programmer(string language, bool objectOriented, int born){
 }
 ```
 
-## 7. Inheritance
+## Inheritance
 
 ***Inheritance** adalah kemampuan suatu program untuk membuat kelas baru dari kelas yang ada.* Konsep inheritance ini bisa dibayangkan layaknya seorang anak mewarisi sifat dari orang tuanya. Di dalam OOP kelas yang menurunkan sifat disebut sebagai kelas induk (parent class/superclass) sementara kelas yang mewarisi kelas induknya disebut sebagai kelas anak (child class/subclass). Setelah membuat kelas Induk, kita dapat membuat kelas lainnya lalu melakukan extends ke kelas induknya. Untuk menerapkan inheritance gunakan keyword **:**
 
@@ -2057,7 +2048,7 @@ public class BackEnd : Programmer {
 }
 ```
 
-### Uninheritance Class
+**Uninheritance Class**
 
 Jika kita ingin mencegah kelas turunan atau subclass untuk mewarisi kelas tertentu, Anda dapat menggunakan kata kunci sealed dalam C#. Ketika kelas dideklarasikan sebagai sealed, itu berarti kelas tersebut tidak dapat digunakan sebagai kelas dasar untuk kelas lain. Dengan kata lain, kelas tersebut tidak dapat diwarisi.
 
@@ -2071,7 +2062,7 @@ class BackEnd : Programmer {
 }
 ```
 
-## 8. Abstract Class
+## Abstract
 
 ***Abstract class** merupakan gambaran umum dari sebuah kelas. Ia tidak dapat direalisasikan dalam sebuah objek. Abstract class artinya, class tersebut tidak bisa dibuat sebagai object secara langsung, hanya bisa diturunkan.* Untuk menjadikan sebuah kelas menjadi abstract, kita hanya perlu menambah keyword **abstract** sebelum penulisan kelas.
 
@@ -2092,7 +2083,7 @@ class MobileDev : Programmer
 }
 ```
 
-### **Abstract Method**
+**Abstract Method**
 
 Saat kita membuat class yang abstract, kita bisa membuat abstract method juga di dalam class abstract tersebut. Saat kita membuat sebuah abstract method, kita tidak boleh membuat block method untuk method tersebut. Artinya, abstract method wajib di override di class child. Dan kelas turunan wajib membuat abstract method tersebut.
 
@@ -2118,7 +2109,7 @@ class MobileDev : Programmer
 }
 ```
 
-### Interface
+**Interface**
 
 Selain abstract class, cara lain yang bisa kita gunakan untuk menerapkan abstraksi dalam OOP adalah dengan interface. **Interface** atau antarmuka merupakan set instruksi yang bisa diimplementasi oleh objek. Secara sederhana, interface adalah kontrak bagaimana class diimplementasikan. Di C# jika kita ingin membuat interface menggunakan kata kunci **interface**.
 
@@ -2152,7 +2143,7 @@ class MobileDev : Programmer, ICoding
 > ⚠️ Jika kita tidak mengimplementasikan method dari interfacenya tetapi kelas tersebut melakukan pewarisan ke interface maka akan ada pesan error: 'MobileDev' does not implement interface member 'ICoding.Platform()'CS0535
 > interface MyNamespace.ICoding
 
-### **Multiple Interface**
+Multiple Interface
 
 Ketika menggunakan implements, kita dapat mengimplementasikan beberapa class, yang memungkinkan class tersebut memiliki field dan method yang sama seperti class yang diimplementasikan. Dengan menggunakan tanda koma sebagai pemisah, kita dapat melakukan multiple implements.
 
@@ -2171,7 +2162,7 @@ class MyClass : IInterface1, IInterface2
 }
 ```
 
-## 9. Enumerated Types
+## Enumerated Types
 
 ***Enumerated types** (enum) adalah jenis data khusus dalam beberapa bahasa pemrograman yang digunakan untuk mendefinisikan tipe data dengan himpunan nilai yang terbatas dan terdefinisi sebelumnya.* Enumerated types menyediakan cara yang lebih eksplisit dan terbatas untuk mewakili pilihan-nilai yang valid atau kategori-kategori tertentu.
 
@@ -2201,7 +2192,7 @@ public enum ErrorCode
 }
 ```
 
-## 10. Extensions Method
+## Extensions Method
 
 ***Extension Method** adalah cara menambahkan method terhadap Class yang sudah ada, tanpa harus mengubah Class tersebut*. Ketika Anda menggunakan library, baik itu library bawaan C# atau pun library milik orang lain, ada kemungkinan library tersebut kurang lengkap sehingga kita perlu menambahkan beberapa fungsionalitas. Namun akan jadi PR kita untuk mengubah library yang sudah ada. Dengan extension method, kita dapat membuat fungsi atau method tambahan lalu menggunakannya sesuai dengan kebutuhan aplikasi kita.
 
@@ -2244,7 +2235,7 @@ class Program
 }
 ```
 
-## 11. Base Keyword
+## Base Keyword
 
 Kadang kita ingin mengakses method yang terdapat di class parent yang sudah terlanjur kita override di class child. Untuk mengakses method milik class parent, kita bisa menggunakan kata kunci base. Sederhananya, base digunakan untuk mengakses class parent. Tidak hanya method, field milik parent class pun bisa kita akses menggunakan kata kunci super.
 
@@ -2299,7 +2290,7 @@ public class Dog : Animal {
 }
 ```
 
-## 12. Polymorphism
+## Polymorphism
 
 Polimofirsme artinya adalah banyak bentuk. Salah satu contoh kasus yang banyak terjadi dimana sebuah method di parent class di wariskan ke child class. Ketika method tersebut diwariskan, method itu berubah fungsi dari aslinya saat digunakan di kelas turunannya.
 
@@ -2329,7 +2320,7 @@ class Dog : Animal  // Derived class (child)
 }
 ```
 
-## 13. Meta Programming
+## Meta Programming
 
 Meta-programming adalah teknik dalam pemrograman komputer di mana program dapat menulis atau memanipulasi kode program lainnya selama waktu kompilasi atau runtime. Dalam meta-programming, kode program tidak hanya menjalankan operasi pada data, tetapi juga memanipulasi struktur program itu sendiri atau menghasilkan kode baru secara dinamis.
 
@@ -2413,13 +2404,13 @@ Peringatan Penggunaan Reflection:
 
 **Dynamic Proxy**: Membuat objek yang memproksi objek lain, memungkinkan intersepsi dan modifikasi panggilan ke objek yang asli.
 
-## 14. Static
+## Static
 
 ***Static** merupakan sebuah kata kunci yang digunakan untuk membuat field dan method yang bisa diakses tanpa harus membuat object nya.*
 
 Saat kita membuat field atau method sebagai static, artinya field atau method tersebut dapat diakses oleh semua objek tanpa perlu menginstansiasi. Namun, perlu berhati-hati saat menggunakan field atau method static. Field atau method static dapat diakses oleh method yang tidak static, namun field atau method static tidak dapat mengakses field atau method yang tidak static. Biasanya, penggunaan static digunakan untuk membuat utilitas. Untuk mengakses field atau method static, kita dapat langsung menggunakan nama class diikuti dengan tanda titik dan field atau method static tersebut.
 
-### Kode Static di C#
+**Kode Static di C#**
 
 ```cs
 using System;
@@ -2437,7 +2428,7 @@ public class Program {
 }
 ```
 
-### Kode Non-Static di C#
+**Kode Non-Static di C#**
 
 ```cs
 using System;
@@ -2455,7 +2446,7 @@ public class Program {
 }
 ```
 
-## 15. Metadata
+## Metadata
 
 ***Metadata** merupakan fitur yang digunakan untuk menambahkan informasi tambahan ke dalam kode program.* Metadata diterapkan menggunakan annotation yang dimulai dengan karakter "`[Metadata]`" dan diikuti dengan constant atau pemanggilan constant constructor.
 
@@ -2501,7 +2492,7 @@ class MyClass
 - ***Exception** adalah suatu kondisi abnormal yang terjadi pada saat menjalankan program.*
 - ***Error Handling** adalah satu penanganan kesalahan (error) pada berbagai macam keadaan dalam pemrograman.*
 
-### 1. Membuat Error (Exception):
+### 1. Membuat Error
 
 Error atau pengecualian (exception) terjadi ketika suatu situasi yang tidak diharapkan atau kesalahan terjadi selama eksekusi program. Berikut adalah beberapa cara umum untuk membuat error:
 
@@ -2522,7 +2513,7 @@ Error atau pengecualian (exception) terjadi ketika suatu situasi yang tidak diha
   int nilai = array[5]; // Ini akan menyebabkan error karena indeks 5 tidak ada
   ```
 
-### 2. Menangani Error (Error Handling):
+### 2. Menangani Error
 
 Untuk menangani error, Anda dapat menggunakan blok `try`, `catch`, dan `finally`. Ini memungkinkan Anda untuk menjalankan kode tertentu saat terjadi error dan memberikan tindakan perbaikan yang sesuai. Berikut langkah-langkahnya:
 
@@ -2554,7 +2545,7 @@ Untuk menangani error, Anda dapat menggunakan blok `try`, `catch`, dan `finally`
   }
   ```
 
-### 3. Menggunakan Throw:
+### 3. Menggunakan Throw
 
 1. **Menggunakan `throw` dengan Objek Pengecualian:**
    Anda dapat menggunakan `throw` untuk melempar sebuah objek pengecualian yang sudah ada atau Anda bisa membuat objek pengecualian baru di tempat. Berikut contohnya:
