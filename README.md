@@ -295,6 +295,8 @@ Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
 
 Data types atau tipe data adalah sebuah pengklasifikasian data berdasarkan jenis data tersebut. Dalam C#, tipe data dibagi menjadi primitif dan non-primitif. Kebanyakan tipe data di C# adalah tipe primitif, yaitu tipe data bawaan yang disediakan oleh bahasa pemrograman untuk menyimpan nilai sederhana seperti angka, karakter, atau boolean. Tipe data primitif biasanya diakses langsung di memori tanpa menggunakan referensi.
 
+Sedangkan Tipe data non-primitif menyimpan referensi ke memori heap, bukan nilai langsung, sehingga lebih fleksibel tetapi lebih lambat dibandingkan tipe primitif seperti string, object, array, class, struct, interface, delegate, event dan lainnya.
+
 ### 1.1.1 Numbers
 
 - **Integer**:
