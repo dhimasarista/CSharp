@@ -320,7 +320,7 @@ Dengan menyelaraskan tipe data dan ukurannya, panduan ini menjadi lebih mudah di
 int hexadecimalNumber = 0xFF; // Output: 255
 ```
 
-### 1.1.2 Character
+### 1.1.2 Characters
 
 * **Char** digunakan untuk menyimpan  **karakter tunggal** . Tipe ini mewakili karakter Unicode 16-bit (UTF-16) dan dideklarasikan menggunakan tanda kutip tunggal (`'`) untuk menampung satu karakter.
 
