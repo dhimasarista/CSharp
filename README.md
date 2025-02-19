@@ -3702,6 +3702,7 @@ C# menyediakan beberapa mode latensi untuk GC yang dapat disesuaikan dengan kebu
 - **LowLatency**: Menurunkan latensi GC untuk aplikasi yang sangat sensitif terhadap waktu.
 - **SustainedLowLatency**: Mode untuk aplikasi yang memerlukan latensi rendah dalam jangka panjang (misalnya, aplikasi streaming).
 - **Batch**: Mode ini jarang digunakan, cocok untuk aplikasi yang dapat menangani pengumpulan sampah lebih jarang.
+- **NoGCRegion**: Mode ini tidak akan melakukan pengumpulan memori selama alokasi memori masih cukup tersedia. Cocok untuk Real-Time Proccessing, Game Development dan High-Performance Computing.
 
 Contoh cara mengubah **GC Latency Mode**:
 
@@ -3808,3 +3809,121 @@ Untuk memastikan tuning berjalan efektif, diperlukan alat monitoring dan profili
 ```bash
 dotnet-counters monitor -p <process_id>
 ```
+
+# 17. Monitoring & Diagnostic
+
+Di C#, pemantauan kinerja dan diagnostik menjadi aspek penting untuk memastikan aplikasi berjalan dengan optimal. Salah satu fitur utama yang disediakan oleh C# adalah  **System.Diagnostics** , yang memungkinkan pengembang untuk melakukan logging, tracing, dan profiling terhadap aplikasi mereka.
+
+## 1. System Diagnostics
+
+System.Diagnostics adalah namespace dalam C# yang menyediakan berbagai alat untuk:
+
+* Logging dan debugging
+* Tracing dan monitoring aplikasi
+* Melakukan profiling untuk analisis performa
+* Menangani event log dan diagnosa error
+
+Beberapa kelas utama yang sering digunakan dalam System.Diagnostics meliputi:
+
+* `Debug` dan `Trace` untuk debugging dan logging
+* `EventLog` untuk mencatat log aplikasi di Windows Event Viewer
+* `Process` untuk memantau dan mengelola proses yang berjalan di sistem
+* `PerformanceCounter` untuk mengukur kinerja aplikasi
+
+## 2. Logging & Tracing
+
+Logging adalah salah satu aspek penting dalam pengembangan aplikasi untuk mencatat informasi tentang status dan perilaku aplikasi. Dalam C#, logging bisa dilakukan menggunakan `Trace` dan `Debug`.
+
+Contoh penggunaan `Trace` untuk logging:
+
+```csharp
+Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+Trace.AutoFlush = true;
+
+Trace.WriteLine("Aplikasi telah dimulai.");
+Trace.TraceInformation("Informasi penting tentang aplikasi.");
+Trace.TraceWarning("Peringatan: sesuatu berjalan tidak normal.");
+Trace.TraceError("Terjadi kesalahan!");
+
+Console.WriteLine("Selesai logging.");
+```
+
+## 3. Monitoring Proses
+
+System.Diagnostics juga memungkinkan kita untuk memantau proses yang berjalan di sistem menggunakan kelas `Process`.
+
+Contoh mendapatkan informasi tentang proses yang sedang berjalan:
+
+```csharp
+foreach (var process in Process.GetProcesses())
+{
+    Console.WriteLine($"PID: {process.Id} - Nama: {process.ProcessName}");
+}
+```
+
+## 4. Profiling Kinerja Aplikasi
+
+Untuk menganalisis performa aplikasi, kita bisa menggunakan `Stopwatch` yang ada di System.Diagnostics.
+
+Contoh mengukur waktu eksekusi suatu proses:
+
+```csharp
+using System;
+using System.Diagnostics;
+using System.Threading;
+
+class Program
+{
+    static void Main()
+    {
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+        Thread.Sleep(2000); // Simulasi proses selama 2 detik
+
+        stopwatch.Stop();
+        Console.WriteLine($"Waktu eksekusi: {stopwatch.ElapsedMilliseconds} ms");
+    }
+}
+```
+
+## 5. Logging ASP.NET Core
+
+Selain `System.Diagnostics`, ASP.NET Core juga mendukung berbagai **library logging** yang lebih fleksibel dan sering digunakan dalam proyek besar. Beberapa di antaranya adalah:
+
+1. **Microsoft.Extensions.Logging**
+
+   * Library logging bawaan ASP.NET Core.
+   * Mendukung berbagai provider seperti console, file, event log, dan database.
+2. **Serilog**
+
+   * Library logging yang sangat populer di ASP.NET Core.
+   * Mendukung logging ke berbagai output seperti console, file, database, dan cloud.
+   * Contoh konfigurasi Serilog:
+
+   ```csharp
+   using Microsoft.Extensions.Logging;
+   using Serilog;
+
+   class Program
+   {
+       static void Main()
+       {
+           Log.Logger = new LoggerConfiguration()
+               .WriteTo.Console()
+               .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+               .CreateLogger();
+
+           Log.Information("Aplikasi dimulai.");
+           Log.Warning("Ini adalah peringatan.");
+           Log.Error("Terjadi kesalahan.");
+       }
+   }
+   ```
+3. **NLog**
+
+   * Alternatif lain untuk logging yang mendukung berbagai target output.
+   * Memiliki konfigurasi berbasis XML atau kode program.
+4. **Log4Net**
+
+   * Salah satu library logging tertua yang masih digunakan dalam beberapa proyek legacy ASP.NET.
