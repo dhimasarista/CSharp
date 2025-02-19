@@ -1342,12 +1342,24 @@ Tiap paradigma memiliki cara berpikir yang berbeda dalam menyelesaikan masalah p
    - Fungsi dianggap sebagai entitas utama, dapat diterapkan pada data untuk menghasilkan hasil.
 3. **Struct**:
 
-   Struct termasuk ke dalam paradigma pemrograman terstruktur (structured programming). Paradigma ini berfokus pada pengorganisasian kode program menjadi blok-blok logis yang terstruktur, seperti fungsi, blok percabangan (if-else), dan perulangan (loop). Struct digunakan untuk menggabungkan beberapa bidang terkait bersama dalam satu entitas, sehingga membantu dalam pengorganisasian data dan fungsionalitas program secara terstruktur. Struct biasanya digunakan untuk mewakili konsep data sederhana yang tidak memerlukan tingkat kompleksitas yang sama seperti yang dibutuhkan oleh kelas dalam paradigma pemrograman berorientasi objek. Meskipun demikian, struct juga dapat digunakan dalam paradigma pemrograman berorientasi objek sebagai bagian dari pengorganisasi data yang lebih luas.
+   struct (struktur) di C# adalah **tipe data value type** yang digunakan untuk merepresentasikan objek kecil yang memiliki data terkait. Struct mirip dengan class, tetapi memiliki beberapa perbedaan mendasar dalam cara penyimpanan, performa, dan penggunaannya.
 4. **OOP (Object-Oriented Programming)**:
 
    - Mengorganisasi program ke dalam objek yang memiliki properti dan perilaku.
    - Interaksi antar objek melalui metode terkait.
    - Konsep dasar meliputi pewarisan, enkapsulasi, dan polimorfisme.
+
+
+| Aspek                     | Struct (Value Type)                                          | Class (Reference Type)                                       |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Tipe**            | Value Type                                                   | Reference Type                                               |
+| **Penyimpanan**     | Stack                                                        | Heap                                                         |
+| **Kinerja**         | Lebih cepat untuk objek kecil (karena di-stack)              | Bisa lebih lambat karena alokasi heap dan garbage collection |
+| **Mutability**      | Sebaiknya immutable (tidak bisa diubah setelah dibuat)       | Bisa mutable (dapat diubah setelah dibuat)                   |
+| **Konstruksi**      | Tidak memiliki constructor default                           | Bisa memiliki constructor default                            |
+| **Inheritance**     | Tidak bisa mewarisi atau diwarisi (hanya bisa `interface`) | Mendukung inheritance (pewarisan)                            |
+| **Default Nilai**   | Tidak bisa `null`(karena value type)                       | Bisa `null`(karena reference type)                         |
+| **Penggunaan Umum** | Data kecil seperti koordinat, warna, tanggal                 | Objek kompleks seperti entitas aplikasi                      |
 
 > *"di C#, meskipun tidak memiliki paradigma fungsional secara murni, namun method dalam paradigma Object-Oriented juga merupakan fungsi."*
 
