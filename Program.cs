@@ -1,28 +1,24 @@
+using System;
+
+
 class Program
 {
     public static void Main(string[] args)
     {
-        var names = new List<string> { "dhimasarista", "anto" };
-        var hello = new Hello(names.ToArray());
-        string[] getData = hello.GetData();
-
-        foreach (var data in getData)
+        // Alokasikan banyak objek
+        for (int i = 0; i < 100000; i++)
         {
-            Console.WriteLine(data);
+            var obj = new object();
         }
-    }
-}
+        Console.WriteLine("Sebelum GC.Collect");
+        Console.WriteLine($"Memori yang digunakan: {GC.GetTotalMemory(false)} bytes");
 
-struct Hello
-{
-    private string[] data;
-    public Hello(string[] data)
-    {
-        this.data = data;
-    }
+        // Memanggil GC secara manual
+        GC.Collect();
+        GC.WaitForPendingFinalizers(); // Tunggu semua finalizer selesai (opsional)
+        GC.Collect(); // Pastikan semua yang bisa dikoleksi sudah terkoleksi
 
-    public readonly string[] GetData()
-    {
-        return this.data;
+        Console.WriteLine("Setelah GC.Collect");
+        Console.WriteLine($"Memori yang digunakan: {GC.GetTotalMemory(false)} bytes");
     }
 }

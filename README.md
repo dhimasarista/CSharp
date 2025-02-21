@@ -3103,11 +3103,11 @@ Dalam bahasa pemrograman, sistem tipe (type system) adalah sistem logis yang ter
 - Dokumentasi (Documentation): Type system dapat berfungsi sebagai dokumentasi kode yang hidup. Dengan mengetahui tipe data variabel, pengembang lain dapat lebih mudah memahami bagaimana variabel tersebut digunakan dalam program.
 - Optimasi (Optimization): Type system dapat memungkinkan kompiler atau runtime environment untuk melakukan optimasi khusus berdasarkan tipe data, meningkatkan kinerja program.
 
-### 1. Type Inference
+## 1. Type Inference
 
 Type Inference adalah kemampuan dari suatu bahasa pemrograman untuk secara otomatis menentukan tipe data variabel berdasarkan nilai yang diberikan kepadanya pada saat inisialisasi. Ini memungkinkan programmer untuk menulis kode yang lebih ringkas dan ekspresif tanpa harus secara eksplisit menentukan tipe data untuk setiap variabel.
 
-### 2. Generic Class
+## 2. Generic Class
 
 ***Generic class** adalah class yang memiliki parameter type.*
 Tidak ada ketentuan dalam pembuatan generic parameter type, namun biasanya kebanyakan orang menggunakan 1 karakter sebagai generic parameter type .
@@ -3152,7 +3152,7 @@ class Program {
 }
 ```
 
-### 3. Generic Function
+## 3. Generic Function
 
 Generic parameter type tidak hanya bisa digunakan pada class. Kita juga bisa menggunakan generic parameter type di function. Generic parameter type yang kita deklarasikan di function, hanya bisa diakses di function tersebut, tidak bisa digunakan di luar function. Ini cocok jika kita ingin membuat generic function, tanpa harus mengubah deklarasi class.
 
@@ -3160,7 +3160,7 @@ Generic parameter type tidak hanya bisa digunakan pada class. Kita juga bisa men
 public static void ReverseArray<T>(T[] array){}
 ```
 
-### 4. Covariant
+## 4. Covariant
 
 Covariant artinya kita bisa melakukan subtitusi subtype (child) dengan supertype (parent), namun hati-hati ketika melakukan covariant, karena jika sampai salah mengubah datanya, maka akan terjadi error pada saat runtime, tidak akan terdeteksi ketika proses compile.
 
@@ -3304,7 +3304,7 @@ Memperbarui Semua Paket:
 
 # 11. Testing & Debugging
 
-### 1. Unit Testing dalam C#:
+## 1. Unit Testing dalam C#:
 
 **Pengenalan tentang Pengujian Unit:**
 
@@ -3357,7 +3357,7 @@ public class UnitTest1
 6. Menjalankan file tertentu, menggunakan `dotnet test --filter "FullyQualifiedName~UnitTest2"`.
 7. Menjalankan file yang namanya ada unsur kata yang diinginkan, `dotnet test --filter "Name~Test2"`
 
-### 2. Debugging dalam C#:
+## 2. Debugging dalam C#:
 
 Debugging adalah proses mengidentifikasi, memahami, dan memperbaiki kesalahan dalam kode program. Dalam C#, Anda dapat menggunakan beberapa teknik debugging, termasuk:
 
@@ -3600,48 +3600,24 @@ e. **`#region` dan `#endregion`**
   #endregion
   ```
 
-# 15. Garbage Collection
+# 15. Garbage Collection & Memory Management
 
-#### 1. Apa itu Garbage Collection (GC)?
+**Apa itu Memory Management?**  
+Di C#, manajemen memori adalah proses alokasi dan dealokasi memori selama eksekusi program. Ada dua area utama dalam manajemen memori:
 
+* Heap: Digunakan untuk alokasi objek yang memiliki masa hidup lebih lama dan tidak ditentukan oleh scope. 
+* Stack: Digunakan untuk penyimpanan variabel lokal dan eksekusi fungsi yang bersifat sementara.
+
+* Stack vs Heap: Stack bersifat Last In First Out (LIFO) dan digunakan untuk menyimpan nilai tipe data primitif serta referensi objek.
+Heap digunakan untuk objek yang dialokasikan secara dinamis dan dikelola oleh Garbage Collector (GC).
+
+**Apa itu Garbage Collection (GC)?**  
 Garbage Collection (GC) adalah proses otomatis yang dilakukan oleh runtime .NET untuk mengelola memori dalam aplikasi C#. Tujuannya adalah untuk secara otomatis mendeteksi dan menghapus objek yang tidak lagi digunakan (garbage), sehingga memori yang digunakan oleh objek tersebut dapat dibebaskan dan digunakan kembali.
 
-```cs
-using System;
+**Hubungan Keduanya**  
+Manajemen memori dan Garbage Collector (GC) memiliki hubungan erat dalam ekosistem .NET, karena GC adalah bagian dari sistem manajemen memori yang bertugas mengelola alokasi dan dealokasi memori secara otomatis.
 
-class Program
-{
-    static void Main()
-    {
-        // Alokasikan banyak objek
-        for (int i = 0; i < 100000; i++)
-        {
-            var obj = new object();
-        }
-        Console.WriteLine("Sebelum GC.Collect");
-        Console.WriteLine($"Memori yang digunakan: {GC.GetTotalMemory(false)} bytes");
-
-        // Memanggil GC secara manual
-        GC.Collect();
-        GC.WaitForPendingFinalizers(); // Tunggu semua finalizer selesai (opsional)
-        GC.Collect(); // Pastikan semua yang bisa dikoleksi sudah terkoleksi
-
-        Console.WriteLine("Setelah GC.Collect");
-        Console.WriteLine($"Memori yang digunakan: {GC.GetTotalMemory(false)} bytes");
-    }
-}
-
-```
-
-Di C#, **Garbage Collector** bekerja di background untuk:
-
-- Memantau objek yang telah tidak terpakai (tidak lagi memiliki referensi yang menunjuk ke objek tersebut).
-- Menghapus objek-objek tersebut dari **managed heap**.
-- Membebaskan memori yang digunakan oleh objek-objek tersebut, yang kemudian dapat digunakan oleh objek lain.
-
-Proses ini mengurangi beban programmer untuk mengelola memori secara manual (seperti yang dilakukan di bahasa pemrograman seperti C atau C++) dan meminimalkan kemungkinan terjadinya **memory leaks**.
-
-#### 2. Cara Kerja Garbage Collection (GC)
+## 1. Cara Kerja GC
 
 Garbage Collection di .NET berfungsi dengan beberapa tahapan berikut:
 
@@ -3655,7 +3631,69 @@ C# menggunakan model **generational garbage collection**, yang berarti bahwa obj
 - **Generasi 1**: Objek yang telah bertahan setelah satu siklus GC.
 - **Generasi 2**: Objek yang telah bertahan setelah lebih dari satu siklus GC dan biasanya berukuran lebih besar dan lebih lama digunakan.
 
-#### 3. Mengapa GC Dapat Menjadi Masalah?
+## 2. Mengatur Memory
+Meskipun .NET memiliki GC untuk mengelola memori secara otomatis, dalam beberapa kasus kita perlu melakukan pengelolaan memori secara manual agar aplikasi lebih optimal. Berikut beberapa teknik untuk mengatur memori secara manual:  
+
+- **Menggunakan `Dispose()` dan `IDisposable`**  
+  Membantu membebaskan sumber daya eksternal seperti file, koneksi database, atau socket segera setelah tidak digunakan.  
+
+- **Memanfaatkan `using` Statement**  
+  Memastikan objek yang mengimplementasikan `IDisposable` dibersihkan secara otomatis setelah selesai digunakan.  
+
+- **Menggunakan `GC.Collect()` dengan Hati-hati**  
+  Memaksa GC untuk menjalankan pembersihan memori, tetapi harus digunakan secara selektif untuk menghindari overhead yang tidak perlu.  
+
+- **Memanfaatkan `WeakReference`**  
+  Membantu mengelola objek yang bisa dihapus oleh GC ketika tidak ada referensi kuat yang tersisa.  
+
+- **Menggunakan `Object Pooling`**  
+  Mengurangi alokasi dan dealokasi objek berulang dengan mendaur ulang objek yang sering digunakan.  
+
+- **Menghindari Alokasi Berlebihan di Heap**  
+  Gunakan `struct` daripada `class` untuk objek kecil yang sering digunakan agar tetap berada di stack.  
+
+- **Menggunakan `Span<T>` dan `Memory<T>`**  
+  Mengelola buffer data secara efisien tanpa alokasi heap tambahan.  
+
+- **Menyesuaikan Pengaturan GC**  
+  Mengatur mode GC seperti *Workstation GC*, *Server GC*, atau *Low-Latency GC* berdasarkan kebutuhan aplikasi.  
+
+**Contoh Kode Memori Manajemen Secara Manual Menggunakan GC.Collect**
+Jika Anda memilih untuk memanggil **`GC.Collect()`** secara eksplisit untuk mengoptimalkan proses pengumpulan sampah, pastikan Anda memahami kapan ini diperlukan:
+
+- Setelah batch operasi besar.
+- Ketika Anda tahu bahwa sebagian besar objek dalam memori tidak lagi diperlukan.
+
+Namun, perlu diingat bahwa pemanggilan **`GC.Collect()`** dapat menyebabkan **overhead tambahan** jika dilakukan terlalu sering atau tidak perlu.
+
+```cs
+// Alokasikan banyak objek
+for (int i = 0; i < 100000; i++)
+{
+    var obj = new object();
+}
+Console.WriteLine("Sebelum GC.Collect");
+Console.WriteLine($"Memori yang digunakan: {GC.GetTotalMemory(false)} bytes");
+
+// Memanggil GC secara manual
+GC.Collect();
+GC.WaitForPendingFinalizers(); // Tunggu semua finalizer selesai (opsional)
+GC.Collect(); // Pastikan semua yang bisa dikoleksi sudah terkoleksi
+
+Console.WriteLine("Setelah GC.Collect");
+Console.WriteLine($"Memori yang digunakan: {GC.GetTotalMemory(false)} bytes");
+
+```
+
+Di C#, **Garbage Collector** bekerja di background untuk:
+
+- Memantau objek yang telah tidak terpakai (tidak lagi memiliki referensi yang menunjuk ke objek tersebut).
+- Menghapus objek-objek tersebut dari **managed heap**.
+- Membebaskan memori yang digunakan oleh objek-objek tersebut, yang kemudian dapat digunakan oleh objek lain.
+
+Proses ini mengurangi beban programmer untuk mengelola memori secara manual (seperti yang dilakukan di bahasa pemrograman seperti C atau C++) dan meminimalkan kemungkinan terjadinya **memory leaks**.
+
+## 3. Mengapa GC Dapat Menjadi Masalah?
 
 Walaupun Garbage Collection secara otomatis mengelola memori, ada beberapa alasan mengapa GC dapat menimbulkan masalah:
 
@@ -3669,7 +3707,7 @@ Walaupun Garbage Collection secara otomatis mengelola memori, ada beberapa alasa
 
   - Walaupun GC mengkompakkan heap, heap yang terfragmentasi dapat menyebabkan overhead memori yang lebih besar, terutama jika objek-objek kecil dan besar dicampur di heap.
 
-#### 4. Cara Mengatasi Masalah yang Dapat Dihadapi oleh GC
+## 4. Cara Mengatasi Masalah yang Dapat Dihadapi oleh GC
 
 Untuk mengatasi masalah terkait Garbage Collection, Anda dapat menerapkan beberapa praktik terbaik berikut:
 
@@ -3697,16 +3735,8 @@ Untuk mengatasi masalah terkait Garbage Collection, Anda dapat menerapkan bebera
 
   - Anda dapat mengatur mode latensi GC menggunakan **`GCSettings.LatencyMode`** untuk aplikasi yang membutuhkan performa lebih tinggi dan latensi lebih rendah, seperti pada aplikasi real-time atau permainan.
 
-#### 5. Mengoptimalkan GC dengan `GC.Collect()`
 
-Jika Anda memilih untuk memanggil **`GC.Collect()`** secara eksplisit untuk mengoptimalkan proses pengumpulan sampah, pastikan Anda memahami kapan ini diperlukan:
-
-- Setelah batch operasi besar.
-- Ketika Anda tahu bahwa sebagian besar objek dalam memori tidak lagi diperlukan.
-
-Namun, perlu diingat bahwa pemanggilan **`GC.Collect()`** dapat menyebabkan **overhead tambahan** jika dilakukan terlalu sering atau tidak perlu.
-
-#### 6. GC Latency Modes di C#
+## 5. GC Latency Modes di C#
 
 C# menyediakan beberapa mode latensi untuk GC yang dapat disesuaikan dengan kebutuhan aplikasi Anda:
 
@@ -3725,41 +3755,6 @@ using System.Runtime.GCSettings;
 GCSettings.LatencyMode = GCLatencyMode.LowLatency; // Menurunkan latensi GC
 ```
 
-#### 7. Implementasi Garbage Collection yang Lebih Lanjut
-
-Ada beberapa konsep dan fitur lanjutan yang dapat digunakan untuk mengelola memori dengan lebih efisien di C#:
-
-- **Pinned Memory**: Digunakan untuk memastikan objek tetap berada di memori (tidak dipindahkan oleh GC). Ini digunakan dalam situasi seperti interoperabilitas dengan kode unmanaged (native).
-- **MemoryPool `<T>` dan ArrayPool `<T>`**: Ini adalah fitur yang memungkinkan Anda untuk mengelola koleksi memori yang lebih besar dan menghindari pemborosan memori yang dapat terjadi dengan alokasi berulang.
-
-**Ringkasan Praktik Terbaik untuk Mengelola GC di C#**
-
-- Hindari alokasi objek berulang, gunakan **Object Pooling** untuk objek yang sering digunakan.
-- Gunakan **`Span<T>`** dan **`Memory<T>`** untuk menghindari alokasi yang tidak perlu di heap.
-- Gunakan **value types** (structs) untuk objek yang lebih kecil dan tidak memerlukan pengelolaan memori oleh GC.
-- Bersihkan objek yang mengelola sumber daya eksternal dengan **`Dispose()`**.
-- Jangan memanggil **`GC.Collect()`** terlalu sering, kecuali dalam kondisi tertentu.
-
-# 16. Runtime Tuning
-
-Kalo dibahasa pemrograman Java, ada yang namanya JVM Tuning sedangkan di C# khususnya dotnet istilah ini disebut Runtime Tuning. Runtime tuning adalah proses mengoptimalkan performa aplikasi dengan mengatur konfigurasi runtime. Di lingkungan .NET, runtime tuning mencakup pengelolaan memori, pemrosesan paralel, pengaturan ThreadPool, hingga optimasi Just-In-Time (JIT) compiler.
-
-Tujuan utama runtime tuning adalah:
-
-* Meningkatkan performa aplikasi.
-* Mengurangi latensi.
-* Mengoptimalkan penggunaan sumber daya seperti CPU dan memori.
-
-## Garbage Collection (GC) Tuning
-
-Garbage Collection (GC) bertanggung jawab untuk mengelola memori secara otomatis. Meskipun telah dibahas di Bab 15, tuning GC memiliki peran penting dalam runtime tuning.
-
-**Mode GC:**
-
-* **Workstation GC:** Optimal untuk aplikasi desktop, fokus pada responsivitas.
-* **Server GC:** Optimal untuk aplikasi server, memanfaatkan paralelisme.
-* **Low-Latency GC:** Digunakan untuk aplikasi real-time, mengurangi jeda waktu pause.
-
 **Konfigurasi GC:**
 
 ```xml
@@ -3772,7 +3767,28 @@ Garbage Collection (GC) bertanggung jawab untuk mengelola memori secara otomatis
 </configuration>
 ```
 
-## ThreadPool Optimization
+## 6. Implementasi Garbage Collection yang Lebih Lanjut
+
+Ada beberapa konsep dan fitur lanjutan yang dapat digunakan untuk mengelola memori dengan lebih efisien di C#:
+
+- **Pinned Memory**: Digunakan untuk memastikan objek tetap berada di memori (tidak dipindahkan oleh GC). Ini digunakan dalam situasi seperti interoperabilitas dengan kode unmanaged (native).
+- **MemoryPool `<T>` dan ArrayPool `<T>`**: Ini adalah fitur yang memungkinkan Anda untuk mengelola koleksi memori yang lebih besar dan menghindari pemborosan memori yang dapat terjadi dengan alokasi berulang.
+
+# 16. Runtime Tuning
+
+Kalo dibahasa pemrograman Java, ada yang namanya JVM Tuning sedangkan di C# khususnya dotnet istilah ini disebut Runtime Tuning. Runtime tuning adalah proses mengoptimalkan performa aplikasi dengan mengatur konfigurasi runtime. Di lingkungan .NET, runtime tuning mencakup pengelolaan memori, pemrosesan paralel, pengaturan ThreadPool, hingga optimasi Just-In-Time (JIT) compiler.
+
+Tujuan utama runtime tuning adalah:
+
+* Meningkatkan performa aplikasi.
+* Mengurangi latensi.
+* Mengoptimalkan penggunaan sumber daya seperti CPU dan memori.
+
+## 1. Garbage Collection (GC) Tuning
+
+Garbage Collection (GC) bertanggung jawab untuk mengelola memori secara otomatis. Meskipun telah dibahas di Bab 15, tuning GC memiliki peran penting dalam runtime tuning.
+
+## 2. ThreadPool Optimization
 
 ThreadPool mengelola kumpulan thread untuk menjalankan tugas-tugas secara paralel.
 
@@ -3788,7 +3804,7 @@ ThreadPool.SetMinThreads(100, 100);
 ThreadPool.SetMaxThreads(500, 500);
 ```
 
-## JIT Compiler Optimization
+## 3. JIT Compiler Optimization
 
 Just-In-Time (JIT) Compiler mengubah kode IL menjadi kode mesin saat runtime. Optimasi JIT dapat meningkatkan performa eksekusi.
 
@@ -3808,7 +3824,7 @@ Just-In-Time (JIT) Compiler mengubah kode IL menjadi kode mesin saat runtime. Op
 </configuration>
 ```
 
-## Monitoring dan Profiling Tools
+## 4. Monitoring dan Profiling Tools
 
 Untuk memastikan tuning berjalan efektif, diperlukan alat monitoring dan profiling:
 
@@ -3937,5 +3953,4 @@ Selain `System.Diagnostics`, ASP.NET Core juga mendukung berbagai **library logg
    * Alternatif lain untuk logging yang mendukung berbagai target output.
    * Memiliki konfigurasi berbasis XML atau kode program.
 4. **Log4Net**
-
    * Salah satu library logging tertua yang masih digunakan dalam beberapa proyek legacy ASP.NET.
