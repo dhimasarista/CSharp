@@ -835,7 +835,19 @@ var person = new Person {}
 
 **Event**: Event adalah mekanisme di C# yang digunakan untuk memberi tahu bahwa suatu kejadian telah terjadi. Event digunakan dalam implementasi pola observer dalam pemrograman berorientasi objek.
 
-**Delegate**: Delegate adalah tipe data yang merepresentasikan referensi ke metode. Delegat memungkinkan Anda untuk menyimpan referensi ke metode dan memanggilnya nanti.
+**Delegate**: Delegate adalah tipe data yang merepresentasikan referensi ke metode. Delegate memungkinkan Anda untuk menyimpan referensi ke metode dan memanggilnya nanti.
+
+```csharp
+static void PrintMessage(string message) {
+    Console.WriteLine(message);
+}
+
+static void Main() {
+    // Method reference dengan delegate
+    Action<string> methodRef = PrintMessage;
+    methodRef("Hello from method reference!");
+}
+```
 
 ## 1.5 Operators
 
@@ -1610,6 +1622,24 @@ public class Program {
 ```
 
 Dengan menggunakan variabel yang berisi closure tersebut, kita dapat memanggilnya dengan parameter lain untuk mendapatkan hasil penjumlahan yang sesuai. Penggunaan closures ini memungkinkan kita untuk membuat fungsi yang fleksibel dengan konfigurasi nilai yang berbeda. Closures juga membantu dalam membuat kode yang lebih bersih dan terstruktur.
+
+## 3.11 Method Reference	
+
+Method Reference di C# memungkinkan pemanggilan metode secara langsung tanpa harus menggunakan ekspresi lambda. Ini menggunakan  **Method Group (`Class.Method`)** , yang secara otomatis cocok dengan parameter delegate yang dibutuhkan.
+
+Dalam contoh berikut, `Console.WriteLine` digunakan sebagai method reference untuk mencetak setiap elemen dalam list:
+
+```csharp
+var data = new List<string>{ "a", "b", "c" };
+// Method Reference
+data.ForEach(Console.WriteLine);
+
+// Cara Biasa
+data.ForEach((string d) =>
+{
+    Console.WriteLine(d);
+});
+```
 
 # 4. Struct
 
