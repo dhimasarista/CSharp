@@ -2,7 +2,7 @@
 
 **C#** (dibaca:  ***see sharp*** ) adalah sebuah bahasa pemrograman berorientasi objek ( *object-oriented language* ) yang dikembangkan oleh **Microsoft** sebagai bagian dari inisiatif kerangka **.NET Framework**. Bahasa pemrograman ini dibuat berbasiskan bahasa C++ yang telah dipengaruhi oleh aspek-aspek ataupun fitur bahasa yang terdapat pada bahasa-bahasa pemrograman lainnya seperti Java, Delphi, VisualBasic, dan lain-lain dengan beberapa penyederhanaan. Menurut standar ***ECMA-334 C# Language Specification***, nama C# terdiri atas sebuah huruf Latin C **(**U+0043**)** yang diikuti oleh tanda pagar yang menandakan angka # (U+0023). Tanda pagar # yang digunakan memang bukan tanda kres dalam seni musik (U+266F), dan tanda pagar # (U+0023) tersebut digunakan karena karakter kres dalam seni musik tidak terdapat di dalam papan tombol standar.
 
-![1737740471962](image/README/1737740471962.png)
+![1737740471962](image/README/123.png)
 
 > Sumber: Wikipedia
 
@@ -1348,7 +1348,6 @@ Tiap paradigma memiliki cara berpikir yang berbeda dalam menyelesaikan masalah p
    - Mengorganisasi program ke dalam objek yang memiliki properti dan perilaku.
    - Interaksi antar objek melalui metode terkait.
    - Konsep dasar meliputi pewarisan, enkapsulasi, dan polimorfisme.
-
 
 | Aspek                     | Struct (Value Type)                                          | Class (Reference Type)                                       |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -3602,19 +3601,17 @@ e. **`#region` dan `#endregion`**
 
 # 15. Garbage Collection & Memory Management
 
-**Apa itu Memory Management?**  
-Di C#, manajemen memori adalah proses alokasi dan dealokasi memori selama eksekusi program. Ada dua area utama dalam manajemen memori:
+**Apa itu Memory Management?**Di C#, manajemen memori adalah proses alokasi dan dealokasi memori selama eksekusi program. Ada dua area utama dalam manajemen memori:
 
-* Heap: Digunakan untuk alokasi objek yang memiliki masa hidup lebih lama dan tidak ditentukan oleh scope. 
+* Heap: Digunakan untuk alokasi objek yang memiliki masa hidup lebih lama dan tidak ditentukan oleh scope.
 * Stack: Digunakan untuk penyimpanan variabel lokal dan eksekusi fungsi yang bersifat sementara.
-
 * Stack vs Heap: Stack bersifat Last In First Out (LIFO) dan digunakan untuk menyimpan nilai tipe data primitif serta referensi objek.
-Heap digunakan untuk objek yang dialokasikan secara dinamis dan dikelola oleh Garbage Collector (GC).
+  Heap digunakan untuk objek yang dialokasikan secara dinamis dan dikelola oleh Garbage Collector (GC).
 
-**Apa itu Garbage Collection (GC)?**  
+**Apa itu Garbage Collection (GC)?**
 Garbage Collection (GC) adalah proses otomatis yang dilakukan oleh runtime .NET untuk mengelola memori dalam aplikasi C#. Tujuannya adalah untuk secara otomatis mendeteksi dan menghapus objek yang tidak lagi digunakan (garbage), sehingga memori yang digunakan oleh objek tersebut dapat dibebaskan dan digunakan kembali.
 
-**Hubungan Keduanya**  
+**Hubungan Keduanya**
 Manajemen memori dan Garbage Collector (GC) memiliki hubungan erat dalam ekosistem .NET, karena GC adalah bagian dari sistem manajemen memori yang bertugas mengelola alokasi dan dealokasi memori secara otomatis.
 
 ## 1. Cara Kerja GC
@@ -3632,31 +3629,18 @@ C# menggunakan model **generational garbage collection**, yang berarti bahwa obj
 - **Generasi 2**: Objek yang telah bertahan setelah lebih dari satu siklus GC dan biasanya berukuran lebih besar dan lebih lama digunakan.
 
 ## 2. Mengatur Memory
-Meskipun .NET memiliki GC untuk mengelola memori secara otomatis, dalam beberapa kasus kita perlu melakukan pengelolaan memori secara manual agar aplikasi lebih optimal. Berikut beberapa teknik untuk mengatur memori secara manual:  
 
-- **Menggunakan `Dispose()` dan `IDisposable`**  
-  Membantu membebaskan sumber daya eksternal seperti file, koneksi database, atau socket segera setelah tidak digunakan.  
+Meskipun .NET memiliki GC untuk mengelola memori secara otomatis, dalam beberapa kasus kita perlu melakukan pengelolaan memori secara manual agar aplikasi lebih optimal. Berikut beberapa teknik untuk mengatur memori secara manual:
 
-- **Memanfaatkan `using` Statement**  
-  Memastikan objek yang mengimplementasikan `IDisposable` dibersihkan secara otomatis setelah selesai digunakan.  
-
-- **Menggunakan `GC.Collect()` dengan Hati-hati**  
-  Memaksa GC untuk menjalankan pembersihan memori, tetapi harus digunakan secara selektif untuk menghindari overhead yang tidak perlu.  
-
-- **Memanfaatkan `WeakReference`**  
-  Membantu mengelola objek yang bisa dihapus oleh GC ketika tidak ada referensi kuat yang tersisa.  
-
-- **Menggunakan `Object Pooling`**  
-  Mengurangi alokasi dan dealokasi objek berulang dengan mendaur ulang objek yang sering digunakan.  
-
-- **Menghindari Alokasi Berlebihan di Heap**  
-  Gunakan `struct` daripada `class` untuk objek kecil yang sering digunakan agar tetap berada di stack.  
-
-- **Menggunakan `Span<T>` dan `Memory<T>`**  
-  Mengelola buffer data secara efisien tanpa alokasi heap tambahan.  
-
-- **Menyesuaikan Pengaturan GC**  
-  Mengatur mode GC seperti *Workstation GC*, *Server GC*, atau *Low-Latency GC* berdasarkan kebutuhan aplikasi.  
+- **Menggunakan `Dispose()` dan `IDisposable`**Membantu membebaskan sumber daya eksternal seperti file, koneksi database, atau socket segera setelah tidak digunakan.
+- **Memanfaatkan `using` Statement**Memastikan objek yang mengimplementasikan `IDisposable` dibersihkan secara otomatis setelah selesai digunakan.
+- **Menggunakan `GC.Collect()` dengan Hati-hati**Memaksa GC untuk menjalankan pembersihan memori, tetapi harus digunakan secara selektif untuk menghindari overhead yang tidak perlu.
+- **Memanfaatkan `WeakReference`**Membantu mengelola objek yang bisa dihapus oleh GC ketika tidak ada referensi kuat yang tersisa.
+- **Menggunakan `Object Pooling`**Mengurangi alokasi dan dealokasi objek berulang dengan mendaur ulang objek yang sering digunakan.
+- **Menghindari Alokasi Berlebihan di Heap**Gunakan `struct` daripada `class` untuk objek kecil yang sering digunakan agar tetap berada di stack.
+- **Menggunakan `Span<T>` dan `Memory<T>`**Mengelola buffer data secara efisien tanpa alokasi heap tambahan.
+- **Menyesuaikan Pengaturan GC**
+  Mengatur mode GC seperti *Workstation GC*, *Server GC*, atau *Low-Latency GC* berdasarkan kebutuhan aplikasi.
 
 **Contoh Kode Memori Manajemen Secara Manual Menggunakan GC.Collect**
 Jika Anda memilih untuk memanggil **`GC.Collect()`** secara eksplisit untuk mengoptimalkan proses pengumpulan sampah, pastikan Anda memahami kapan ini diperlukan:
@@ -3734,7 +3718,6 @@ Untuk mengatasi masalah terkait Garbage Collection, Anda dapat menerapkan bebera
 - **Gunakan `GCSettings.LatencyMode` untuk Mengontrol GC**:
 
   - Anda dapat mengatur mode latensi GC menggunakan **`GCSettings.LatencyMode`** untuk aplikasi yang membutuhkan performa lebih tinggi dan latensi lebih rendah, seperti pada aplikasi real-time atau permainan.
-
 
 ## 5. GC Latency Modes di C#
 
@@ -3953,4 +3936,5 @@ Selain `System.Diagnostics`, ASP.NET Core juga mendukung berbagai **library logg
    * Alternatif lain untuk logging yang mendukung berbagai target output.
    * Memiliki konfigurasi berbasis XML atau kode program.
 4. **Log4Net**
+
    * Salah satu library logging tertua yang masih digunakan dalam beberapa proyek legacy ASP.NET.
