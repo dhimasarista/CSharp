@@ -289,6 +289,27 @@ Berikut adalah beberapa perintah dasar untuk mengelola workload di .NET:
 - **wasm-tools**: Workload untuk pengembangan aplikasi Blazor WebAssembly.
 - **android** dan **ios**: Workload untuk pengembangan aplikasi mobile menggunakan Xamarin.
 
+## 0.3 Domain Specific Language
+
+DSL adalah gaya pemrograman yang dirancang untuk menyederhanakan solusi pada domain tertentu. Di C#, DSL biasanya hadir sebagai **fluent API** atau method chaining untuk membuat kode lebih ekspresif dan terbaca seperti bahasa natural.
+
+**Contoh DSL di C#**
+
+```csharp
+var query = new QueryBuilder()
+    .Select("name", "email")
+    .From("users")
+    .Where("age", ">", 18)
+    .OrderBy("name")
+    .Build();
+```
+
+**Output SQL:**
+
+```sql
+SELECT name, email FROM users WHERE age > 18 ORDER BY name;
+```
+
 # 1. Basic
 
 ## 1.1 Data Types
@@ -1623,7 +1644,7 @@ public class Program {
 
 Dengan menggunakan variabel yang berisi closure tersebut, kita dapat memanggilnya dengan parameter lain untuk mendapatkan hasil penjumlahan yang sesuai. Penggunaan closures ini memungkinkan kita untuk membuat fungsi yang fleksibel dengan konfigurasi nilai yang berbeda. Closures juga membantu dalam membuat kode yang lebih bersih dan terstruktur.
 
-## 3.11 Method Reference	
+## 3.11 Method Reference
 
 Method Reference di C# memungkinkan pemanggilan metode secara langsung tanpa harus menggunakan ekspresi lambda. Ini menggunakan  **Method Group (`Class.Method`)** , yang secara otomatis cocok dengan parameter delegate yang dibutuhkan.
 
